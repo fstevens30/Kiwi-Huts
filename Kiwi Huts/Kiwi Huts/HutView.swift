@@ -6,14 +6,27 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct HutView: View {
     let hut: Hut
     
     var body: some View {
+        let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
+        
         VStack {
             Text(hut.name)
-            
+            Map {
+                Annotation(hut.name, coordinate: hutCoord) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color.orange)
+                        Image(systemName: "house.fill")
+                            .padding(5)
+                    }
+                }
+            }
+            .mapStyle(.hybrid)
         }
     }
 }
