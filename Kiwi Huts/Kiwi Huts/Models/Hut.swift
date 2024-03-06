@@ -5,7 +5,7 @@
 //  Created by Flynn Stevens on 6/03/24.
 //
 
-class Hut {
+class Hut: Identifiable {
     
     var assetID: String
     var bookable: Bool
