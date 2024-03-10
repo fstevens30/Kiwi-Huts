@@ -16,6 +16,23 @@ struct HutView: View {
         
         VStack {
             Text(hut.name)
+                .font(.title)
+            
+            Spacer()
+            
+            AsyncImage(url: URL(string: hut.thumbnailURL)) { phase in
+                if let image = phase.image {
+                    image.aspectRatio(contentMode: .fill) // Displays the loaded image.
+                } else if phase.error != nil {
+                    Color.red // Indicates an error.
+                } else {
+                    ProgressView() // Acts as a placeholder.
+                }
+            }
+
+
+            
+            Text(hut.introduction)
             Map {
                 Annotation(hut.name, coordinate: hutCoord) {
                     ZStack {
@@ -38,7 +55,7 @@ struct HutView_Previews: PreviewProvider {
             bookable: true,
             hutCategory: "Great Walk",
             introduction: "This is a 54 bunk, Great Walk hut on the Kepler Track, Fiordland. Bookings required in the Great Walks season. ",
-            thumbnailURL: "https://www.doc.govt.nz/thumbs/large/link/5c957abd98084ead9568ffeb51696c65.jpg",
+            thumbnailURL: "https://www.doc.govt.nz/thumbs/hero/globalassets/images/places/fiordland/luxmore-hut/luxmore-hut-1920.jpg",
             lat: -45.385232,
             lon: 167.619159,
             name: "Luxmore Hut",

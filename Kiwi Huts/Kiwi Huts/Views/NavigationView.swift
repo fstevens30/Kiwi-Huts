@@ -28,7 +28,7 @@ struct NavigationView: View {
                 }
                 .tag(1)
             
-            HutListView()
+            HutListView(huts: [])
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Huts")

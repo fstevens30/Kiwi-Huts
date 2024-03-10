@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HutListView: View {
-    let huts = [Hut]()
+    var huts: [Hut]
     
     var body: some View {
         
@@ -69,6 +69,6 @@ struct HutListView_Previews: PreviewProvider {
             )
         ]
         
-        HutListView()
+        HutListView(huts: testHutList)
     }
 }
