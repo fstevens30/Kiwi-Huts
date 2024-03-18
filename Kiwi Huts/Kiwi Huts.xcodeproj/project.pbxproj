@@ -10,15 +10,17 @@
 		3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */; };
 		3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1C99FB2B97D00800C49BFF /* Assets.xcassets */; };
 		3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1C99FE2B97D00800C49BFF /* Preview Assets.xcassets */; };
-		3A1C9A0B2B97D3B900C49BFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0A2B97D3B900C49BFF /* GoogleService-Info.plist */; };
 		3A1C9A0E2B97D61700C49BFF /* Hut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0D2B97D61700C49BFF /* Hut.swift */; };
 		3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0F2B97DCE000C49BFF /* HutView.swift */; };
 		3A385C072B991B2E005036A5 /* HutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C062B991B2E005036A5 /* HutListView.swift */; };
-		3A385C092B991C0A005036A5 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C082B991C0A005036A5 /* NavigationView.swift */; };
+		3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C082B991C0A005036A5 /* MainTabView.swift */; };
 		3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C0C2B991CBA005036A5 /* AboutView.swift */; };
 		3A385C0F2B991CDF005036A5 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C0E2B991CDF005036A5 /* CompletionView.swift */; };
 		3A385C122B991D11005036A5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C112B991D11005036A5 /* SearchView.swift */; };
-		3A385C142B991D1C005036A5 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C132B991D1C005036A5 /* ListsView.swift */; };
+		3A385C142B991D1C005036A5 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C132B991D1C005036A5 /* SavedView.swift */; };
+		3A4C4B852BA7AE0B0064375A /* huts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C4B842BA7AE0B0064375A /* huts.json */; };
+		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
+		3A70FEB52BA7AB4000F60F6E /* loadHutsFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70FEB42BA7AB4000F60F6E /* loadHutsFromJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,16 +28,18 @@
 		3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kiwi_HutsApp.swift; sourceTree = "<group>"; };
 		3A1C99FB2B97D00800C49BFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1C99FE2B97D00800C49BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A1C9A0A2B97D3B900C49BFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3A1C9A0C2B97D3C400C49BFF /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A1C9A0D2B97D61700C49BFF /* Hut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hut.swift; sourceTree = "<group>"; };
 		3A1C9A0F2B97DCE000C49BFF /* HutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutView.swift; sourceTree = "<group>"; };
 		3A385C062B991B2E005036A5 /* HutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutListView.swift; sourceTree = "<group>"; };
-		3A385C082B991C0A005036A5 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		3A385C082B991C0A005036A5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		3A385C0C2B991CBA005036A5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3A385C0E2B991CDF005036A5 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		3A385C112B991D11005036A5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		3A385C132B991D1C005036A5 /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
+		3A385C132B991D1C005036A5 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		3A4C4B842BA7AE0B0064375A /* huts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = huts.json; sourceTree = "<group>"; };
+		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
+		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A70FEB42BA7AB4000F60F6E /* loadHutsFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadHutsFromJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +72,10 @@
 		3A1C99F62B97D00700C49BFF /* Kiwi Huts */ = {
 			isa = PBXGroup;
 			children = (
-				3A1C9A0C2B97D3C400C49BFF /* Kiwi Huts.entitlements */,
-				3A1C9A0A2B97D3B900C49BFF /* GoogleService-Info.plist */,
+				3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */,
+				3A70FEB62BA7AD2500F60F6E /* Data */,
 				3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */,
+				3A70FEB42BA7AB4000F60F6E /* loadHutsFromJSON.swift */,
 				3A385C0B2B991CA9005036A5 /* Models */,
 				3A385C0A2B991C91005036A5 /* Views */,
 				3A1C99FB2B97D00800C49BFF /* Assets.xcassets */,
@@ -90,13 +95,13 @@
 		3A385C0A2B991C91005036A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A385C082B991C0A005036A5 /* NavigationView.swift */,
+				3A385C082B991C0A005036A5 /* MainTabView.swift */,
 				3A1C9A0F2B97DCE000C49BFF /* HutView.swift */,
 				3A385C062B991B2E005036A5 /* HutListView.swift */,
 				3A385C0C2B991CBA005036A5 /* AboutView.swift */,
 				3A385C0E2B991CDF005036A5 /* CompletionView.swift */,
 				3A385C112B991D11005036A5 /* SearchView.swift */,
-				3A385C132B991D1C005036A5 /* ListsView.swift */,
+				3A385C132B991D1C005036A5 /* SavedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,8 +110,17 @@
 			isa = PBXGroup;
 			children = (
 				3A1C9A0D2B97D61700C49BFF /* Hut.swift */,
+				3A4C4B872BA7C2300064375A /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3A70FEB62BA7AD2500F60F6E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3A4C4B842BA7AE0B0064375A /* huts.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
+				3A4C4B852BA7AE0B0064375A /* huts.json in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
-				3A1C9A0B2B97D3B900C49BFF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,12 +197,14 @@
 				3A385C0F2B991CDF005036A5 /* CompletionView.swift in Sources */,
 				3A385C072B991B2E005036A5 /* HutListView.swift in Sources */,
 				3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */,
-				3A385C092B991C0A005036A5 /* NavigationView.swift in Sources */,
+				3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */,
 				3A385C122B991D11005036A5 /* SearchView.swift in Sources */,
 				3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */,
 				3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */,
-				3A385C142B991D1C005036A5 /* ListsView.swift in Sources */,
+				3A385C142B991D1C005036A5 /* SavedView.swift in Sources */,
 				3A1C9A0E2B97D61700C49BFF /* Hut.swift in Sources */,
+				3A70FEB52BA7AB4000F60F6E /* loadHutsFromJSON.swift in Sources */,
+				3A4C4B882BA7C2300064375A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

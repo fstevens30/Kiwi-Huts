@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct HutView: View {
+    @EnvironmentObject var user: User
     let hut: Hut
     
     var body: some View {
@@ -20,7 +21,7 @@ struct HutView: View {
             
             Spacer()
             
-            AsyncImage(url: URL(string: hut.thumbnailURL)) { phase in
+            AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
                 if let image = phase.image {
                     image.aspectRatio(contentMode: .fill) // Displays the loaded image.
                 } else if phase.error != nil {
@@ -33,7 +34,27 @@ struct HutView: View {
 
             
             Text(hut.introduction)
-            Map {
+            
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                    if !user.savedHuts.contains(where: { $0.id == hut.id }) {
+                        user.savedHuts.append(hut)
+                    }
+                }) {
+                    Text("Save Hut")
+                }
+                Button(action: {
+                    if !user.completedHuts.contains(where: { $0.id == hut.id }) {
+                        user.completedHuts.append(hut)
+                    }
+                }) {
+                    Text("Mark Complete")
+                }
+            }
+            
+            Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
                 Annotation(hut.name, coordinate: hutCoord) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
@@ -43,28 +64,42 @@ struct HutView: View {
                     }
                 }
             }
-            .mapStyle(.hybrid)
+            .mapStyle(.hybrid(elevation: .realistic))
         }
     }
 }
 
+
 struct HutView_Previews: PreviewProvider {
     static var previews: some View {
         let testHut = Hut(
-            assetID: "100033374",
-            bookable: true,
-            hutCategory: "Great Walk",
-            introduction: "This is a 54 bunk, Great Walk hut on the Kepler Track, Fiordland. Bookings required in the Great Walks season. ",
-            thumbnailURL: "https://www.doc.govt.nz/thumbs/hero/globalassets/images/places/fiordland/luxmore-hut/luxmore-hut-1920.jpg",
-            lat: -45.385232,
-            lon: 167.619159,
-            name: "Luxmore Hut",
-            staticLink: "https://www.doc.govt.nz/link/dc756fa57891438b8f3fa03813fb7260.aspx",
+            id: "100033374",
+            name: "Luxmore Hut  ",
             status: "OPEN",
+            region: "Fiordland",
+            y: 4960153,
             x: 1178767,
-            y: 4960153
+            locationString: "Fiordland National Park",
+            numberOfBunks: 54,
+            facilities: [
+                "Cooking",
+                "Heating",
+                "Mattresses",
+                "Lighting",
+                "Toilets - flush",
+                "Water from tap - not treated, boil before use",
+                "Water supply"
+            ],
+            hutCategory: "Great Walk",
+            proximityToRoadEnd: nil,
+            bookable: true,
+            introduction: "This is a 54 bunk, Great Walk hut on the Kepler Track, Fiordland. Bookings required in the Great Walks season. ",
+            introductionThumbnail: "https://www.doc.govt.nz/thumbs/large/link/262b915193334eaba5bd07f74999b664.jpg",
+            staticLink: "https://www.doc.govt.nz/link/dc756fa57891438b8f3fa03813fb7260.aspx",
+            place: "Fiordland National Park",
+            lon: 167.619159,
+            lat: -45.385232
         )
-        
         HutView(hut: testHut)
     }
 }

@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct NavigationView: View {
+struct MainTabView: View {
     
     @State private var selectedTab = 2
+    let user: User
+    let hutsList: [Hut]
     
     var body: some View {
         
@@ -21,14 +23,14 @@ struct NavigationView: View {
                 }
                 .tag(0)
             
-            CompletionView()
+            CompletionView(hutsList: hutsList)
                 .tabItem {
                     Image(systemName: "checkmark.square.fill")
                     Text("Completion")
                 }
                 .tag(1)
             
-            HutListView(huts: [])
+            HutListView(huts: hutsList)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Huts")
@@ -42,10 +44,10 @@ struct NavigationView: View {
                 }
                 .tag(3)
             
-            ListsView()
+            SavedView()
                 .tabItem {
                     Image(systemName: "square.stack.fill")
-                    Text("Lists")
+                    Text("Saved")
                 }
                 .tag(4)
         }
@@ -54,5 +56,5 @@ struct NavigationView: View {
 }
 
 #Preview {
-    NavigationView()
+    MainTabView(user: User(completedHuts: [], savedHuts: []), hutsList: [])
 }
