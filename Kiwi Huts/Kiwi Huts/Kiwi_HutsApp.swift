@@ -33,7 +33,7 @@ struct Kiwi_HutsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainTabView(user: user, hutsList: hutsList)
+            MainTabView(hutsList: hutsList)
         }
         .environmentObject(user)
     }

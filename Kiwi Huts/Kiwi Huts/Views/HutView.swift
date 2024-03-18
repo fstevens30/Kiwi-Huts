@@ -45,6 +45,7 @@ struct HutView: View {
                 }) {
                     Text("Save Hut")
                 }
+                .buttonStyle(.bordered)
                 Button(action: {
                     if !user.completedHuts.contains(where: { $0.id == hut.id }) {
                         user.completedHuts.append(hut)
@@ -52,6 +53,7 @@ struct HutView: View {
                 }) {
                     Text("Mark Complete")
                 }
+                .buttonStyle(.borderedProminent)
             }
             
             Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {

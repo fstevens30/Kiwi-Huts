@@ -10,7 +10,6 @@ import SwiftUI
 struct MainTabView: View {
     
     @State private var selectedTab = 2
-    let user: User
     let hutsList: [Hut]
     
     var body: some View {
@@ -37,7 +36,7 @@ struct MainTabView: View {
                 }
                 .tag(2)
             
-            SearchView()
+            SearchView(huts: hutsList)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
@@ -56,5 +55,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView(user: User(completedHuts: [], savedHuts: []), hutsList: [])
+    MainTabView(hutsList: [])
 }

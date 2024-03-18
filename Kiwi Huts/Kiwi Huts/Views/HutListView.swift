@@ -14,7 +14,7 @@ struct HutListView: View {
         VStack {
             NavigationView {
                 
-                List(huts) { hut in
+                List(huts.shuffled()) { hut in
                     NavigationLink(destination: HutView(hut: hut)) {
                         HStack {
                             VStack {
@@ -24,8 +24,7 @@ struct HutListView: View {
                         }
                     }
                 }
-                .padding(.top)
-                .edgesIgnoringSafeArea(.all)
+                .navigationTitle("Huts")
             }
         }
     }

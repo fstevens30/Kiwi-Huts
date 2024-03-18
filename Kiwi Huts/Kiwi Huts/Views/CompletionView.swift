@@ -65,5 +65,6 @@ struct CompletionView_Previews: PreviewProvider {
         let hutsList = [dummyHut, dummyHut, dummyHut, dummyHut, dummyHut]
 
         CompletionView(hutsList: hutsList)
+            .environmentObject(User(completedHuts: [dummyHut, dummyHut, dummyHut], savedHuts: [dummyHut, dummyHut, dummyHut]))
     }
 }
