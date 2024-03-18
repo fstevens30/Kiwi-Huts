@@ -12,29 +12,47 @@ struct SearchView: View {
     @EnvironmentObject var user: User
     var huts: [Hut]
     @State private var searchText = ""
+    @State private var selectedRegion: String = "All"
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(searchResults) { hut in
-                    NavigationLink(destination: HutView(hut: hut)) {
-                        Text(hut.name)
+            VStack {
+                Picker("Region", selection: $selectedRegion) {
+                    Text("All").tag("All")
+                    ForEach(uniqueRegions, id: \.self) { region in
+                        Text(region).tag(region)
+                    }                }
+                .pickerStyle(MenuPickerStyle())
+                List {
+                    ForEach(searchResults) { hut in
+                        NavigationLink(destination: HutView(hut: hut)) {
+                            Text(hut.name)
+                        }
                     }
                 }
+                .navigationTitle("Search Huts")
+                .searchable(text: $searchText)
             }
-            .navigationTitle("Search Huts")
-            .searchable(text: $searchText)
         }
     }
 
+    var uniqueRegions: [String] {
+        let regions = huts.compactMap { $0.region }
+        return Array(Set(regions)).sorted()
+    }
+
     var searchResults: [Hut] {
-        if searchText.isEmpty {
-            return huts.sorted { $0.name < $1.name }
-        } else {
-            return huts.filter { $0.name.contains(searchText) }.sorted { $0.name < $1.name }
+        var results = huts
+        if !searchText.isEmpty {
+            results = results.filter { $0.name.contains(searchText) || ($0.region.contains(searchText)) || ($0.locationString?.contains(searchText) ?? false) }
         }
+        if selectedRegion != "All" {
+            results = results.filter { $0.region == selectedRegion }
+        }
+        return results.sorted { $0.name < $1.name }
     }
 }
+
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
