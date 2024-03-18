@@ -34,14 +34,56 @@ struct CircularProgressView: View {
         }
         
         
-        Text("\(Int(hutCount)) of \(Int(totalHuts)) Huts visited.")
-            .bold()
+
     }
 }
+
+struct regionProgressView: View {
+  let progress: CGFloat
+
+  var body: some View {
+    GeometryReader { geometry in
+      ZStack(alignment: .leading) {
+          RoundedRectangle(cornerRadius: 25.0)
+          .frame(width: geometry.size.width, height: 30)
+          .opacity(0.3)
+          .foregroundColor(Color.accentColor.opacity(0.5))
+
+          RoundedRectangle(cornerRadius: 25.0)
+          .frame(
+            width: min(progress * geometry.size.width,
+                       geometry.size.width),
+            height: 30
+          )
+          .foregroundColor(.accentColor)
+      }
+    }
+  }
+}
+
 
 struct CompletionView: View {
     @EnvironmentObject var user: User
     var hutsList: [Hut]
+
+    // Group huts by region
+    var hutsByRegion: [String: [Hut]] {
+        Dictionary(grouping: hutsList, by: { $0.region })
+    }
+
+    // Calculate progress for each region
+    func progress(for region: String) -> CGFloat {
+        let hutsInRegion = hutsByRegion[region] ?? []
+        let completedHutsInRegion = hutsInRegion.filter { hut in user.completedHuts.contains(where: { $0.id == hut.id }) }
+        return CGFloat(completedHutsInRegion.count) / CGFloat(hutsInRegion.count)
+    }
+
+    // Calculate the number of completed huts in each region
+    var completedHutsInRegion: [String: Int] {
+        hutsByRegion.mapValues { hutsInRegion in
+            hutsInRegion.filter { hut in user.completedHuts.contains(where: { $0.id == hut.id }) }.count
+        }
+    }
 
     var body: some View {
         VStack {
@@ -51,12 +93,41 @@ struct CompletionView: View {
             
             Spacer()
             
-            CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(hutsList.count))
-                .frame(width: 200, height: 200)
-                .padding()
+            ZStack {
+                
+                CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(hutsList.count))
+                    .frame(width: 200, height: 200)
+                    .padding()
+                
+                Text("\(Int(user.completedHuts.count)) / \(Int(hutsList.count)) \nHuts")
+                    .font(.title)
+                    .bold()
+                
+                
+            }
+            
+            Spacer()
+            
+            // Create a regionProgressView for each region
+            ForEach(hutsByRegion.keys.sorted(), id: \.self) { region in
+                VStack {
+                    HStack {
+                        Text(region)
+                            .font(.headline)
+                        Spacer()
+                        Text("\(completedHutsInRegion[region] ?? 0) / \(hutsByRegion[region]?.count ?? 0)")
+                            .font(.headline)
+                    }
+                    regionProgressView(progress: progress(for: region))
+                        .frame(height: 30)
+                }
+                .padding(.horizontal, 50)
+
+            }
         }
     }
 }
+
 
 struct CompletionView_Previews: PreviewProvider {
     static var previews: some View {
