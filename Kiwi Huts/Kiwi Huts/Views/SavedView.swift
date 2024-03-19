@@ -16,12 +16,7 @@ struct SavedView: View {
                 
                 List(user.savedHuts) { hut in
                     NavigationLink(destination: HutView(hut: hut)) {
-                        HStack {
-                            VStack {
-                                Text(hut.name)
-                                Text(hut.region)
-                            }
-                        }
+                        ListedHutView(hut: hut)
                     }
                 }
                 .padding(.top)

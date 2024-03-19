@@ -16,13 +16,9 @@ struct HutListView: View {
                 
                 List(huts.shuffled()) { hut in
                     NavigationLink(destination: HutView(hut: hut)) {
-                        HStack {
-                            VStack {
-                                Text(hut.name)
-                                Text(hut.region)
-                            }
-                        }
+                        ListedHutView(hut: hut)
                     }
+                    .padding(0)
                 }
                 .navigationTitle("Huts")
             }

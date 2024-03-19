@@ -16,11 +16,6 @@ struct HutView: View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
         
         VStack {
-            Text(hut.name)
-                .font(.title)
-            
-            Spacer()
-            
             AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
                 if let image = phase.image {
                     image.aspectRatio(contentMode: .fill) // Displays the loaded image.
@@ -68,6 +63,7 @@ struct HutView: View {
             }
             .mapStyle(.hybrid(elevation: .realistic))
         }
+        .navigationTitle(hut.name)
     }
 }
 

@@ -25,9 +25,7 @@ struct SearchView: View {
                 .pickerStyle(MenuPickerStyle())
                 List {
                     ForEach(searchResults) { hut in
-                        NavigationLink(destination: HutView(hut: hut)) {
-                            Text(hut.name)
-                        }
+                        ListedHutView(hut: hut)
                     }
                 }
                 .navigationTitle("Search Huts")

@@ -11,27 +11,34 @@ struct ListedHutView: View {
     let hut: Hut
 
     var body: some View {
-            HStack {
-                AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
-                    if let image = phase.image {
-                        image.aspectRatio(contentMode: .fill)
-                    } else {
-                        ProgressView() // Acts as a placeholder.
-                    }
+        HStack {
+            AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 75) // Adjust these values to your preference
+                        .clipped()
+                } else {
+                    ProgressView() // Acts as a placeholder.
                 }
-                .padding()
-                
-                VStack {
-                    Text(hut.name)
-                        .font(.title)
-                    Text(hut.locationString ?? hut.region)
-                        .font(.subheadline)
-                        .foregroundStyle(Color.accentColor)
-                }
-                Spacer()
             }
+            .padding()
+
+            VStack(alignment: .leading) {
+                Text(hut.name)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(hut.region)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.accentColor)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            Spacer()
+        }
     }
 }
+
 
 struct ListedHutView_Previews: PreviewProvider {
     static var previews: some View {
