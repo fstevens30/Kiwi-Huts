@@ -18,7 +18,6 @@ struct HutListView: View {
                     NavigationLink(destination: HutView(hut: hut)) {
                         ListedHutView(hut: hut)
                     }
-                    .padding(0)
                 }
                 .navigationTitle("Huts")
             }

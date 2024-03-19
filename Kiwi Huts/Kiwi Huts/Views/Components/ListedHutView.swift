@@ -19,8 +19,11 @@ struct ListedHutView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 75) // Adjust these values to your preference
                         .clipped()
-                } else {
-                    ProgressView() // Acts as a placeholder.
+                }
+                else {
+                    Image(systemName: "house.fill")
+                        .frame(width: 100, height: 75)
+                        .clipped()
                 }
             }
             .padding()
@@ -33,6 +36,7 @@ struct ListedHutView: View {
                     .font(.subheadline)
                     .foregroundStyle(Color.accentColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .bold()
             }
             Spacer()
         }

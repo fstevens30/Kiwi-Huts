@@ -13,32 +13,49 @@ struct SearchView: View {
     var huts: [Hut]
     @State private var searchText = ""
     @State private var selectedRegion: String = "All"
-
+    @State private var selectedHutType: String = "All"
+    
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Region", selection: $selectedRegion) {
-                    Text("All").tag("All")
-                    ForEach(uniqueRegions, id: \.self) { region in
-                        Text(region).tag(region)
-                    }                }
-                .pickerStyle(MenuPickerStyle())
+                HStack {
+                    Picker("Region", selection: $selectedRegion) {
+                        Text("All Regions").tag("All")
+                        ForEach(uniqueRegions, id: \.self) { region in
+                            Text(region).tag(region)
+                        }                }
+                    .pickerStyle(MenuPickerStyle())
+                    
+                    Picker("Hut Type", selection: $selectedHutType) {
+                        Text("All Hut Types").tag("All")
+                        ForEach(uniqueHutTypes, id: \.self) { hutType in
+                            Text(hutType).tag(hutType)
+                        }                }
+                    .pickerStyle(MenuPickerStyle())
+                }
                 List {
                     ForEach(searchResults) { hut in
-                        ListedHutView(hut: hut)
+                        NavigationLink(destination: HutView(hut: hut)) {
+                            ListedHutView(hut: hut)
+                        }
                     }
                 }
-                .navigationTitle("Search Huts")
-                .searchable(text: $searchText)
             }
+            .navigationTitle("Search Huts")
+            .searchable(text: $searchText)
         }
     }
-
+    
     var uniqueRegions: [String] {
         let regions = huts.compactMap { $0.region }
         return Array(Set(regions)).sorted()
     }
-
+    
+    var uniqueHutTypes: [String] {
+        let hutTypes = huts.compactMap { $0.hutCategory }
+        return Array(Set(hutTypes)).sorted()
+    }
+    
     var searchResults: [Hut] {
         var results = huts
         if !searchText.isEmpty {
@@ -47,9 +64,13 @@ struct SearchView: View {
         if selectedRegion != "All" {
             results = results.filter { $0.region == selectedRegion }
         }
+        if selectedHutType != "All" {
+            results = results.filter { $0.hutCategory == selectedHutType }
+        }
         return results.sorted { $0.name < $1.name }
     }
 }
+
 
 
 struct SearchView_Previews: PreviewProvider {
