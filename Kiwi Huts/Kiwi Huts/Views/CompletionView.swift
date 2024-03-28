@@ -105,19 +105,20 @@ struct CompletionView: View {
                 
                 // Create a regionProgressView for each region
                 ForEach(hutsByRegion.keys.sorted(), id: \.self) { region in
-                    VStack {
-                        HStack {
-                            Text(region)
-                                .font(.headline)
-                            Spacer()
-                            Text("\(completedHutsInRegion[region] ?? 0) / \(hutsByRegion[region]?.count ?? 0)")
-                                .font(.headline)
+                    NavigationLink(destination: HutListView(huts: hutsList.filter { $0.region == region } )) {
+                        VStack {
+                            HStack {
+                                Text(region)
+                                    .font(.headline)
+                                Spacer()
+                                Text("\(completedHutsInRegion[region] ?? 0) / \(hutsByRegion[region]?.count ?? 0)")
+                                    .font(.headline)
+                            }
+                            regionProgressView(progress: progress(for: region))
+                                .frame(height: 30)
                         }
-                        regionProgressView(progress: progress(for: region))
-                            .frame(height: 30)
+                        .padding(.horizontal, 50)
                     }
-                    .padding(.horizontal, 50)
-                    
                 }
             }
         }

@@ -27,8 +27,33 @@ struct HutView: View {
             }
 
 
+            VStack {
+                Text(hut.introduction)
+            }
+            .padding()
             
-            Text(hut.introduction)
+            Spacer()
+            
+            VStack {
+
+                    HutInfoCard(imageName: "bed.double.circle.fill", text: String(hut.numberOfBunks ?? 0) + " Beds")
+                    
+                    HutInfoCard(imageName: {
+                        switch hut.hutCategory {
+                        case "Great Walk":
+                            return "house.lodge.fill"
+                        case "Standard":
+                            return "house.fill"
+                        case "Basic/bivvies":
+                            return "tent.fill"
+                        case "Serviced Alpine":
+                            return "mountain.2.fill"
+                        default:
+                            return "house"
+                        }
+                    }(), text: hut.hutCategory)
+            }
+            .padding()
             
             Spacer()
             
@@ -62,6 +87,7 @@ struct HutView: View {
                 }
             }
             .mapStyle(.hybrid(elevation: .realistic))
+            .padding(10)
         }
         .navigationTitle(hut.name)
     }
