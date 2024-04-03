@@ -14,28 +14,28 @@ try:
     db = firestore.client()
     print('Connected.')
 
-    if db.collection('huts').get():
-        # The collection exists
-
-        # TODO
-        # Loop through each hut in the database
-        # If get_huts cannot find the hut, delete it
-        # If get_huts find the hut and get_hut_info has different info, update it
-        # If get_huts find the hut but no new info then do nothing
-        # Perhaps this loop could be its own function
-
-        # testing
-        print('collection found')
-
-    else:
-        # Create the collection
-        db.collection('huts').add({})
-
-        # TODO 
-        # Implement same loop as above
-
-        # testing
-        print('collection created')
+    db_check(db)
 
 except Exception as e:
     print(f'Error: {e}')
+
+
+def huts_db_builder(db):
+
+    # TODO
+    # Loop through each hut in the database
+    # If get_huts cannot find the hut, delete it
+    # If get_huts find the hut and get_hut_info has different info, update it
+    # If get_huts find the hut but no new info then do nothing
+    # Perhaps this loop could be its own function
+
+    return None
+
+def db_check(db, collection='huts'):
+
+    if db.collection('huts').get():
+        print('Collection found.')
+
+    else:
+        db.collection('huts').add({})
+    print('Collection added.')
