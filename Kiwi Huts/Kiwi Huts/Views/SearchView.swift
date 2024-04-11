@@ -41,7 +41,7 @@ struct SearchView: View {
                     }
                 }
             }
-            .navigationTitle("Search Huts")
+            .navigationTitle("Search")
             .searchable(text: $searchText)
         }
     }

@@ -45,7 +45,7 @@ struct MainTabView: View {
             
             SavedView()
                 .tabItem {
-                    Image(systemName: "square.stack.fill")
+                    Image(systemName: "star.circle.fill")
                     Text("Saved")
                 }
                 .tag(4)

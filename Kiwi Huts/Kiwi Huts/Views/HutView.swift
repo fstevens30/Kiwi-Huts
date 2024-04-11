@@ -12,6 +12,15 @@ struct HutView: View {
     @EnvironmentObject var user: User
     let hut: Hut
     
+    // Functions for checking save and complete status
+    func isHutSaved() -> Bool {
+        user.savedHuts.contains(where: { $0.id == hut.id })
+    }
+    
+    func isHutComplete() -> Bool {
+        user.completedHuts.contains(where: { $0.id == hut.id })
+    }
+    
     var body: some View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
         
@@ -25,8 +34,8 @@ struct HutView: View {
                     ProgressView() // Acts as a placeholder.
                 }
             }
-
-
+            
+            
             VStack {
                 Text(hut.introduction)
             }
@@ -34,8 +43,10 @@ struct HutView: View {
             
             Spacer()
             
-            VStack {
-
+            HStack {
+                
+                VStack {
+                    
                     HutInfoCard(imageName: "bed.double.circle.fill", text: String(hut.numberOfBunks ?? 0) + " Beds")
                     
                     HutInfoCard(imageName: {
@@ -52,29 +63,22 @@ struct HutView: View {
                             return "house"
                         }
                     }(), text: hut.hutCategory)
+                    
+                    HutInfoCard(imageName: "spigot.fill", text: "Running water")
+                }
+                VStack {
+                    
+                    HutInfoCard(imageName: "lock.fill", text:
+                                    String(hut.status))
+                    HutInfoCard(imageName: "toilet.fill", text: "Toilet")
+                    
+                    HutInfoCard(imageName: "fireplace.fill", text: "Fireplace")
+                }
             }
-            .padding()
             
             Spacer()
             
-            HStack {
-                Button(action: {
-                    if !user.savedHuts.contains(where: { $0.id == hut.id }) {
-                        user.savedHuts.append(hut)
-                    }
-                }) {
-                    Text("Save Hut")
-                }
-                .buttonStyle(.bordered)
-                Button(action: {
-                    if !user.completedHuts.contains(where: { $0.id == hut.id }) {
-                        user.completedHuts.append(hut)
-                    }
-                }) {
-                    Text("Mark Complete")
-                }
-                .buttonStyle(.borderedProminent)
-            }
+
             
             Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
                 Annotation(hut.name, coordinate: hutCoord) {
@@ -90,6 +94,39 @@ struct HutView: View {
             .padding(10)
         }
         .navigationTitle(hut.name)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    if isHutSaved() {
+                        if let index = user.savedHuts.firstIndex(where: { $0.id == hut.id }) {
+                                // If found, remove the hut from the saved list
+                                user.savedHuts.remove(at: index)
+                            } else {
+                                user.savedHuts.append(hut)
+                            }
+                    } else {
+                        user.savedHuts.append(hut)
+                    }
+                }) {
+                    Image(systemName: isHutSaved() ? "star.circle.fill" : "star.circle")
+                }
+                
+                Button(action: {
+                    if isHutComplete() {
+                        if let index = user.completedHuts.firstIndex(where: { $0.id == hut.id }) {
+                                // If found, remove the hut from the completed list
+                                user.completedHuts.remove(at: index)
+                            } else {
+                                user.completedHuts.append(hut)
+                            }
+                    } else {
+                        user.completedHuts.append(hut)
+                    }
+                }) {
+                    Image(systemName: isHutComplete() ? "checkmark.circle.fill" : "checkmark.circle")
+                }
+            }
+        }
     }
 }
 

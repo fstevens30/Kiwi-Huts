@@ -11,17 +11,30 @@ struct SavedView: View {
     @EnvironmentObject var user: User
 
     var body: some View {
-        VStack {
-            NavigationView {
+        NavigationView {
+            VStack {
                 
-                List(user.savedHuts) { hut in
-                    NavigationLink(destination: HutView(hut: hut)) {
-                        ListedHutView(hut: hut)
+                if user.savedHuts.isEmpty {
+                    VStack {
+                        Text("No huts are saved!")
+                            .padding()
+                        Text("Use the")
+                        Text(Image(systemName: "star.circle"))
+                            .font(.title)
+                            .foregroundStyle(Color.accentColor)
+                        Text("button to save huts here.")
                     }
+                } else {
+                    List(user.savedHuts) { hut in
+                        NavigationLink(destination: HutView(hut: hut)) {
+                            ListedHutView(hut: hut)
+                        }
+                    }
+                    .padding(.top)
+                    .edgesIgnoringSafeArea(.all)
                 }
-                .padding(.top)
-                .edgesIgnoringSafeArea(.all)
             }
+            .navigationTitle("Saved")
         }
     }
 }

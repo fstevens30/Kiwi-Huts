@@ -86,43 +86,45 @@ struct CompletionView: View {
     }
 
     var body: some View {
-        VStack {
-            ScrollView {
-                ZStack {
-                    
-                    CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(hutsList.count))
-                        .frame(width: 200, height: 200)
-                        .padding()
-                    
-                    Text("\(Int(user.completedHuts.count)) / \(Int(hutsList.count)) \nHuts")
-                        .font(.title)
-                        .bold()
-                    
-                    
-                }
-                
-                Spacer()
-                
-                // Create a regionProgressView for each region
-                ForEach(hutsByRegion.keys.sorted(), id: \.self) { region in
-                    NavigationLink(destination: HutListView(huts: hutsList.filter { $0.region == region } )) {
-                        VStack {
-                            HStack {
-                                Text(region)
-                                    .font(.headline)
-                                Spacer()
-                                Text("\(completedHutsInRegion[region] ?? 0) / \(hutsByRegion[region]?.count ?? 0)")
-                                    .font(.headline)
-                            }
-                            regionProgressView(progress: progress(for: region))
-                                .frame(height: 30)
-                        }
-                        .padding(.horizontal, 50)
+        NavigationView {
+                ScrollView {
+                    ZStack {
+                        
+                        CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(hutsList.count))
+                            .frame(width: 200, height: 200)
+                            .padding()
+                        
+                        Text("\(Int(user.completedHuts.count)) / \(Int(hutsList.count)) \nHuts")
+                            .font(.title)
+                            .bold()
+                        
+                        
                     }
-                }
+                    
+                    Spacer()
+                    
+                    // Create a regionProgressView for each region
+                    ForEach(hutsByRegion.keys.sorted(), id: \.self) { region in
+                        NavigationLink(destination: HutListView(huts: hutsList.filter { $0.region == region } )) {
+                            VStack {
+                                HStack {
+                                    Text(region)
+                                        .font(.headline)
+                                        .foregroundStyle(Color.primary)
+                                    Spacer()
+                                    Text("\(completedHutsInRegion[region] ?? 0) / \(hutsByRegion[region]?.count ?? 0)")
+                                        .font(.headline)
+                                        .foregroundStyle(Color.primary)
+                                }
+                                regionProgressView(progress: progress(for: region))
+                                    .frame(height: 30)
+                            }
+                            .padding(.horizontal, 50)
+                        }
+                    }
             }
+                .navigationTitle("Completion")
         }
-        .navigationTitle("Completion")
     }
 }
 

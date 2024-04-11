@@ -21,6 +21,7 @@
 		3A385C142B991D1C005036A5 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C132B991D1C005036A5 /* SavedView.swift */; };
 		3A4C4B852BA7AE0B0064375A /* huts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C4B842BA7AE0B0064375A /* huts.json */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
+		3AB0EF712BC75A2C0026CB0B /* Backend in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0EF702BC75A2C0026CB0B /* Backend */; };
 		3AC8AB0B2BB5461500D6FE3D /* HutInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		3A4C4B842BA7AE0B0064375A /* huts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = huts.json; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3AB0EF702BC75A2C0026CB0B /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Backend; path = ../Backend; sourceTree = "<group>"; };
 		3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 		3A1C99EB2B97D00700C49BFF = {
 			isa = PBXGroup;
 			children = (
+				3AB0EF702BC75A2C0026CB0B /* Backend */,
 				3A1C99F62B97D00700C49BFF /* Kiwi Huts */,
 				3A1C99F52B97D00700C49BFF /* Products */,
 			);
@@ -195,6 +198,7 @@
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
 				3A4C4B852BA7AE0B0064375A /* huts.json in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
+				3AB0EF712BC75A2C0026CB0B /* Backend in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +369,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nz.ac.ara.fas.Kiwi-Huts";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -397,7 +401,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nz.ac.ara.fas.Kiwi-Huts";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
