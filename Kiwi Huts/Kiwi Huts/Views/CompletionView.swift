@@ -38,27 +38,26 @@ struct CircularProgressView: View {
     }
 }
 
-struct regionProgressView: View {
-  let progress: CGFloat
+struct RegionProgressView: View {
+    let progress: CGFloat
 
-  var body: some View {
-    GeometryReader { geometry in
-      ZStack(alignment: .leading) {
-          RoundedRectangle(cornerRadius: 25.0)
-          .frame(width: geometry.size.width, height: 30)
-          .opacity(0.3)
-          .foregroundColor(Color.accentColor.opacity(0.5))
-
-          RoundedRectangle(cornerRadius: 25.0)
-          .frame(
-            width: min(progress * geometry.size.width,
-                       geometry.size.width),
-            height: 30
-          )
-          .foregroundColor(.accentColor)
-      }
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .frame(width: geometry.size.width, height: 20)
+                    .opacity(0.3)
+                    .foregroundStyle(Color.accentColor)
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(
+                        width: min(progress * geometry.size.width,
+                                   geometry.size.width),
+                        height: 20
+                        )
+                    .foregroundStyle(Color.accentColor)
+            }
+        }
     }
-  }
 }
 
 
@@ -103,9 +102,17 @@ struct CompletionView: View {
                     
                     Spacer()
                     
+                    // Sort the regions
+                    
+                    let sortedRegions = hutsByRegion.keys.sorted { regionA, regionB in
+                        let progressA = progress(for: regionA)
+                        let progressB = progress(for: regionB)
+                        return progressA > progressB
+                    }
+                    
                     // Create a regionProgressView for each region
-                    ForEach(hutsByRegion.keys.sorted(), id: \.self) { region in
-                        NavigationLink(destination: HutListView(huts: hutsList.filter { $0.region == region } )) {
+                    ForEach(sortedRegions, id: \.self) { region in
+                        NavigationLink(destination: RegionListView(huts: hutsList.filter { hut in hut.region == region && user.completedHuts.contains(where: { $0.id == hut.id }) }, region: region)) {
                             VStack {
                                 HStack {
                                     Text(region)
@@ -116,7 +123,7 @@ struct CompletionView: View {
                                         .font(.headline)
                                         .foregroundStyle(Color.primary)
                                 }
-                                regionProgressView(progress: progress(for: region))
+                                RegionProgressView(progress: progress(for: region))
                                     .frame(height: 30)
                             }
                             .padding(.horizontal, 50)

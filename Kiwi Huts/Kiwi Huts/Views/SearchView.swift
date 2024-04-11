@@ -43,6 +43,7 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
             .searchable(text: $searchText)
+            .autocorrectionDisabled(true)
         }
     }
     

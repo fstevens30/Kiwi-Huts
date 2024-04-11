@@ -16,6 +16,7 @@ struct HutInfoCard: View {
             Image(systemName: imageName)
                 .foregroundColor(.accentColor)
             Text(text)
+                .font(.footnote)
                 .bold()
             Spacer()
         }

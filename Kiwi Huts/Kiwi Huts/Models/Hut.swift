@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Hut: Identifiable, Decodable {
+struct Hut: Identifiable, Codable {
     var id: String // Use 'id' as the unique identifier (based on id)
     var name: String
     var status: String

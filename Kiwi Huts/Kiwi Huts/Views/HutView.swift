@@ -103,9 +103,11 @@ struct HutView: View {
                                 user.savedHuts.remove(at: index)
                             } else {
                                 user.savedHuts.append(hut)
+                                user.saveData()
                             }
                     } else {
                         user.savedHuts.append(hut)
+                        user.saveData()
                     }
                 }) {
                     Image(systemName: isHutSaved() ? "star.circle.fill" : "star.circle")
@@ -118,9 +120,11 @@ struct HutView: View {
                                 user.completedHuts.remove(at: index)
                             } else {
                                 user.completedHuts.append(hut)
+                                user.saveData()
                             }
                     } else {
                         user.completedHuts.append(hut)
+                        user.saveData()
                     }
                 }) {
                     Image(systemName: isHutComplete() ? "checkmark.circle.fill" : "checkmark.circle")
