@@ -48,7 +48,7 @@ struct RegionProgressView: View {
                     .frame(width: geometry.size.width, height: 20)
                     .opacity(0.3)
                     .foregroundStyle(Color.accentColor)
-                RoundedRectangle(cornerRadius: 25.0)
+                Rectangle()
                     .frame(
                         width: min(progress * geometry.size.width,
                                    geometry.size.width),
@@ -73,8 +73,13 @@ struct CompletionView: View {
     // Calculate progress for each region
     func progress(for region: String) -> CGFloat {
         let hutsInRegion = hutsByRegion[region] ?? []
-        let completedHutsInRegion = hutsInRegion.filter { hut in user.completedHuts.contains(where: { $0.id == hut.id }) }
-        return CGFloat(completedHutsInRegion.count) / CGFloat(hutsInRegion.count)
+        let total = hutsInRegion.count
+        guard total > 0 else { return 0 }
+
+        let completedCount = hutsInRegion.reduce(0) { (count, hut) in
+            return count + (user.completedHuts.contains(where: { $0.id == hut.id }) ? 1 : 0)
+        }
+        return CGFloat(completedCount) / CGFloat(total)
     }
 
     // Calculate the number of completed huts in each region

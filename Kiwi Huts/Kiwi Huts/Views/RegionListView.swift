@@ -12,8 +12,7 @@ struct RegionListView: View {
     var region: String
     
     var body: some View {
-        NavigationView {
-            
+        VStack {
             if huts.isEmpty {
                 VStack {
                     Text("No huts completed for \(region)!")
