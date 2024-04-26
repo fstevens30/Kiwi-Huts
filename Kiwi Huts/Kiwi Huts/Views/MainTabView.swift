@@ -22,10 +22,10 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            CompletionView(hutsList: hutsList)
+            SearchView(huts: hutsList)
                 .tabItem {
-                    Image(systemName: "checkmark.square.fill")
-                    Text("Completion")
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
                 .tag(1)
             
@@ -36,17 +36,17 @@ struct MainTabView: View {
                 }
                 .tag(2)
             
-            SearchView(huts: hutsList)
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
-                }
-                .tag(3)
-            
             SavedView()
                 .tabItem {
                     Image(systemName: "star.circle.fill")
                     Text("Saved")
+                }
+                .tag(3)
+            
+            CompletionView(hutsList: hutsList)
+                .tabItem {
+                    Image(systemName: "checkmark.square.fill")
+                    Text("Completion")
                 }
                 .tag(4)
         }

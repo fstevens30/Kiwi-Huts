@@ -11,16 +11,7 @@ import MapKit
 struct HutView: View {
     @EnvironmentObject var user: User
     let hut: Hut
-    
-    // Functions for checking save and complete status
-    func isHutSaved() -> Bool {
-        user.savedHuts.contains(where: { $0.id == hut.id })
-    }
-    
-    func isHutComplete() -> Bool {
-        user.completedHuts.contains(where: { $0.id == hut.id })
-    }
-    
+
     var body: some View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
         ScrollView {
