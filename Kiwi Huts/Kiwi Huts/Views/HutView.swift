@@ -23,75 +23,46 @@ struct HutView: View {
     
     var body: some View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
-        
-        VStack {
-            AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
-                if let image = phase.image {
-                    image.aspectRatio(contentMode: .fill) // Displays the loaded image.
-                } else if phase.error != nil {
-                    Color.red // Indicates an error.
-                } else {
-                    ProgressView() // Acts as a placeholder.
-                }
-            }
-            
-            
+        ScrollView {
             VStack {
-                Text(hut.introduction)
-            }
-            .padding()
-            
-            Spacer()
-            
-            HStack {
-                
-                VStack {
-                    
-                    HutInfoCard(imageName: "bed.double.circle.fill", text: String(hut.numberOfBunks ?? 0) + " Beds")
-                    
-                    HutInfoCard(imageName: {
-                        switch hut.hutCategory {
-                        case "Great Walk":
-                            return "house.lodge.fill"
-                        case "Standard":
-                            return "house.fill"
-                        case "Basic/bivvies":
-                            return "tent.fill"
-                        case "Serviced Alpine":
-                            return "mountain.2.fill"
-                        default:
-                            return "house"
-                        }
-                    }(), text: hut.hutCategory)
-                    
-                    HutInfoCard(imageName: "spigot.fill", text: "Running water")
-                }
-                VStack {
-                    
-                    HutInfoCard(imageName: "lock.fill", text:
-                                    String(hut.status))
-                    HutInfoCard(imageName: "toilet.fill", text: "Toilet")
-                    
-                    HutInfoCard(imageName: "fireplace.fill", text: "Fireplace")
-                }
-            }
-            
-            Spacer()
-            
-
-            
-            Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
-                Annotation(hut.name, coordinate: hutCoord) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.orange)
-                        Image(systemName: "house.fill")
-                            .padding(5)
+                AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
+                    if let image = phase.image {
+                        image.aspectRatio(contentMode: .fill) // Displays the loaded image.
+                    } else if phase.error != nil {
+                        Color.red // Indicates an error.
+                    } else {
+                        ProgressView() // Acts as a placeholder.
                     }
                 }
+                
+                
+                VStack {
+                    Text(hut.introduction)
+                }
+                .padding()
+                
+                Spacer()
+                
+                HutInfoCardContainer(hut: hut)
+                
+                Spacer()
+                
+                
+                
+                Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
+                    Annotation(hut.name, coordinate: hutCoord) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.orange)
+                            Image(systemName: "house.fill")
+                                .padding(5)
+                        }
+                    }
+                }
+                .mapStyle(.hybrid(elevation: .realistic))
+                .frame(height: 600)
+                .padding(10)
             }
-            .mapStyle(.hybrid(elevation: .realistic))
-            .padding(10)
         }
         .navigationTitle(hut.name)
         .toolbar {

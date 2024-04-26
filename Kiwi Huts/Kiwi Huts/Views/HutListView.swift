@@ -13,7 +13,6 @@ struct HutListView: View {
     var body: some View {
         VStack {
             NavigationView {
-                
                 List(huts.shuffled()) { hut in
                     NavigationLink(destination: HutView(hut: hut)) {
                         ListedHutView(hut: hut)

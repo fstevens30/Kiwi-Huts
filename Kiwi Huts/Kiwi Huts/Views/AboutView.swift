@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct AboutView: View {
+    func getAppVersion() -> String {
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                return appVersion
+            }
+            return "Unknown"
+        }
+
+    
     var body: some View {
         VStack {
             Spacer()
@@ -26,7 +34,7 @@ struct AboutView: View {
                 Text("Kiwi Huts")
                     .bold()
                     .foregroundColor(.accentColor)
-                Text("Version 1")
+                Text("Version \(getAppVersion())")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }

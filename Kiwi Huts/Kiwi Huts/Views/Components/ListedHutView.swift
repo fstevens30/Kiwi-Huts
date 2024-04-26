@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListedHutView: View {
+    @EnvironmentObject var user: User
     let hut: Hut
 
     var body: some View {
@@ -39,6 +40,25 @@ struct ListedHutView: View {
                     .bold()
             }
             Spacer()
+        }
+        .swipeActions(allowsFullSwipe: false) {
+            Button {
+                // save the hut to the User.savedHuts list
+                user.savedHuts.append(hut)
+                user.saveData()
+            } label: {
+                Label("Save", systemImage: "star.circle.fill")
+            }
+            .tint(.yellow)
+            
+            Button {
+                // save the hut to the User.completedHuts list
+                user.completedHuts.append(hut)
+                user.saveData()
+            } label: {
+                Label("Complete", systemImage: "checkmark.circle.fill")
+            }
+            .tint(.green)
         }
     }
 }

@@ -10,11 +10,14 @@ import SwiftUI
 struct HutInfoCard: View {
     var imageName: String
     var text: String
+    var iconColor: Color = .accentColor
+    var bgColor: Color = .gray
     
     var body: some View {
         HStack {
             Image(systemName: imageName)
-                .foregroundColor(.accentColor)
+                .foregroundColor(iconColor)
+            Divider()
             Text(text)
                 .font(.footnote)
                 .bold()
@@ -22,7 +25,8 @@ struct HutInfoCard: View {
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color.gray.opacity(0.1)))
+            .fill(bgColor.opacity(0.1)))
+            //.fill(Color.bg.opacity(0.1)))
         .padding([.leading, .trailing])
     }
 }

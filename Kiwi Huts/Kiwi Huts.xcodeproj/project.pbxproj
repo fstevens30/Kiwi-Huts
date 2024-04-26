@@ -20,6 +20,7 @@
 		3A385C122B991D11005036A5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C112B991D11005036A5 /* SearchView.swift */; };
 		3A385C142B991D1C005036A5 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C132B991D1C005036A5 /* SavedView.swift */; };
 		3A3C30002BC7758C00E51CC1 /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C2FFF2BC7758C00E51CC1 /* RegionListView.swift */; };
+		3A4B4BEE2BDB43B80071B03C /* HutInfoCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */; };
 		3A4C4B852BA7AE0B0064375A /* huts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C4B842BA7AE0B0064375A /* huts.json */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
 		3AB0EF712BC75A2C0026CB0B /* Backend in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0EF702BC75A2C0026CB0B /* Backend */; };
@@ -41,6 +42,7 @@
 		3A385C112B991D11005036A5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3A385C132B991D1C005036A5 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		3A3C2FFF2BC7758C00E51CC1 /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
+		3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCardContainer.swift; sourceTree = "<group>"; };
 		3A4C4B842BA7AE0B0064375A /* huts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = huts.json; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				3A078A082BA7F716009B317D /* ListedHutView.swift */,
 				3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */,
+				3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */,
 				3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */,
 				3A3C30002BC7758C00E51CC1 /* RegionListView.swift in Sources */,
+				3A4B4BEE2BDB43B80071B03C /* HutInfoCardContainer.swift in Sources */,
 				3A385C142B991D1C005036A5 /* SavedView.swift in Sources */,
 				3A1C9A0E2B97D61700C49BFF /* Hut.swift in Sources */,
 				3A4C4B882BA7C2300064375A /* User.swift in Sources */,
@@ -363,11 +367,13 @@
 				DEVELOPMENT_TEAM = D26SL36M48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,9 +382,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -395,11 +405,13 @@
 				DEVELOPMENT_TEAM = D26SL36M48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,9 +420,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
