@@ -24,7 +24,7 @@ struct MainTabView: View {
             
             SearchView(huts: hutsList)
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "magnifyingglass.circle.fill")
                     Text("Search")
                 }
                 .tag(1)
@@ -45,7 +45,7 @@ struct MainTabView: View {
             
             CompletionView(hutsList: hutsList)
                 .tabItem {
-                    Image(systemName: "checkmark.square.fill")
+                    Image(systemName: "checkmark.circle.fill")
                     Text("Completion")
                 }
                 .tag(4)
