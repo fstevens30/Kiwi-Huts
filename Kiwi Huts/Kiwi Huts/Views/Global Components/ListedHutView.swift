@@ -43,15 +43,6 @@ struct ListedHutView: View {
         }
         .swipeActions(allowsFullSwipe: false) {
             Button {
-                // save the hut to the User.savedHuts list
-                user.savedHuts.append(hut)
-                user.saveData()
-            } label: {
-                Label("Save", systemImage: "star.circle.fill")
-            }
-            .tint(.yellow)
-            
-            Button {
                 // save the hut to the User.completedHuts list
                 user.completedHuts.append(hut)
                 user.saveData()
@@ -59,6 +50,15 @@ struct ListedHutView: View {
                 Label("Complete", systemImage: "checkmark.circle.fill")
             }
             .tint(.green)
+            
+            Button {
+                // save the hut to the User.savedHuts list
+                user.savedHuts.append(hut)
+                user.saveData()
+            } label: {
+                Label("Save", systemImage: "star.circle.fill")
+            }
+            .tint(.yellow)
         }
     }
 }
