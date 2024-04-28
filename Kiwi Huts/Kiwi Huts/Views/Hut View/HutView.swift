@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct HutView: View {
     @EnvironmentObject var user: User
     let hut: Hut
 
     var body: some View {
-        let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
+
         ScrollView {
             VStack {
                 AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
@@ -25,6 +24,9 @@ struct HutView: View {
                         ProgressView() // Acts as a placeholder.
                     }
                 }
+                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                .frame(width: 100)
+                .padding()
                 
                 
                 VStack {
@@ -39,20 +41,8 @@ struct HutView: View {
                 Spacer()
                 
                 
+                HutMapCard(hut: hut)
                 
-                Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
-                    Annotation(hut.name, coordinate: hutCoord) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.orange)
-                            Image(systemName: "house.fill")
-                                .padding(5)
-                        }
-                    }
-                }
-                .mapStyle(.hybrid(elevation: .realistic))
-                .frame(height: 600)
-                .padding(10)
             }
         }
         .navigationTitle(hut.name)

@@ -41,6 +41,7 @@ struct HutInfoCardContainer: View {
                     .padding()
             }
         }
+        .padding()
     }
 
     // Function to determine the icon based on hut category
