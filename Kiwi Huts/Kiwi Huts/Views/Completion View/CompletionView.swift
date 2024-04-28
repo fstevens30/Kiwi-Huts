@@ -7,60 +7,6 @@
 
 import SwiftUI
 
-struct CircularProgressView: View {
-    
-    let hutCount: Double
-    let totalHuts: Double
-    
-    
-    var body: some View {
-        ZStack {
-            
-            Circle()
-                .stroke(
-                    Color.accentColor.opacity(0.5),
-                    lineWidth: 30
-                )
-            Circle()
-                .trim(from: 0, to: hutCount / totalHuts)
-                .stroke(
-                    Color.accentColor,
-                    style: StrokeStyle(
-                        lineWidth: 30,
-                        lineCap: .round
-                    )
-                )
-                .rotationEffect(.degrees(-90))
-        }
-        
-        
-
-    }
-}
-
-struct RegionProgressView: View {
-    let progress: CGFloat
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: geometry.size.width, height: 20)
-                    .opacity(0.3)
-                    .foregroundStyle(Color.accentColor)
-                Rectangle()
-                    .frame(
-                        width: min(progress * geometry.size.width,
-                                   geometry.size.width),
-                        height: 20
-                        )
-                    .foregroundStyle(Color.accentColor)
-            }
-        }
-    }
-}
-
-
 struct CompletionView: View {
     @EnvironmentObject var user: User
     var hutsList: [Hut]

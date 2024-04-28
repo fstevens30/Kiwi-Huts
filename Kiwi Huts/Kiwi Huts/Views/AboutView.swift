@@ -30,10 +30,10 @@ struct AboutView: View {
             
             Spacer()
             
-            HStack {
+            VStack {
                 Text("Kiwi Huts")
+                    .font(.headline)
                     .bold()
-                    .foregroundColor(.accentColor)
                 Text("Version \(getAppVersion())")
                     .font(.subheadline)
                     .foregroundColor(.gray)
