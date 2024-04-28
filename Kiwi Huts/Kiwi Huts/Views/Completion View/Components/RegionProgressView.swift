@@ -28,8 +28,3 @@ struct RegionProgressView: View {
         }
     }
 }
-
-
-#Preview {
-    RegionProgressView()
-}

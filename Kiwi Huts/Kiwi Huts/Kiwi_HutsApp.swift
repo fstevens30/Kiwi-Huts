@@ -15,6 +15,9 @@ struct Kiwi_HutsApp: App {
     let hutsList: [Hut] // Load your Hut data here
 
     init() {
+        // Fix title sizes to fit screen
+        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+        
         // Load the Hut data from your JSON file
         if let jsonFileURL = Bundle.main.url(forResource: "huts", withExtension: "json") {
             do {
