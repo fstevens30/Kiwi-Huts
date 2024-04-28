@@ -16,21 +16,30 @@ struct HutView: View {
         ScrollView {
             VStack {
                 AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
-                    if let image = phase.image {
-                        image.aspectRatio(contentMode: .fill) // Displays the loaded image.
-                    } else if phase.error != nil {
-                        Color.red // Indicates an error.
-                    } else {
-                        ProgressView() // Acts as a placeholder.
-                    }
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                .frame(width: 100)
-                .padding()
+                            if let image = phase.image {
+                                image
+                                    .resizable() // Make sure the image can be resized
+                                    .aspectRatio(contentMode: .fill) // Maintain the aspect ratio and fill the frame
+                                    .frame(maxWidth: .infinity) // Set the image frame to the maximum available width
+                                    .clipped() // Clip the overflowing parts of the image
+                            } else if phase.error != nil {
+                                Color.red // Error state
+                            } else {
+                                ProgressView() // Loading state
+                            }
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0)) // Apply corner radius
+                        .padding() // Apply padding around the image
                 
                 
                 VStack {
                     Text(hut.introduction)
+                    
+                    if hut.bookable {
+                        Link("Book Now", destination: URL(string: hut.staticLink)!)
+                            .buttonStyle(.bordered)
+                            .padding()
+                    }
                 }
                 .padding()
                 
