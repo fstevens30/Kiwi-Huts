@@ -62,18 +62,22 @@ struct HutInfoCardContainer: View {
     // Function to determine the icon for each facility
     private func iconForFacility(_ facility: String) -> String {
         switch facility.lowercased() {
-        case "toilets - non-flush":
+        case "toilets - flush", "toilets - non-flush":
             return "toilet.fill"
-        case "water":
+        case "water from tap - not treated, boil before use":
             return "spigot.fill"
         case "water from stream":
-            return "drop.circle.fill"
+            return "water.waves"
+        case "water supply":
+            return "waterbottle.fill"
         case "heating":
             return "fireplace.fill"
         case "lighting":
             return "lightbulb.max.fill"
         case "mattresses":
             return "bed.double.fill"
+        case "cooking":
+            return "frying.pan.fill"
         default:
             return "questionmark.diamond.fill"
         }
