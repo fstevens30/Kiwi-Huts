@@ -10,36 +10,40 @@ import MapKit
 
 struct HutMapCard: View {
     let hut: Hut
-    @State private var isActive = false
     
     var body: some View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
         
-        Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
-            Annotation(hut.name, coordinate: hutCoord) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.orange)
-                    Image(systemName: "house.fill")
-                        .padding(5)
+        ZStack(alignment: .topTrailing) {
+            Map(initialPosition: .region(MKCoordinateRegion(center: hutCoord, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)))) {
+                Annotation(hut.name, coordinate: hutCoord) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 5.0)
+                            .fill(Color.orange)
+                        Image(systemName: "house.fill")
+                            .padding(5)
+                    }
                 }
             }
+            .mapStyle(.hybrid(elevation: .realistic))
+            .frame(height: 200)
+            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+            .padding(10)
+            
+            NavigationLink(destination: FullScreenMapView(hut: hut)) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(Color.gray)
+                        .opacity(0.8)
+                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                        .foregroundStyle(Color.black)
+                        .padding(5)
+                }
+                .frame(width: 50, height: 50)
+            }
+            .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 20))
         }
-        .mapStyle(.hybrid(elevation: .realistic))
-        .frame(height: 200)
-        .clipShape(RoundedRectangle(cornerRadius: 25.0))
-        .padding(10)
-        .background(NavigationLink(
-            destination: FullScreenMapView(hut: hut),
-                        isActive: $isActive) {
-                        EmptyView()
-                    })
-        .onTapGesture {
-            isActive.toggle()
-        }
-        
     }
-    
 }
 
 struct MapHutCard_Previews: PreviewProvider {

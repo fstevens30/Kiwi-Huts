@@ -13,6 +13,29 @@ struct Kiwi_HutsApp: App {
     @StateObject var user = User(completedHuts: [], savedHuts: [])
     
     let hutsList: [Hut] // Load your Hut data here
+    
+    // Location requests
+    /*
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse:  // Location services are available.
+            enableLocationFeatures()
+            break
+            
+        case .restricted, .denied:  // Location services currently unavailable.
+            disableLocationFeatures()
+            break
+            
+        case .notDetermined:        // Authorization not determined yet.
+           manager.requestWhenInUseAuthorization()
+            break
+            
+        default:
+            break
+        }
+    }
+     */
+
 
     init() {
         // Load the Hut data from your JSON file
@@ -29,6 +52,8 @@ struct Kiwi_HutsApp: App {
             print("JSON file not found.")
             hutsList = [] // Handle the missing file case
         }
+        
+        
     }
 
     var body: some Scene {
