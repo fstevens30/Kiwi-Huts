@@ -20,7 +20,7 @@ struct HutListView: View {
                 }
                 .navigationTitle("Huts")
             }
-        }
+        }    
     }
 }
 
