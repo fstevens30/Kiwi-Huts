@@ -24,6 +24,7 @@
 		3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */; };
 		3A4C4B852BA7AE0B0064375A /* huts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C4B842BA7AE0B0064375A /* huts.json */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
+		3A561A7E2BE86D4F0060A72B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A561A7D2BE86D4F0060A72B /* GoogleService-Info.plist */; };
 		3AA2B6902BE307D000E01731 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2B68F2BE307D000E01731 /* MapView.swift */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
 		3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */; };
@@ -53,6 +54,8 @@
 		3A4C4B842BA7AE0B0064375A /* huts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = huts.json; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A561A7D2BE86D4F0060A72B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A561A7F2BE86DBE0060A72B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AA2B68F2BE307D000E01731 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		3A1C99EB2B97D00700C49BFF = {
 			isa = PBXGroup;
 			children = (
+				3A561A7F2BE86DBE0060A72B /* GoogleService-Info.plist */,
 				3AB0EF702BC75A2C0026CB0B /* Backend */,
 				3A1C99F62B97D00700C49BFF /* Kiwi Huts */,
 				3A1C99F52B97D00700C49BFF /* Products */,
@@ -101,6 +105,7 @@
 		3A1C99F62B97D00700C49BFF /* Kiwi Huts */ = {
 			isa = PBXGroup;
 			children = (
+				3A561A7D2BE86D4F0060A72B /* GoogleService-Info.plist */,
 				3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */,
 				3A70FEB62BA7AD2500F60F6E /* Data */,
 				3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */,
@@ -253,6 +258,7 @@
 			files = (
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
 				3A4C4B852BA7AE0B0064375A /* huts.json in Resources */,
+				3A561A7E2BE86D4F0060A72B /* GoogleService-Info.plist in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
 				3AB0EF712BC75A2C0026CB0B /* Backend in Resources */,
 			);

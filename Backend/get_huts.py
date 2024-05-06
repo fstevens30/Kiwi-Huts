@@ -1,5 +1,7 @@
 import requests
 import json
+import get_hut_info
+
 
 def get_huts(api_key):
     """
@@ -12,14 +14,25 @@ def get_huts(api_key):
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        # TODO
-        # Open the JSON,
-        # For each hut object, replace the key "assetId" with "id"
-        # Then use this to pass each huts "id" into the get_hut_info function
-        # If the function returns None remove the current hut
+        # Replace 'assetId' with 'id' to work for SwiftUI
+        huts = response.json()
+        fixed_huts = []
 
-        return response.json()
-    
+        for hut in huts:
+            hut['id'] = hut.pop('assetId')
+            fixed_huts.append(hut)
+
+            # Fetch the hut info
+            hut_info = get_hut_info.get_hut_info(hut['id'], api_key)
+            if hut_info is not None:
+                for key, value in hut_info.items():
+                    if key not in hut:
+                        hut[key] = value
+
+                fixed_huts.append(hut)
+
+        return fixed_huts
+
     else:
         print(f'Error: {response.text}')
         return None

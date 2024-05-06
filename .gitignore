@@ -90,7 +90,13 @@ fastlane/test_output
 iOSInjectionProject/
 
 # DS_Store
-.DS_Store
+*.DS_Store
 
 # Plist
-.Plist
+*.plist
+
+# Keys directory
+Backend/Keys/
+
+# Error logs for backend
+error.txt
