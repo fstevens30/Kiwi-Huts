@@ -59,11 +59,13 @@ struct SearchView: View {
     
     var searchResults: [Hut] {
         var results = huts
-        if !searchText.isEmpty {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !trimmedSearchText.isEmpty {
             results = results.filter {
-                $0.name.localizedCaseInsensitiveContains(searchText) ||
-                $0.region.localizedCaseInsensitiveContains(searchText) ||
-                ($0.locationString?.localizedCaseInsensitiveContains(searchText) ?? false)
+                $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
+                $0.region.localizedCaseInsensitiveContains(trimmedSearchText) ||
+                ($0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false)
             }
         }
         if selectedRegion != "All" {
@@ -74,6 +76,7 @@ struct SearchView: View {
         }
         return results.sorted { $0.name < $1.name }
     }
+
 
 }
 
