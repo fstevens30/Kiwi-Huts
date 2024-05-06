@@ -60,7 +60,11 @@ struct SearchView: View {
     var searchResults: [Hut] {
         var results = huts
         if !searchText.isEmpty {
-            results = results.filter { $0.name.contains(searchText) || ($0.region.contains(searchText)) || ($0.locationString?.contains(searchText) ?? false) }
+            results = results.filter {
+                $0.name.localizedCaseInsensitiveContains(searchText) ||
+                $0.region.localizedCaseInsensitiveContains(searchText) ||
+                ($0.locationString?.localizedCaseInsensitiveContains(searchText) ?? false)
+            }
         }
         if selectedRegion != "All" {
             results = results.filter { $0.region == selectedRegion }
@@ -70,6 +74,7 @@ struct SearchView: View {
         }
         return results.sorted { $0.name < $1.name }
     }
+
 }
 
 
