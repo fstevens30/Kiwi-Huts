@@ -7,18 +7,18 @@ import json
 def main():
     try:
         print('Connecting to Firestore DB.')
-        # Load API Key from plist file for the huts API
         with open('Keys/DOC.json', 'r') as f:
             f_data = json.load(f)
             api_key = f_data.get('API_KEY', '')
 
-        # Initialize Firebase Admin with a specific service account
         if not firebase_admin._apps:
             cred_path = 'Keys/Firebase.json'
             cred = credentials.Certificate(cred_path)
             firebase_admin.initialize_app(cred)
         db = firestore.client()
-        print('Connected.')
+
+        # Ensure the 'huts' collection is ready for use
+        initialize_firestore_collection(db, 'huts')
 
         huts_db_builder(db, api_key)
 
@@ -27,27 +27,53 @@ def main():
 
 
 def huts_db_builder(db, api_key):
-    huts_data = get_huts(api_key)
-    current_huts = {str(doc.id): doc.to_dict() for doc in db.collection(
-        'huts').stream()}  # Convert doc.id to string if it's not
+    try:
+        huts_data = get_huts(api_key)
+        # Debug: print count of fetched huts
+        print(f"Fetched {len(huts_data)} huts from the API.")
 
-    for hut in huts_data:
-        hut_id = str(hut['id'])  # Ensure hut_id is always a string
-        if hut_id in current_huts:
-            # Update if different
-            if hut != current_huts[hut_id]:
-                db.collection('huts').document(hut_id).update(hut)
-                print(f'Updated hut {hut_id}')
+        current_huts = {str(doc.id): doc.to_dict()
+                        for doc in db.collection('huts').stream()}
+        # Debug: print count of huts in Firestore
+        print(f"Currently have {len(current_huts)} huts in Firestore.")
+
+        for hut in huts_data:
+            hut_id = str(hut['id'])
+            if hut_id in current_huts:
+                if hut != current_huts[hut_id]:
+                    db.collection('huts').document(hut_id).update(hut)
+                    print(f'Updated hut {hut_id}')
+            else:
+                db.collection('huts').document(hut_id).set(hut)
+                print(f'Added new hut {hut_id}')
+
+        # Check for deletions
+        for hut_id in current_huts:
+            if hut_id not in [str(h['id']) for h in huts_data]:
+                db.collection('huts').document(hut_id).delete()
+                print(f'Deleted hut {hut_id}')
+
+    except Exception as e:
+        print(f"Error in huts_db_builder: {e}")
+
+
+def initialize_firestore_collection(db, collection_name):
+    try:
+        # Check if the collection exists and has documents
+        documents = list(db.collection(collection_name).limit(1).stream())
+        if not documents:
+            # Add a dummy document if the collection is empty or does not exist
+            dummy_doc_id = 'dummy-document'
+            db.collection(collection_name).document(
+                dummy_doc_id).set({'init': True})
+            # Immediately delete the dummy document
+            db.collection(collection_name).document(dummy_doc_id).delete()
+            print(
+                f"Initialized collection '{collection_name}' with a dummy document and deleted it.")
         else:
-            # Add new hut
-            db.collection('huts').document(hut_id).set(hut)
-            print(f'Added new hut {hut_id}')
-
-    # Check for deletions
-    for hut_id in current_huts:
-        if hut_id not in [str(h['id']) for h in huts_data]:  # Convert h['id'] to string
-            db.collection('huts').document(hut_id).delete()
-            print(f'Deleted hut {hut_id}')
+            print(f"Collection '{collection_name}' exists and has documents.")
+    except Exception as e:
+        print(f"Failed to initialize collection '{collection_name}': {e}")
 
 
 if __name__ == '__main__':
