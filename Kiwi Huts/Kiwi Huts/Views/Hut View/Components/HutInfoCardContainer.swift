@@ -30,7 +30,10 @@ struct HutInfoCardContainer: View {
                 HutInfoCard(imageName: "bed.double.circle.fill", text: "\(hut.numberOfBunks ?? 0) Beds")
 
                 // Category of the hut, determined by the function
-                HutInfoCard(imageName: categoryIconName(), text: hut.hutCategory)
+                if let category = hut.hutCategory {
+                    HutInfoCard(imageName: categoryIconName(), text: category)
+                }
+
 
                 // Display each facility with appropriate icon
                 ForEach(facilities, id: \.self) { facility in

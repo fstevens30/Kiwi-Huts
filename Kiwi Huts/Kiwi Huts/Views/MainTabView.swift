@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+    @EnvironmentObject var viewModel: HutsViewModel
     @State private var selectedTab = 2
-    let hutsList: [Hut]
     
     var body: some View {
         
@@ -22,14 +21,14 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            SearchView(huts: hutsList)
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass.circle.fill")
                     Text("Search")
                 }
                 .tag(1)
             
-            HutListView(huts: hutsList)
+            HutListView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Huts")
@@ -43,7 +42,7 @@ struct MainTabView: View {
                 }
                 .tag(3)
             
-            CompletionView(hutsList: hutsList)
+            CompletionView()
                 .tabItem {
                     Image(systemName: "checkmark.circle.fill")
                     Text("Completion")
@@ -52,8 +51,4 @@ struct MainTabView: View {
         }
         
     }
-}
-
-#Preview {
-    MainTabView(hutsList: [])
 }

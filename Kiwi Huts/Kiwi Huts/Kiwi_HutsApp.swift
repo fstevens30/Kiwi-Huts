@@ -6,61 +6,108 @@
 //
 
 import SwiftUI
+import Firebase
+import Network
+
+class HutsViewModel: ObservableObject {
+    @Published var hutsList = [Hut]()
+}
 
 @main
 struct Kiwi_HutsApp: App {
-    
     @StateObject var user = User(completedHuts: [], savedHuts: [])
-    
-    let hutsList: [Hut] // Load your Hut data here
-    
-    // Location requests
-    /*
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedWhenInUse:  // Location services are available.
-            enableLocationFeatures()
-            break
-            
-        case .restricted, .denied:  // Location services currently unavailable.
-            disableLocationFeatures()
-            break
-            
-        case .notDetermined:        // Authorization not determined yet.
-           manager.requestWhenInUseAuthorization()
-            break
-            
-        default:
-            break
-        }
-    }
-     */
+    @StateObject var viewModel = HutsViewModel()
 
+    // Network monitor for checking internet connectivity
+    private let monitor = NWPathMonitor()
 
     init() {
-        // Load the Hut data from your JSON file
-        if let jsonFileURL = Bundle.main.url(forResource: "huts", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: jsonFileURL)
-                let decoder = JSONDecoder()
-                hutsList = try decoder.decode([Hut].self, from: data)
-            } catch {
-                print("Error loading and decoding JSON file: \(error)")
-                hutsList = [] // Handle the error case
-            }
-        } else {
-            print("JSON file not found.")
-            hutsList = [] // Handle the missing file case
-        }
-        
-        
+        FirebaseApp.configure()
+        loadInitialData()
+        monitorNetwork()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainTabView(hutsList: hutsList)
+            MainTabView()
+                .environmentObject(user)
+                .environmentObject(viewModel)
         }
-        .environmentObject(user)
+    }
+
+    // Initial data loading based on network availability
+    private func loadInitialData() {
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                self.fetchHutsFromFirestore()
+            } else {
+                self.loadHutsLocally()
+            }
+        }
+        let queue = DispatchQueue.global(qos: .background)
+        monitor.start(queue: queue)
+    }
+
+    // Network monitoring to handle connectivity changes
+    private func monitorNetwork() {
+        monitor.pathUpdateHandler = { [self] path in
+            if path.status == .satisfied {
+                self.fetchHutsFromFirestore()
+            } else {
+                self.loadHutsLocally()
+            }
+        }
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+
+    // Fetch huts from Firestore and save locally
+    func fetchHutsFromFirestore() {
+        let db = Firestore.firestore()
+        db.collection("huts").getDocuments { [self] (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+
+            var huts = [Hut]()
+            for document in snapshot!.documents {
+                do {
+                    let hut = try document.data(as: Hut.self)
+                    huts.append(hut)
+                } catch {
+                    print("Error decoding document: \(document.documentID), \(error)")
+                }
+            }
+
+            DispatchQueue.main.async {
+                self.viewModel.hutsList = huts
+                print("Fetched huts count: \(huts.count)")
+            }
+        }
+    }
+
+    // Load huts from UserDefaults
+    func loadHutsLocally() {
+        print("Attempting to load huts locally")
+        if let savedHuts = UserDefaults.standard.object(forKey: "localHuts") as? Data {
+            if let loadedHuts = try? JSONDecoder().decode([Hut].self, from: savedHuts) {
+                DispatchQueue.main.async {
+                    self.viewModel.hutsList = loadedHuts
+                    print("Loaded huts locally, count: \(loadedHuts.count)")
+                }
+            } else {
+                print("Failed to decode huts from UserDefaults")
+            }
+        } else {
+            print("No local data found in UserDefaults")
+        }
+    }
+
+    // Save huts to UserDefaults
+    private func saveHutsLocally(huts: [Hut]) {
+        if let encoded = try? JSONEncoder().encode(huts) {
+            UserDefaults.standard.set(encoded, forKey: "localHuts")
+        }
     }
 }
-

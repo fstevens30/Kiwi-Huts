@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SearchView: View {
     @EnvironmentObject var user: User
-    var huts: [Hut]
+    @EnvironmentObject var viewModel: HutsViewModel
     @State private var searchText = ""
     @State private var selectedRegion: String = "All"
     @State private var selectedHutType: String = "All"
@@ -48,23 +48,23 @@ struct SearchView: View {
     }
     
     var uniqueRegions: [String] {
-        let regions = huts.compactMap { $0.region }
+        let regions = viewModel.hutsList.compactMap { $0.region }
         return Array(Set(regions)).sorted()
     }
     
     var uniqueHutTypes: [String] {
-        let hutTypes = huts.compactMap { $0.hutCategory }
+        let hutTypes = viewModel.hutsList.compactMap { $0.hutCategory }
         return Array(Set(hutTypes)).sorted()
     }
     
     var searchResults: [Hut] {
-        var results = huts
+        var results = viewModel.hutsList
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if !trimmedSearchText.isEmpty {
             results = results.filter {
                 $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
-                $0.region.localizedCaseInsensitiveContains(trimmedSearchText) ||
+                (($0.region?.localizedCaseInsensitiveContains(trimmedSearchText)) != nil) ||
                 ($0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false)
             }
         }
@@ -79,17 +79,3 @@ struct SearchView: View {
 
 
 }
-
-
-
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Create a dummy user and hutsList for the preview
-        let dummyHut = Hut(id: "1", name: "Hut1", status: "OPEN", region: "Region1", y: 1, x: 1, locationString: nil, numberOfBunks: nil, facilities: nil, hutCategory: "Standard", proximityToRoadEnd: nil, bookable: false, introduction: "Introduction", introductionThumbnail: "Thumbnail", staticLink: "Link", place: nil, lon: 1.0, lat: 1.0)
-        let hutsList = [dummyHut, dummyHut, dummyHut, dummyHut, dummyHut]
-
-        SearchView(huts: hutsList)
-            .environmentObject(User(completedHuts: [dummyHut, dummyHut, dummyHut], savedHuts: [dummyHut, dummyHut, dummyHut]))
-    }
-}
-
