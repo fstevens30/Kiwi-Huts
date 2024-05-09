@@ -11,35 +11,84 @@ import Network
 
 class HutsViewModel: ObservableObject {
     @Published var hutsList = [Hut]()
+
+    // Add a method to fetch huts if needed
+    func fetchHutsIfNeeded() {
+        if hutsList.isEmpty {
+            fetchHutsFromFirestore()
+        }
+    }
+
+    // Fetch huts from Firestore and update the hutsList
+    func fetchHutsFromFirestore() {
+        let db = Firestore.firestore()
+        db.collection("huts").getDocuments { [weak self] (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+            var huts = [Hut]()
+            for document in snapshot!.documents {
+                do {
+                    let hut = try document.data(as: Hut.self)
+                    huts.append(hut)
+                } catch {
+                    print("Error decoding document: \(document.documentID), \(error)")
+                }
+            }
+            DispatchQueue.main.async {
+                self?.hutsList = huts
+                print("Fetched huts count: \(huts.count)")
+            }
+        }
+    }
 }
+
+// Monitoring Network Connectivity
+class NetworkMonitor: ObservableObject {
+    let monitor = NWPathMonitor()
+    @Published var isConnected: Bool = true
+
+    init() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                self?.isConnected = path.status == .satisfied
+            }
+        }
+        let queue = DispatchQueue.global(qos: .background)
+        monitor.start(queue: queue)
+    }
+}
+
 
 @main
 struct Kiwi_HutsApp: App {
     @StateObject var user = User(completedHuts: [], savedHuts: [])
     @StateObject var viewModel = HutsViewModel()
-
+    @StateObject var networkMonitor = NetworkMonitor()
+    
     // Network monitor for checking internet connectivity
     private let monitor = NWPathMonitor()
-
-    init() {
-        FirebaseApp.configure()
-        loadInitialData()
-        monitorNetwork()
-    }
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
                 .environmentObject(user)
                 .environmentObject(viewModel)
+                .environmentObject(networkMonitor)
+                .onAppear() {
+                    FirebaseApp.configure()
+                    loadInitialData()
+                    monitorNetwork()
+                }
         }
     }
 
     // Initial data loading based on network availability
     private func loadInitialData() {
-        monitor.pathUpdateHandler = { path in
+        monitor.pathUpdateHandler = { [self] path in
             if path.status == .satisfied {
-                self.fetchHutsFromFirestore()
+                self.viewModel.fetchHutsFromFirestore()
             } else {
                 self.loadHutsLocally()
             }
@@ -52,39 +101,13 @@ struct Kiwi_HutsApp: App {
     private func monitorNetwork() {
         monitor.pathUpdateHandler = { [self] path in
             if path.status == .satisfied {
-                self.fetchHutsFromFirestore()
+                self.viewModel.fetchHutsFromFirestore()
             } else {
                 self.loadHutsLocally()
             }
         }
         let queue = DispatchQueue(label: "NetworkMonitor")
         monitor.start(queue: queue)
-    }
-
-    // Fetch huts from Firestore and save locally
-    func fetchHutsFromFirestore() {
-        let db = Firestore.firestore()
-        db.collection("huts").getDocuments { [self] (snapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-                return
-            }
-
-            var huts = [Hut]()
-            for document in snapshot!.documents {
-                do {
-                    let hut = try document.data(as: Hut.self)
-                    huts.append(hut)
-                } catch {
-                    print("Error decoding document: \(document.documentID), \(error)")
-                }
-            }
-
-            DispatchQueue.main.async {
-                self.viewModel.hutsList = huts
-                print("Fetched huts count: \(huts.count)")
-            }
-        }
     }
 
     // Load huts from UserDefaults

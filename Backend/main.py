@@ -29,13 +29,14 @@ def main():
 def huts_db_builder(db, api_key):
     try:
         huts_data = get_huts(api_key)
-        # Debug: print count of fetched huts
         print(f"Fetched {len(huts_data)} huts from the API.")
 
         current_huts = {str(doc.id): doc.to_dict()
                         for doc in db.collection('huts').stream()}
-        # Debug: print count of huts in Firestore
         print(f"Currently have {len(current_huts)} huts in Firestore.")
+
+        # Use a set for faster lookup
+        huts_data_ids = {str(h['id']) for h in huts_data}
 
         for hut in huts_data:
             hut_id = str(hut['id'])
@@ -49,7 +50,7 @@ def huts_db_builder(db, api_key):
 
         # Check for deletions
         for hut_id in current_huts:
-            if hut_id not in [str(h['id']) for h in huts_data]:
+            if hut_id not in huts_data_ids:
                 db.collection('huts').document(hut_id).delete()
                 print(f'Deleted hut {hut_id}')
 

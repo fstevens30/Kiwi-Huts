@@ -9,46 +9,60 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var viewModel: HutsViewModel
-    @State private var selectedTab = 2
-    
+    @EnvironmentObject var networkMonitor: NetworkMonitor
+    @State private var selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // For state restoration
+
     var body: some View {
-        
         TabView(selection: $selectedTab) {
             AboutView()
                 .tabItem {
-                    Image(systemName: "info.circle")
-                    Text("About")
+                    Label("About", systemImage: "info.circle")
                 }
                 .tag(0)
             
             SearchView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass.circle.fill")
-                    Text("Search")
+                    Label("Search", systemImage: "magnifyingglass.circle.fill")
                 }
                 .tag(1)
+                .environmentObject(viewModel)
             
             HutListView()
                 .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Huts")
+                    Label("Huts", systemImage: "house.fill")
                 }
                 .tag(2)
+                .environmentObject(viewModel)
             
             SavedView()
                 .tabItem {
-                    Image(systemName: "star.circle.fill")
-                    Text("Saved")
+                    Label("Saved", systemImage: "star.circle.fill")
                 }
                 .tag(3)
+                .environmentObject(viewModel)
             
             CompletionView()
                 .tabItem {
-                    Image(systemName: "checkmark.circle.fill")
-                    Text("Completion")
+                    Label("Completion", systemImage: "checkmark.circle.fill")
                 }
                 .tag(4)
+                .environmentObject(viewModel)
         }
-        
+        .onAppear {
+            selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // Restore last selected tab
+        }
+        .onChange(of: selectedTab){
+            saveTab()
+        }
+        .alert("Limited Functionality", isPresented: .constant(!networkMonitor.isConnected)) {
+                    Button("OK", role: .cancel) { }
+                } message: {
+                    Text("You are not connected to the internet. Some functionality will be limited.")
+                }
+    }
+
+    private func saveTab() {
+        UserDefaults.standard.set(selectedTab, forKey: "lastTab")
     }
 }
+

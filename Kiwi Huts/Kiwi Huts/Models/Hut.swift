@@ -12,8 +12,6 @@ struct Hut: Identifiable, Codable {
     var name: String
     var status: String
     var region: String?
-    var y: Double
-    var x: Double
     var locationString: String?
     var numberOfBunks: Int?
     var facilities: [String]?
@@ -41,8 +39,6 @@ struct Hut: Identifiable, Codable {
             name = try container.decode(String.self, forKey: .name)
             status = try container.decode(String.self, forKey: .status)
             region = try container.decodeIfPresent(String.self, forKey: .region) ?? "Other"
-            y = try container.decode(Double.self, forKey: .y)
-            x = try container.decode(Double.self, forKey: .x)
             locationString = try container.decodeIfPresent(String.self, forKey: .locationString)
             numberOfBunks = try container.decodeIfPresent(Int.self, forKey: .numberOfBunks)
             facilities = try container.decodeIfPresent([String].self, forKey: .facilities)
