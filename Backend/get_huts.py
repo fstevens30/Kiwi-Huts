@@ -8,7 +8,7 @@ def get_huts(api_key):
     Creates the http request.
     Returns a JSON object of huts.
     """
-    url = "https://api.doc.govt.nz/v2/huts?coordinatess=wgs84"
+    url = "https://api.doc.govt.nz/v2/huts?coordinates=wgs84"
     headers = {'x-api-key': api_key}
 
     response = requests.get(url, headers=headers)

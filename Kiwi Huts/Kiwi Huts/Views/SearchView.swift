@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-
 struct SearchView: View {
     @EnvironmentObject var user: User
-    var huts: [Hut]
+    @EnvironmentObject var viewModel: HutsViewModel
     @State private var searchText = ""
     @State private var selectedRegion: String = "All"
     @State private var selectedHutType: String = "All"
@@ -23,18 +22,20 @@ struct SearchView: View {
                         Text("All Regions").tag("All")
                         ForEach(uniqueRegions, id: \.self) { region in
                             Text(region).tag(region)
-                        }                }
+                        }
+                    }
                     .pickerStyle(MenuPickerStyle())
                     
                     Picker("Hut Type", selection: $selectedHutType) {
                         Text("All Hut Types").tag("All")
                         ForEach(uniqueHutTypes, id: \.self) { hutType in
                             Text(hutType).tag(hutType)
-                        }                }
+                        }
+                    }
                     .pickerStyle(MenuPickerStyle())
                 }
                 List {
-                    ForEach(searchResults) { hut in
+                    ForEach(searchResults, id: \.id) { hut in
                         NavigationLink(destination: HutView(hut: hut)) {
                             ListedHutView(hut: hut)
                         }
@@ -44,52 +45,48 @@ struct SearchView: View {
             .navigationTitle("Search")
             .searchable(text: $searchText)
             .autocorrectionDisabled(true)
+            .onAppear {
+                print("Total huts available: \(viewModel.hutsList.count)")
+            }
         }
     }
     
     var uniqueRegions: [String] {
-        let regions = huts.compactMap { $0.region }
-        return Array(Set(regions)).sorted()
+        let regions = viewModel.hutsList.compactMap { $0.region }
+        let unique = Array(Set(regions)).sorted()
+        print("Unique Regions: \(unique)")
+        return unique
     }
     
     var uniqueHutTypes: [String] {
-        let hutTypes = huts.compactMap { $0.hutCategory }
-        return Array(Set(hutTypes)).sorted()
+        let hutTypes = viewModel.hutsList.compactMap { $0.hutCategory }
+        let unique = Array(Set(hutTypes)).sorted()
+        print("Unique Hut Types: \(unique)")
+        return unique
     }
     
     var searchResults: [Hut] {
-        var results = huts
+        var results = viewModel.hutsList
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
+        print("Initial huts list count: \(results.count)")
+
         if !trimmedSearchText.isEmpty {
             results = results.filter {
                 $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
-                $0.region.localizedCaseInsensitiveContains(trimmedSearchText) ||
-                ($0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false)
+                $0.region?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false ||
+                $0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false
             }
+            print("Filtered by text count: \(results.count)")
         }
         if selectedRegion != "All" {
             results = results.filter { $0.region == selectedRegion }
+            print("Filtered by region count: \(results.count)")
         }
         if selectedHutType != "All" {
             results = results.filter { $0.hutCategory == selectedHutType }
+            print("Filtered by hut type count: \(results.count)")
         }
         return results.sorted { $0.name < $1.name }
     }
-
-
 }
-
-
-
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Create a dummy user and hutsList for the preview
-        let dummyHut = Hut(id: "1", name: "Hut1", status: "OPEN", region: "Region1", y: 1, x: 1, locationString: nil, numberOfBunks: nil, facilities: nil, hutCategory: "Standard", proximityToRoadEnd: nil, bookable: false, introduction: "Introduction", introductionThumbnail: "Thumbnail", staticLink: "Link", place: nil, lon: 1.0, lat: 1.0)
-        let hutsList = [dummyHut, dummyHut, dummyHut, dummyHut, dummyHut]
-
-        SearchView(huts: hutsList)
-            .environmentObject(User(completedHuts: [dummyHut, dummyHut, dummyHut], savedHuts: [dummyHut, dummyHut, dummyHut]))
-    }
-}
-

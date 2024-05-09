@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CompletionView: View {
+    @EnvironmentObject var viewModel: HutsViewModel
     @EnvironmentObject var user: User
-    var hutsList: [Hut]
 
     // Group huts by region
     var hutsByRegion: [String: [Hut]] {
-        Dictionary(grouping: hutsList, by: { $0.region })
+        Dictionary(grouping: viewModel.hutsList, by: { $0.region ?? "Other" })
     }
 
     // Calculate progress for each region
@@ -40,11 +40,11 @@ struct CompletionView: View {
                 ScrollView {
                     ZStack {
                         
-                        CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(hutsList.count))
+                        CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(viewModel.hutsList.count))
                             .frame(width: 200, height: 200)
                             .padding()
                         
-                        Text("\(Int(user.completedHuts.count)) / \(Int(hutsList.count)) \nHuts")
+                        Text("\(Int(user.completedHuts.count)) / \(Int(viewModel.hutsList.count)) \nHuts")
                             .font(.title)
                             .bold()
                         
@@ -63,7 +63,7 @@ struct CompletionView: View {
                     
                     // Create a regionProgressView for each region
                     ForEach(sortedRegions, id: \.self) { region in
-                        NavigationLink(destination: RegionListView(huts: hutsList.filter { hut in hut.region == region && user.completedHuts.contains(where: { $0.id == hut.id }) }, region: region)) {
+                        NavigationLink(destination: RegionListView(huts: viewModel.hutsList.filter { hut in hut.region == region && user.completedHuts.contains(where: { $0.id == hut.id }) }, region: region)) {
                             VStack {
                                 HStack {
                                     Text(region)
@@ -83,17 +83,5 @@ struct CompletionView: View {
             }
                 .navigationTitle("Completion")
         }
-    }
-}
-
-
-struct CompletionView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Create a dummy user and hutsList for the preview
-        let dummyHut = Hut(id: "1", name: "Hut1", status: "OPEN", region: "Region1", y: 1, x: 1, locationString: nil, numberOfBunks: nil, facilities: nil, hutCategory: "Standard", proximityToRoadEnd: nil, bookable: false, introduction: "Introduction", introductionThumbnail: "Thumbnail", staticLink: "Link", place: nil, lon: 1.0, lat: 1.0)
-        let hutsList = [dummyHut, dummyHut, dummyHut, dummyHut, dummyHut]
-
-        CompletionView(hutsList: hutsList)
-            .environmentObject(User(completedHuts: [dummyHut, dummyHut, dummyHut], savedHuts: [dummyHut, dummyHut, dummyHut]))
     }
 }
