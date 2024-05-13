@@ -15,33 +15,37 @@ struct HutView: View {
 
         ScrollView {
             VStack {
-                AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
-                            if let image = phase.image {
-                                image
-                                    .resizable() // Make sure the image can be resized
-                                    .aspectRatio(contentMode: .fill) // Maintain the aspect ratio and fill the frame
-                                    .frame(maxWidth: .infinity) // Set the image frame to the maximum available width
-                                    .clipped() // Clip the overflowing parts of the image
-                            } else if phase.error != nil {
-                                Color.red // Error state
-                            } else {
-                                ProgressView() // Loading state
-                            }
+                HStack {
+                    AsyncImage(url: URL(string: hut.introductionThumbnail)) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: .infinity)
+                        } else if phase.error != nil {
+                            Image(systemName: "house.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            ProgressView()
                         }
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0)) // Apply corner radius
-                        .padding() // Apply padding around the image
-                
-                
-                VStack {
-                    Text(hut.introduction ?? "No introduction available, please visit DOC website for more information.")
-                    
-                    if hut.bookable! {
-                        Link("Book Now", destination: URL(string: hut.staticLink)!)
-                            .buttonStyle(.bordered)
-                            .padding()
                     }
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                        .padding()
+                
+                
+                    VStack {
+                        Text(hut.introduction ?? "No introduction available, please visit DOC website for more information.")
+                        
+                        if hut.bookable! {
+                            Link("Book Now", destination: URL(string: hut.staticLink)!)
+                                .buttonStyle(.bordered)
+                                .padding()
+                        }
+                    }
+                    .padding()
                 }
-                .padding()
                 
                 Spacer()
                 
@@ -60,4 +64,3 @@ struct HutView: View {
         }
     }
 }
-

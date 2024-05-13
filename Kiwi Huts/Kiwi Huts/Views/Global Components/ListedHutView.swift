@@ -18,17 +18,18 @@ struct ListedHutView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 75) // Adjust these values to your preference
-                        .clipped()
+                        .frame(width: 120, height: 75)
+                        .clipShape(RoundedRectangle(cornerRadius: 15.0))
                 }
                 else {
                     Image(systemName: "house.fill")
                         .frame(width: 100, height: 75)
-                        .clipped()
+                        .clipShape(RoundedRectangle(cornerRadius: 15.0))
                 }
             }
-            .padding()
-
+            
+            Spacer()
+            
             VStack(alignment: .leading) {
                 Text(hut.name)
                     .font(.headline)
@@ -39,7 +40,6 @@ struct ListedHutView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .bold()
             }
-            Spacer()
         }
         .swipeActions(allowsFullSwipe: false) {
             Button {

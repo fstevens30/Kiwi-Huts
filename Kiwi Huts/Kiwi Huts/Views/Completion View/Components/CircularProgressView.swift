@@ -31,6 +31,11 @@ struct CircularProgressView: View {
                     )
                 )
                 .rotationEffect(.degrees(-90))
+            
+            Text("\(Int(hutCount)) / \(Int(totalHuts)) \nHuts")
+                .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
         }
     }
 }

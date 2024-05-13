@@ -32,7 +32,7 @@ struct HutMapCard: View {
             
             NavigationLink(destination: FullScreenMapView(hut: hut)) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25.0)
+                    RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color.gray)
                         .opacity(0.8)
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
