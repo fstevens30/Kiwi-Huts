@@ -20,11 +20,13 @@ struct ListedHutView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 120, height: 75)
                         .clipShape(RoundedRectangle(cornerRadius: 15.0))
+                        .shadow(radius: 10)
                 }
                 else {
                     Image(systemName: "house.fill")
                         .frame(width: 100, height: 75)
                         .clipShape(RoundedRectangle(cornerRadius: 15.0))
+                        .shadow(radius: 10)
                 }
             }
             
