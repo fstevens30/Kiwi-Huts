@@ -13,7 +13,6 @@
 		3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1C99FE2B97D00800C49BFF /* Preview Assets.xcassets */; };
 		3A1C9A0E2B97D61700C49BFF /* Hut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0D2B97D61700C49BFF /* Hut.swift */; };
 		3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0F2B97DCE000C49BFF /* HutView.swift */; };
-		3A2518D02BFABADA0089708B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A2518CF2BFABADA0089708B /* GoogleService-Info.plist */; };
 		3A385C072B991B2E005036A5 /* HutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C062B991B2E005036A5 /* HutListView.swift */; };
 		3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C082B991C0A005036A5 /* MainTabView.swift */; };
 		3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C0C2B991CBA005036A5 /* AboutView.swift */; };
@@ -31,6 +30,7 @@
 		3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */; };
 		3AB0EF712BC75A2C0026CB0B /* Backend in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0EF702BC75A2C0026CB0B /* Backend */; };
 		3AC8AB0B2BB5461500D6FE3D /* HutInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */; };
+		3ADE154C2BFEEB970089DAA5 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3ADE154B2BFEEB970089DAA5 /* video.mp4 */; };
 		7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,6 @@
 		3A1C99FE2B97D00800C49BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A1C9A0D2B97D61700C49BFF /* Hut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hut.swift; sourceTree = "<group>"; };
 		3A1C9A0F2B97DCE000C49BFF /* HutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutView.swift; sourceTree = "<group>"; };
-		3A2518CF2BFABADA0089708B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A385C062B991B2E005036A5 /* HutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutListView.swift; sourceTree = "<group>"; };
 		3A385C082B991C0A005036A5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		3A385C0C2B991CBA005036A5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenMapView.swift; sourceTree = "<group>"; };
 		3AB0EF702BC75A2C0026CB0B /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Backend; path = ../Backend; sourceTree = "<group>"; };
 		3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCard.swift; sourceTree = "<group>"; };
+		3ADE154B2BFEEB970089DAA5 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		59218357E578332B2A4BFFAB /* Pods-Kiwi Huts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.debug.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.debug.xcconfig"; sourceTree = "<group>"; };
 		7AFBDDC6124864CD7353AF74 /* Pods-Kiwi Huts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.release.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.release.xcconfig"; sourceTree = "<group>"; };
 		F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,8 +108,8 @@
 		3A1C99F62B97D00700C49BFF /* Kiwi Huts */ = {
 			isa = PBXGroup;
 			children = (
+				3ADE154B2BFEEB970089DAA5 /* video.mp4 */,
 				3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */,
-				3A2518CF2BFABADA0089708B /* GoogleService-Info.plist */,
 				3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */,
 				3A385C0B2B991CA9005036A5 /* Models */,
 				3A385C0A2B991C91005036A5 /* Views */,
@@ -270,9 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
-				3A2518D02BFABADA0089708B /* GoogleService-Info.plist in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
 				3AB0EF712BC75A2C0026CB0B /* Backend in Resources */,
+				3ADE154C2BFEEB970089DAA5 /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

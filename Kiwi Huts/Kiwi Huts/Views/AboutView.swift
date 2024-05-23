@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct AboutView: View {
     func getAppVersion() -> String {
@@ -14,7 +15,9 @@ struct AboutView: View {
             }
             return "Unknown"
         }
-
+    
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "video",
+                                                      withExtension: "mp4")!)
     
     var body: some View {
         VStack {
@@ -33,7 +36,6 @@ struct AboutView: View {
             VStack {
                 Text("Kiwi Huts")
                     .font(.headline)
-                    .bold()
                 Text("Version \(getAppVersion())")
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -50,6 +52,15 @@ struct AboutView: View {
             .padding()
             
             Spacer()
+            
+            VStack {
+                Text ("Tutorial")
+                    .font(.headline)
+                
+                VideoPlayer(player: player)
+                                .frame(width: 320, height: 180, alignment: .center)
+                
+            }
             
             HStack {
                 Link("GitHub Link", destination: URL(string:"https://github.com/fstevens30")!)
