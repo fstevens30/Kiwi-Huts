@@ -12,27 +12,29 @@ struct SavedView: View {
 
     var body: some View {
         NavigationView {
-            
-            if user.savedHuts.isEmpty {
-                VStack {
-                    Text("No huts are saved!")
-                        .padding()
-                    Text("Use the")
-                    Text(Image(systemName: "star.circle"))
-                        .font(.title)
-                        .foregroundStyle(Color.accentColor)
-                    Text("button to save huts here.")
-                }
-            } else {
-                VStack {
-                    List(user.savedHuts) { hut in
-                        NavigationLink(destination: HutView(hut: hut)) {
-                            ListedHutView(hut: hut)
+            VStack {
+                
+                if user.savedHuts.isEmpty {
+                    VStack {
+                        Text("No huts are saved!")
+                            .padding()
+                        Text("Use the")
+                        Text(Image(systemName: "star.circle"))
+                            .font(.title)
+                            .foregroundStyle(Color.accentColor)
+                        Text("button to save huts here.")
+                    }
+                } else {
+                    VStack {
+                        List(user.savedHuts) { hut in
+                            NavigationLink(destination: HutView(hut: hut)) {
+                                ListedHutView(hut: hut)
+                            }
                         }
                     }
                 }
             }
+            .navigationTitle("Saved")
         }
-        .navigationTitle("Saved")
     }
 }

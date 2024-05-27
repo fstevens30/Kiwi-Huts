@@ -29,6 +29,7 @@ struct ListedHutView: View {
                         .shadow(radius: 10)
                 }
             }
+            .padding()
             
             Spacer()
             
