@@ -69,6 +69,10 @@ struct Kiwi_HutsApp: App {
     
     // Network monitor for checking internet connectivity
     private let monitor = NWPathMonitor()
+    
+    init() {
+            UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+        }
 
     var body: some Scene {
         WindowGroup {

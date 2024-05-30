@@ -60,6 +60,7 @@ struct HutView: View {
             }
         }
         .navigationTitle(hut.name)
+        .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
             ToolbarButtons(hut: hut)
         }

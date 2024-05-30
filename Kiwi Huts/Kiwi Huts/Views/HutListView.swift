@@ -17,7 +17,7 @@ struct HutListView: View {
                     ListedHutView(hut: hut)
                 }
             }
-            .shadow(radius: 20)
+            .shadow(radius: 5)
             .navigationTitle("Huts")
             .onAppear {
                 print("Huts available: \(viewModel.hutsList.count)")
