@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RegionListView: View {
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    
     var huts: [Hut]
     var region: String
     
@@ -25,7 +28,7 @@ struct RegionListView: View {
                 VStack {
                     List(huts) { hut in
                         NavigationLink(destination: HutView(hut: hut)) {
-                            ListedHutView(hut: hut)
+                            ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
                         }
                     }
                 }

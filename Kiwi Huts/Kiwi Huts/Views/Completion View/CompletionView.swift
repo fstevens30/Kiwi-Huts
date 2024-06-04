@@ -38,9 +38,11 @@ struct CompletionView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(viewModel.hutsList.count))
-                    .frame(width: 200, height: 200)
-                    .padding()
+                NavigationLink(destination: RegionListView(huts: user.completedHuts, region: "All Huts")) {
+                    CircularProgressView(hutCount: Double(user.completedHuts.count), totalHuts: Double(viewModel.hutsList.count))
+                        .frame(width: 200, height: 200)
+                        .padding()
+                }
                 
                 Spacer()
                 

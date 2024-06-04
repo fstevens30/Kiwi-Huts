@@ -9,19 +9,36 @@ import SwiftUI
 
 struct HutListView: View {
     @EnvironmentObject var viewModel: HutsViewModel
+    @State private var showToast = false
+    @State private var toastMessage = ""
 
     var body: some View {
-        NavigationView {
-            List(viewModel.hutsList.shuffled(), id: \.id) { hut in
-                NavigationLink(destination: HutView(hut: hut)) {
-                    ListedHutView(hut: hut)
+        ZStack {
+            NavigationView {
+                List(viewModel.hutsList, id: \.id) { hut in
+                    NavigationLink(destination: HutView(hut: hut)) {
+                        ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
+                    }
+                }
+                .shadow(radius: 5)
+                .navigationTitle("Huts")
+                .onAppear {
+                    print("Huts available: \(viewModel.hutsList.count)")
                 }
             }
-            .shadow(radius: 5)
-            .navigationTitle("Huts")
-            .onAppear {
-                print("Huts available: \(viewModel.hutsList.count)")
-                viewModel.fetchHutsIfNeeded()
+            
+            VStack {
+                Spacer()
+                if showToast {
+                    Toast(message: toastMessage)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    showToast = false
+                                }
+                            }
+                        }
+                }
             }
         }
     }

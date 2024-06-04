@@ -19,6 +19,7 @@ struct MainTabView: View {
                     Label("About", systemImage: "info.circle")
                 }
                 .tag(0)
+                .environmentObject(viewModel)
             
             SearchView()
                 .tabItem {

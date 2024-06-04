@@ -1,22 +1,20 @@
 //
 //  Kiwi_HutsApp.swift
 //  Kiwi Huts
-///Users/flynnstevens/Developer/Kiwi-Huts/Kiwi Huts/Kiwi Huts/Kiwi_HutsApp.swift
 //  Created by Flynn Stevens on 6/03/24.
 //
 
 import SwiftUI
 import Firebase
 import Network
+import Combine
 
 class HutsViewModel: ObservableObject {
     @Published var hutsList = [Hut]()
+    @Published var lastUpdated: Date?
 
-    // Add a method to fetch huts if needed
-    func fetchHutsIfNeeded() {
-        if hutsList.isEmpty {
-            fetchHutsFromFirestore()
-        }
+    init() {
+        self.lastUpdated = UserDefaults.standard.object(forKey: "lastUpdated") as? Date
     }
 
     // Fetch huts from Firestore and update the hutsList
@@ -27,22 +25,58 @@ class HutsViewModel: ObservableObject {
                 print("Error getting documents: \(error)")
                 return
             }
-            var huts = [Hut]()
-            for document in snapshot!.documents {
-                do {
-                    let hut = try document.data(as: Hut.self)
-                    huts.append(hut)
-                } catch {
-                    print("Error decoding document: \(document.documentID), \(error)")
-                }
+            guard let documents = snapshot?.documents else {
+                print("No documents found in Firestore.")
+                return
             }
+            
+            // Map the documents to Hut objects
+            let huts: [Hut] = documents.compactMap { document in
+                return try? document.data(as: Hut.self)
+            }
+            
+            // Update hutsList on the main thread
             DispatchQueue.main.async {
-                self?.hutsList = huts
+                self?.hutsList = huts.shuffled()
+                self?.saveHutsLocally(huts: huts)
+                self?.updateLastUpdated()
                 print("Fetched huts count: \(huts.count)")
             }
         }
     }
+
+    // Save huts to UserDefaults
+    private func saveHutsLocally(huts: [Hut]) {
+        if let encoded = try? JSONEncoder().encode(huts) {
+            UserDefaults.standard.set(encoded, forKey: "localHuts")
+        }
+    }
+
+    // Update last updated timestamp
+    private func updateLastUpdated() {
+        let now = Date()
+        self.lastUpdated = now
+        UserDefaults.standard.set(now, forKey: "lastUpdated")
+    }
+
+    // Load huts from UserDefaults
+    func loadHutsLocally() {
+        print("Attempting to load huts locally")
+        if let savedHuts = UserDefaults.standard.object(forKey: "localHuts") as? Data {
+            if let loadedHuts = try? JSONDecoder().decode([Hut].self, from: savedHuts) {
+                DispatchQueue.main.async {
+                    self.hutsList = loadedHuts.shuffled()
+                    print("Loaded huts locally, count: \(loadedHuts.count)")
+                }
+            } else {
+                print("Failed to decode huts from UserDefaults")
+            }
+        } else {
+            print("No local data found in UserDefaults")
+        }
+    }
 }
+
 
 // Monitoring Network Connectivity
 class NetworkMonitor: ObservableObject {
@@ -60,19 +94,23 @@ class NetworkMonitor: ObservableObject {
     }
 }
 
-
 @main
 struct Kiwi_HutsApp: App {
     @StateObject var user = User(completedHuts: [], savedHuts: [])
     @StateObject var viewModel = HutsViewModel()
     @StateObject var networkMonitor = NetworkMonitor()
-    
-    // Network monitor for checking internet connectivity
-    private let monitor = NWPathMonitor()
-    
+
     init() {
-            UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
-        }
+        // Configure Firebase
+        FirebaseApp.configure()
+        
+        // Configure Firestore offline persistence using cacheSettings
+        let settings = FirestoreSettings()
+        settings.cacheSettings = PersistentCacheSettings()
+        Firestore.firestore().settings = settings
+
+        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -80,61 +118,28 @@ struct Kiwi_HutsApp: App {
                 .environmentObject(user)
                 .environmentObject(viewModel)
                 .environmentObject(networkMonitor)
-                .onAppear() {
-                    FirebaseApp.configure()
-                    loadInitialData()
-                    monitorNetwork()
+                .onAppear {
+                    handleInitialDataLoad()
                 }
         }
     }
 
-    // Initial data loading based on network availability
-    private func loadInitialData() {
-        monitor.pathUpdateHandler = { [self] path in
-            if path.status == .satisfied {
-                self.viewModel.fetchHutsFromFirestore()
-            } else {
-                self.loadHutsLocally()
-            }
-        }
-        let queue = DispatchQueue.global(qos: .background)
-        monitor.start(queue: queue)
-    }
-
-    // Network monitoring to handle connectivity changes
-    private func monitorNetwork() {
-        monitor.pathUpdateHandler = { [self] path in
-            if path.status == .satisfied {
-                self.viewModel.fetchHutsFromFirestore()
-            } else {
-                self.loadHutsLocally()
-            }
-        }
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
-    }
-
-    // Load huts from UserDefaults
-    func loadHutsLocally() {
-        print("Attempting to load huts locally")
-        if let savedHuts = UserDefaults.standard.object(forKey: "localHuts") as? Data {
-            if let loadedHuts = try? JSONDecoder().decode([Hut].self, from: savedHuts) {
-                DispatchQueue.main.async {
-                    self.viewModel.hutsList = loadedHuts
-                    print("Loaded huts locally, count: \(loadedHuts.count)")
-                }
-            } else {
-                print("Failed to decode huts from UserDefaults")
-            }
+    private func handleInitialDataLoad() {
+        if networkMonitor.isConnected {
+            viewModel.fetchHutsFromFirestore()
         } else {
-            print("No local data found in UserDefaults")
+            viewModel.loadHutsLocally()
         }
+
+        networkMonitor.$isConnected.sink { isConnected in
+            if isConnected {
+                viewModel.fetchHutsFromFirestore()
+            } else {
+                viewModel.loadHutsLocally()
+            }
+        }.store(in: &cancellables)
     }
 
-    // Save huts to UserDefaults
-    private func saveHutsLocally(huts: [Hut]) {
-        if let encoded = try? JSONEncoder().encode(huts) {
-            UserDefaults.standard.set(encoded, forKey: "localHuts")
-        }
-    }
+    @State private var cancellables = Set<AnyCancellable>()
 }
+

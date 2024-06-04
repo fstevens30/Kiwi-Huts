@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SavedView: View {
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    
     @EnvironmentObject var user: User
 
     var body: some View {
@@ -28,7 +31,7 @@ struct SavedView: View {
                     VStack {
                         List(user.savedHuts) { hut in
                             NavigationLink(destination: HutView(hut: hut)) {
-                                ListedHutView(hut: hut)
+                                ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
                             }
                         }
                     }

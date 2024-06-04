@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct SearchView: View {
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    
     @EnvironmentObject var user: User
     @EnvironmentObject var viewModel: HutsViewModel
+    
     @State private var searchText = ""
     @State private var selectedRegion: String = "All"
     @State private var selectedHutType: String = "All"
@@ -37,7 +41,7 @@ struct SearchView: View {
                 List {
                     ForEach(searchResults, id: \.id) { hut in
                         NavigationLink(destination: HutView(hut: hut)) {
-                            ListedHutView(hut: hut)
+                            ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
                         }
                     }
                 }

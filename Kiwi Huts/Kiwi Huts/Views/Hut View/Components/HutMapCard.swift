@@ -21,6 +21,7 @@ struct HutMapCard: View {
                         RoundedRectangle(cornerRadius: 5.0)
                             .fill(Color.orange)
                         Image(systemName: "house.fill")
+                            .foregroundStyle(Color(UIColor.systemBackground))
                             .padding(5)
                     }
                 }
@@ -33,10 +34,10 @@ struct HutMapCard: View {
             NavigationLink(destination: FullScreenMapView(hut: hut)) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15.0)
-                        .fill(Color.gray)
+                        .fill(Color(UIColor.systemBackground))
                         .opacity(0.8)
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color.gray)
                         .padding(5)
                 }
                 .frame(width: 50, height: 50)
