@@ -25,6 +25,7 @@
 		3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
 		3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648782C0E95E400FA0F23 /* Toast.swift */; };
+		3A66487B2C0EC4E000FA0F23 /* HutAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66487A2C0EC4E000FA0F23 /* HutAnnotationView.swift */; };
 		3AA2B6902BE307D000E01731 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2B68F2BE307D000E01731 /* MapView.swift */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
 		3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */; };
@@ -57,6 +58,7 @@
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3A6648782C0E95E400FA0F23 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		3A66487A2C0EC4E000FA0F23 /* HutAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutAnnotationView.swift; sourceTree = "<group>"; };
 		3AA2B68F2BE307D000E01731 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */,
 				3AAEB8442BDEF74A00745191 /* HutMapCard.swift */,
 				3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */,
+				3A66487A2C0EC4E000FA0F23 /* HutAnnotationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				3A4B4BEE2BDB43B80071B03C /* HutInfoCardContainer.swift in Sources */,
 				3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */,
 				3A385C142B991D1C005036A5 /* SavedView.swift in Sources */,
+				3A66487B2C0EC4E000FA0F23 /* HutAnnotationView.swift in Sources */,
 				3A1C9A0E2B97D61700C49BFF /* Hut.swift in Sources */,
 				3AA2B6902BE307D000E01731 /* MapView.swift in Sources */,
 				3A4C4B882BA7C2300064375A /* User.swift in Sources */,

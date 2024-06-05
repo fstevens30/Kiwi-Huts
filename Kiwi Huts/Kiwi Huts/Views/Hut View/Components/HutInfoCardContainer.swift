@@ -19,21 +19,23 @@ struct HutInfoCardContainer: View {
                     .padding(.vertical)
 
                 // Status of the hut
+                let isOpen = hut.status.lowercased() == "open"
                 HutInfoCard(
-                    imageName: hut.status.lowercased() == "open" ? "lock.open.fill" : "lock.fill",
-                    text: hut.status,
-                    iconColor: hut.status.lowercased() != "open" ? .black : .accentColor,
-                    bgColor: hut.status.lowercased() != "open" ? .red : .gray
-                    )
+                    imageName: isOpen ? "lock.open.fill" : "lock.fill",
+                    text: isOpen ? "Open" : "Closed",
+                    iconColor: isOpen ? .accentColor : .primary,
+                    bgColor: isOpen ? .gray : .red
+                )
 
                 // Number of beds available
-                HutInfoCard(imageName: "bed.double.circle.fill", text: "\(hut.numberOfBunks ?? 0) Beds")
-
-                // Category of the hut, determined by the function
-                if let category = hut.hutCategory {
-                    HutInfoCard(imageName: categoryIconName(), text: category)
+                if let numberOfBunks = hut.numberOfBunks {
+                    HutInfoCard(imageName: "bed.double.circle.fill", text: "\(numberOfBunks) Beds")
                 }
 
+                // Category of the hut
+                if let category = hut.hutCategory {
+                    HutInfoCard(imageName: categoryIconName(for: category), text: category)
+                }
 
                 // Display each facility with appropriate icon
                 ForEach(facilities, id: \.self) { facility in
@@ -47,8 +49,8 @@ struct HutInfoCardContainer: View {
     }
 
     // Function to determine the icon based on hut category
-    private func categoryIconName() -> String {
-        switch hut.hutCategory {
+    private func categoryIconName(for category: String) -> String {
+        switch category {
         case "Great Walk":
             return "house.lodge.fill"
         case "Standard":
@@ -58,7 +60,7 @@ struct HutInfoCardContainer: View {
         case "Serviced Alpine":
             return "mountain.2.fill"
         default:
-            return "house"
+            return "questionmark.diamond.fill"
         }
     }
 

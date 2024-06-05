@@ -16,6 +16,9 @@ struct HutInfoCard: View {
     var body: some View {
         HStack {
             Image(systemName: imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 24)
                 .foregroundColor(iconColor)
             Divider()
             Text(text)
@@ -23,10 +26,9 @@ struct HutInfoCard: View {
                 .bold()
             Spacer()
         }
-        .padding()
+        .padding(10)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(bgColor.opacity(0.1)))
-            //.fill(Color.bg.opacity(0.1)))
         .padding([.leading, .trailing])
     }
 }

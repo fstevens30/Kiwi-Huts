@@ -11,6 +11,7 @@ import MapKit
 struct HutMapCard: View {
     let hut: Hut
     
+    
     var body: some View {
         let hutCoord = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
         
@@ -31,7 +32,7 @@ struct HutMapCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
             .padding(10)
             
-            NavigationLink(destination: FullScreenMapView(hut: hut)) {
+            NavigationLink(destination: FullScreenMapView(selectedHut: hut)) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color(UIColor.systemBackground))
