@@ -53,7 +53,7 @@ struct HutInfoCardContainer: View {
         switch category {
         case "Great Walk":
             return "house.lodge.fill"
-        case "Standard":
+        case "Standard", "Serviced":
             return "house.fill"
         case "Basic/bivvies":
             return "tent.fill"

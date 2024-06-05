@@ -15,7 +15,7 @@ struct Toast: View {
             .font(.subheadline)
             .padding()
             .background(Color(.systemBackground))
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(Color(.systemGray))
             .cornerRadius(10)
             .shadow(radius: 5)
             .padding(.bottom, 20)

@@ -8,22 +8,50 @@
 import SwiftUI
 
 struct HutListView: View {
-    @EnvironmentObject var viewModel: HutsViewModel
     @State private var showToast = false
     @State private var toastMessage = ""
-
+    
+    @EnvironmentObject var user: User
+    @EnvironmentObject var viewModel: HutsViewModel
+    
+    @State private var searchText = ""
+    @State private var selectedRegion: String = "All"
+    @State private var selectedHutType: String = "All"
+    
     var body: some View {
         ZStack {
             NavigationView {
-                List(viewModel.hutsList, id: \.id) { hut in
-                    NavigationLink(destination: HutView(hut: hut)) {
-                        ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
+                VStack {
+                    HStack {
+                        Picker("Region", selection: $selectedRegion) {
+                            Text("All Regions").tag("All")
+                            ForEach(uniqueRegions, id: \.self) { region in
+                                Text(region).tag(region)
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        
+                        Picker("Hut Type", selection: $selectedHutType) {
+                            Text("All Hut Types").tag("All")
+                            ForEach(uniqueHutTypes, id: \.self) { hutType in
+                                Text(hutType).tag(hutType)
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                    }
+                    List {
+                        ForEach(searchResults, id: \.id) { hut in
+                            NavigationLink(destination: HutView(hut: hut)) {
+                                ListedHutView(hut: hut, showToast: $showToast, toastMessage: $toastMessage)
+                            }
+                        }
                     }
                 }
-                .shadow(radius: 5)
                 .navigationTitle("Huts")
+                .searchable(text: $searchText)
+                .autocorrectionDisabled(true)
                 .onAppear {
-                    print("Huts available: \(viewModel.hutsList.count)")
+                    print("Total huts available: \(viewModel.hutsList.count)")
                 }
             }
             
@@ -41,5 +69,34 @@ struct HutListView: View {
                 }
             }
         }
+    }
+    
+    var uniqueRegions: [String] {
+        let regions = viewModel.hutsList.compactMap { $0.region }
+        let unique = Array(Set(regions)).sorted()
+        print("Unique Regions: \(unique)")
+        return unique
+    }
+    
+    var uniqueHutTypes: [String] {
+        let hutTypes = viewModel.hutsList.compactMap { $0.hutCategory }
+        let unique = Array(Set(hutTypes)).sorted()
+        print("Unique Hut Types: \(unique)")
+        return unique
+    }
+    
+    var searchResults: [Hut] {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return viewModel.hutsList
+            .filter {
+                (trimmedSearchText.isEmpty ||
+                 $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
+                 $0.region?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false ||
+                 $0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false)
+            }
+            .filter { selectedRegion == "All" || $0.region == selectedRegion }
+            .filter { selectedHutType == "All" || $0.hutCategory == selectedHutType }
+            .sorted { $0.name < $1.name }
     }
 }

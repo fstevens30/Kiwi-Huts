@@ -21,9 +21,9 @@ struct MainTabView: View {
                 .tag(0)
                 .environmentObject(viewModel)
             
-            SearchView()
+            FullScreenMapView(selectedHut: nil)
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass.circle.fill")
+                    Label("Map", systemImage: "map.circle.fill")
                 }
                 .tag(1)
                 .environmentObject(viewModel)
@@ -52,18 +52,17 @@ struct MainTabView: View {
         .onAppear {
             selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // Restore last selected tab
         }
-        .onChange(of: selectedTab){
+        .onChange(of: selectedTab) {
             saveTab()
         }
         .alert("Limited Functionality", isPresented: .constant(!networkMonitor.isConnected)) {
-                    Button("OK", role: .cancel) { }
-                } message: {
-                    Text("You are not connected to the internet. Some functionality will be limited.")
-                }
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You are not connected to the internet. Some functionality will be limited.")
+        }
     }
 
     private func saveTab() {
         UserDefaults.standard.set(selectedTab, forKey: "lastTab")
     }
 }
-
