@@ -56,6 +56,7 @@
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3A6648782C0E95E400FA0F23 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		3A6648802C112AF100FA0F23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3A6648822C1132E500FA0F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8442BDEF74A00745191 /* HutMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutMapCard.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		3A1C99EB2B97D00700C49BFF = {
 			isa = PBXGroup;
 			children = (
+				3A6648822C1132E500FA0F23 /* GoogleService-Info.plist */,
 				3AB0EF702BC75A2C0026CB0B /* Backend */,
 				3A1C99F62B97D00700C49BFF /* Kiwi Huts */,
 				3A1C99F52B97D00700C49BFF /* Products */,
