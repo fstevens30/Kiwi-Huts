@@ -11,25 +11,34 @@ import MapKit
 struct FullScreenMapView: View {
     @EnvironmentObject var viewModel: HutsViewModel
     @StateObject private var locationManager = LocationManager()
-    var selectedHut: Hut?
+    @State private var selectedHut: Hut?
     @State private var selectedHutForNavigation: Hut?
     @State private var isNavigationActive = false
+    
+    init(selectedHut: Hut? = nil) {
+        _selectedHut = State(initialValue: selectedHut)
+    }
 
     var body: some View {
         let initialRegion = getInitialRegion()
-        NavigationView {
-            VStack {
-                MapViewRepresentable(huts: $viewModel.hutsList, initialRegion: initialRegion, selectedHut: selectedHut, selectedHutForNavigation: $selectedHutForNavigation, isNavigationActive: $isNavigationActive)
-                    .navigationBarTitle("", displayMode: .inline)
-                    .navigationBarHidden(true)
-                
-                if let hut = selectedHutForNavigation ?? selectedHut {
-                    NavigationLink(destination: HutView(hut: hut), isActive: $isNavigationActive) {
-                        EmptyView()
-                    }
+
+        VStack {
+            MapViewRepresentable(
+                huts: $viewModel.hutsList,
+                initialRegion: initialRegion,
+                selectedHut: $selectedHut, // Pass binding
+                selectedHutForNavigation: $selectedHutForNavigation,
+                isNavigationActive: $isNavigationActive
+            )
+            .navigationBarTitle("", displayMode: .inline)
+            
+            if let hut = selectedHutForNavigation {
+                NavigationLink(destination: HutView(hut: hut), isActive: $isNavigationActive) {
+                    EmptyView()
                 }
             }
         }
+        .edgesIgnoringSafeArea(.top)
     }
 
     private func getInitialRegion() -> MKCoordinateRegion {
@@ -48,7 +57,7 @@ struct FullScreenMapView: View {
 struct MapViewRepresentable: UIViewRepresentable {
     @Binding var huts: [Hut]
     let initialRegion: MKCoordinateRegion
-    var selectedHut: Hut?
+    @Binding var selectedHut: Hut? // Changed to Binding
     @Binding var selectedHutForNavigation: Hut?
     @Binding var isNavigationActive: Bool
 
@@ -63,15 +72,20 @@ struct MapViewRepresentable: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.removeAnnotations(uiView.annotations)
-        let annotations = huts.map { hut -> MKPointAnnotation in
+        let existingAnnotations = Set(uiView.annotations.compactMap { $0 as? MKPointAnnotation })
+        let newAnnotations = Set(huts.map { hut -> MKPointAnnotation in
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
             annotation.title = hut.name
             annotation.subtitle = hut.hutCategory  // Store the category in the subtitle for easy access
             return annotation
-        }
-        uiView.addAnnotations(annotations)
+        })
+        
+        let annotationsToRemove = existingAnnotations.subtracting(newAnnotations)
+        let annotationsToAdd = newAnnotations.subtracting(existingAnnotations)
+        
+        uiView.removeAnnotations(Array(annotationsToRemove))
+        uiView.addAnnotations(Array(annotationsToAdd))
     }
 
     func makeCoordinator() -> Coordinator {
@@ -90,8 +104,11 @@ struct MapViewRepresentable: UIViewRepresentable {
                   let subtitle = annotation.subtitle else {
                 return nil
             }
+
+            let isSelected = (annotation.title == parent.selectedHut?.name)
+            let markerColor: UIColor = (parent.selectedHut == nil || isSelected) ? UIColor(Color.accentColor) : UIColor(Color.primary)
             
-            annotationView.markerTintColor = (annotation.title == parent.selectedHut?.name) ? UIColor(Color.accentColor) : UIColor(Color.primary)
+            annotationView.markerTintColor = markerColor
             annotationView.glyphImage = UIImage(systemName: categoryIconName(for: subtitle ?? ""))
             return annotationView
         }
@@ -102,6 +119,7 @@ struct MapViewRepresentable: UIViewRepresentable {
                   let selectedHut = hutMatching(title: title) else {
                 return
             }
+            parent.selectedHut = selectedHut // Update selectedHut
             parent.selectedHutForNavigation = selectedHut
             parent.isNavigationActive = true
         }

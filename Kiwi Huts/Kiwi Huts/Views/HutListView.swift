@@ -39,6 +39,8 @@ struct HutListView: View {
                         }
                         .pickerStyle(MenuPickerStyle())
                     }
+                    .padding()
+
                     List {
                         ForEach(searchResults, id: \.id) { hut in
                             NavigationLink(destination: HutView(hut: hut)) {
@@ -59,6 +61,7 @@ struct HutListView: View {
                 Spacer()
                 if showToast {
                     Toast(message: toastMessage)
+                        .transition(.slide)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 withAnimation {
@@ -88,7 +91,7 @@ struct HutListView: View {
     var searchResults: [Hut] {
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        return viewModel.hutsList
+        var results = viewModel.hutsList
             .filter {
                 (trimmedSearchText.isEmpty ||
                  $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
@@ -97,6 +100,13 @@ struct HutListView: View {
             }
             .filter { selectedRegion == "All" || $0.region == selectedRegion }
             .filter { selectedHutType == "All" || $0.hutCategory == selectedHutType }
-            .sorted { $0.name < $1.name }
+
+        if trimmedSearchText.isEmpty {
+            results.shuffle()
+        } else {
+            results.sort { $0.name < $1.name }
+        }
+
+        return results
     }
 }
