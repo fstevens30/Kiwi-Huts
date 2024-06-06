@@ -25,6 +25,8 @@
 		3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648782C0E95E400FA0F23 /* Toast.swift */; };
 		3A6648812C112AF100FA0F23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648802C112AF100FA0F23 /* LocationManager.swift */; };
 		3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A6648882C11475300FA0F23 /* GoogleService-Info.plist */; };
+		3A66488D2C1148A100FA0F23 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */; };
+		3A6648932C1148A100FA0F23 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
 		3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */; };
 		3AAEB8452BDEF74A00745191 /* HutMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8442BDEF74A00745191 /* HutMapCard.swift */; };
@@ -58,6 +60,13 @@
 		3A6648802C112AF100FA0F23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3A6648852C11358600FA0F23 /* Kiwi-Huts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kiwi-Huts-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3A6648882C11475300FA0F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A66488E2C1148A100FA0F23 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6648902C1148A100FA0F23 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8442BDEF74A00745191 /* HutMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutMapCard.swift; sourceTree = "<group>"; };
@@ -75,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A66488D2C1148A100FA0F23 /* FirebaseCore.framework in Frameworks */,
+				3A6648932C1148A100FA0F23 /* FirebaseFirestore.framework in Frameworks */,
 				7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +222,13 @@
 		EC17C5E29262BCF0D3DFA69A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */,
+				3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */,
+				3A66488E2C1148A100FA0F23 /* FirebaseCoreExtension.framework */,
+				3A6648902C1148A100FA0F23 /* FirebaseCoreInternal.framework */,
+				3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */,
+				3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */,
+				3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */,
 				F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */,
 			);
 			name = Frameworks;
