@@ -66,6 +66,11 @@ struct MapViewRepresentable: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.setRegion(initialRegion, animated: true)
         mapView.mapType = .hybrid
+        mapView.isPitchEnabled = true
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
         return mapView

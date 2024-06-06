@@ -25,13 +25,10 @@
 		3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648782C0E95E400FA0F23 /* Toast.swift */; };
 		3A6648812C112AF100FA0F23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648802C112AF100FA0F23 /* LocationManager.swift */; };
 		3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A6648882C11475300FA0F23 /* GoogleService-Info.plist */; };
-		3A66488D2C1148A100FA0F23 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */; };
-		3A6648932C1148A100FA0F23 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
 		3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */; };
 		3AAEB8452BDEF74A00745191 /* HutMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8442BDEF74A00745191 /* HutMapCard.swift */; };
 		3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */; };
-		3AB0EF712BC75A2C0026CB0B /* Backend in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0EF702BC75A2C0026CB0B /* Backend */; };
 		3AC8AB0B2BB5461500D6FE3D /* HutInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */; };
 		3ADE154C2BFEEB970089DAA5 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3ADE154B2BFEEB970089DAA5 /* video.mp4 */; };
 		7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */; };
@@ -51,7 +48,6 @@
 		3A385C0E2B991CDF005036A5 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		3A385C132B991D1C005036A5 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		3A3C2FFF2BC7758C00E51CC1 /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
-		3A3E96582BFF2FDB00033DA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCardContainer.swift; sourceTree = "<group>"; };
 		3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarButtons.swift; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
@@ -84,8 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A66488D2C1148A100FA0F23 /* FirebaseCore.framework in Frameworks */,
-				3A6648932C1148A100FA0F23 /* FirebaseFirestore.framework in Frameworks */,
 				7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				3A6648852C11358600FA0F23 /* Kiwi-Huts-Info.plist */,
-				3A3E96582BFF2FDB00033DA3 /* GoogleService-Info.plist */,
 				3ADE154B2BFEEB970089DAA5 /* video.mp4 */,
 				3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */,
 				3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */,
@@ -153,6 +146,7 @@
 				3AAEB83C2BDEEB7900745191 /* Hut View */,
 				3A078A072BA7F6F1009B317D /* Global Components */,
 				3A385C082B991C0A005036A5 /* MainTabView.swift */,
+				3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */,
 				3A385C062B991B2E005036A5 /* HutListView.swift */,
 				3A385C0C2B991CBA005036A5 /* AboutView.swift */,
 				3A385C132B991D1C005036A5 /* SavedView.swift */,
@@ -186,7 +180,6 @@
 				3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */,
 				3A4B4BED2BDB43B80071B03C /* HutInfoCardContainer.swift */,
 				3AAEB8442BDEF74A00745191 /* HutMapCard.swift */,
-				3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -296,7 +289,6 @@
 			files = (
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
-				3AB0EF712BC75A2C0026CB0B /* Backend in Resources */,
 				3ADE154C2BFEEB970089DAA5 /* video.mp4 in Resources */,
 				3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */,
 			);
