@@ -52,14 +52,11 @@ struct HutListView: View {
                 .navigationTitle("Huts")
                 .searchable(text: $searchText)
                 .autocorrectionDisabled(true)
-                .onAppear {
-                    print("Total huts available: \(viewModel.hutsList.count)")
-                }
             }
             
-            VStack {
-                Spacer()
-                if showToast {
+            if showToast {
+                VStack {
+                    Spacer()
                     Toast(message: toastMessage)
                         .transition(.slide)
                         .onAppear {
@@ -75,23 +72,17 @@ struct HutListView: View {
     }
     
     var uniqueRegions: [String] {
-        let regions = viewModel.hutsList.compactMap { $0.region }
-        let unique = Array(Set(regions)).sorted()
-        print("Unique Regions: \(unique)")
-        return unique
+        Array(Set(viewModel.hutsList.compactMap { $0.region })).sorted()
     }
     
     var uniqueHutTypes: [String] {
-        let hutTypes = viewModel.hutsList.compactMap { $0.hutCategory }
-        let unique = Array(Set(hutTypes)).sorted()
-        print("Unique Hut Types: \(unique)")
-        return unique
+        Array(Set(viewModel.hutsList.compactMap { $0.hutCategory })).sorted()
     }
     
     var searchResults: [Hut] {
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        var results = viewModel.hutsList
+        return viewModel.hutsList
             .filter {
                 (trimmedSearchText.isEmpty ||
                  $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
@@ -100,13 +91,6 @@ struct HutListView: View {
             }
             .filter { selectedRegion == "All" || $0.region == selectedRegion }
             .filter { selectedHutType == "All" || $0.hutCategory == selectedHutType }
-
-        if trimmedSearchText.isEmpty {
-            results.shuffle()
-        } else {
-            results.sort { $0.name < $1.name }
-        }
-
-        return results
+            .sorted { $0.name < $1.name }
     }
 }

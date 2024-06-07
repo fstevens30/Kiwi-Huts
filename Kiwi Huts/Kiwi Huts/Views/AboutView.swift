@@ -25,7 +25,7 @@ struct AboutView: View {
         return formatter.string(from: date)
     }
     
-    @State var player = AVPlayer(url: Bundle.main.url(forResource: "video",
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "tutorial",
                                                       withExtension: "mp4")!)
     
     var body: some View {
@@ -76,7 +76,8 @@ struct AboutView: View {
                     .font(.headline)
                 
                 VideoPlayer(player: player)
-                    .frame(width: 320, height: 180, alignment: .center)
+                    .aspectRatio(CGSize(width: 9, height: 19.6), contentMode: .fill)
+                    .ignoresSafeArea()
             }
             .padding()
             

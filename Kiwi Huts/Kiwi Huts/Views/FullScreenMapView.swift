@@ -14,21 +14,20 @@ struct FullScreenMapView: View {
     @State private var selectedHut: Hut?
     @State private var selectedHutForNavigation: Hut?
     @State private var isNavigationActive = false
-    
+    @State private var initialRegionSet = false
+
     init(selectedHut: Hut? = nil) {
         _selectedHut = State(initialValue: selectedHut)
     }
 
     var body: some View {
-        let initialRegion = getInitialRegion()
-
         VStack {
             MapViewRepresentable(
                 huts: $viewModel.hutsList,
-                initialRegion: initialRegion,
                 selectedHut: $selectedHut, // Pass binding
                 selectedHutForNavigation: $selectedHutForNavigation,
-                isNavigationActive: $isNavigationActive
+                isNavigationActive: $isNavigationActive,
+                initialRegionSet: $initialRegionSet
             )
             .navigationBarTitle("", displayMode: .inline)
             
@@ -40,43 +39,46 @@ struct FullScreenMapView: View {
         }
         .edgesIgnoringSafeArea(.top)
     }
-
-    private func getInitialRegion() -> MKCoordinateRegion {
-        if let selectedHut = selectedHut {
-            let selectedHutCoord = CLLocationCoordinate2D(latitude: selectedHut.lat, longitude: selectedHut.lon)
-            return MKCoordinateRegion(center: selectedHutCoord, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
-        } else if let userLocation = locationManager.userLocation {
-            return MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
-        } else {
-            let defaultCoord = CLLocationCoordinate2D(latitude: -40.9006, longitude: 174.886) // Coordinates of New Zealand
-            return MKCoordinateRegion(center: defaultCoord, span: MKCoordinateSpan(latitudeDelta: 5.0, longitudeDelta: 5.0))
-        }
-    }
 }
 
 struct MapViewRepresentable: UIViewRepresentable {
     @Binding var huts: [Hut]
-    let initialRegion: MKCoordinateRegion
-    @Binding var selectedHut: Hut? // Changed to Binding
+    @Binding var selectedHut: Hut?
     @Binding var selectedHutForNavigation: Hut?
     @Binding var isNavigationActive: Bool
+    @Binding var initialRegionSet: Bool
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        mapView.setRegion(initialRegion, animated: true)
+        if let selectedHut = selectedHut {
+            let selectedHutCoord = CLLocationCoordinate2D(latitude: selectedHut.lat, longitude: selectedHut.lon)
+            mapView.setRegion(MKCoordinateRegion(center: selectedHutCoord, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)), animated: true)
+            context.coordinator.initialRegionSet = true
+        } else {
+            mapView.setRegion(defaultRegion, animated: true)
+        }
         mapView.mapType = .hybrid
         mapView.isPitchEnabled = true
         mapView.showsCompass = true
         mapView.showsScale = true
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
         return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        if !context.coordinator.initialRegionSet {
+            if let selectedHut = selectedHut {
+                let selectedHutCoord = CLLocationCoordinate2D(latitude: selectedHut.lat, longitude: selectedHut.lon)
+                uiView.setRegion(MKCoordinateRegion(center: selectedHutCoord, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)), animated: true)
+            } else {
+                uiView.setRegion(defaultRegion, animated: true)
+            }
+            context.coordinator.initialRegionSet = true
+        }
+
         let existingAnnotations = Set(uiView.annotations.compactMap { $0 as? MKPointAnnotation })
         let newAnnotations = Set(huts.map { hut -> MKPointAnnotation in
             let annotation = MKPointAnnotation()
@@ -91,14 +93,25 @@ struct MapViewRepresentable: UIViewRepresentable {
         
         uiView.removeAnnotations(Array(annotationsToRemove))
         uiView.addAnnotations(Array(annotationsToAdd))
+
+        if let selectedHut = selectedHut, !context.coordinator.initialRegionSet {
+            if let annotation = uiView.annotations.first(where: { ($0 as? MKPointAnnotation)?.title == selectedHut.name }) {
+                uiView.selectAnnotation(annotation, animated: true)
+            }
+        }
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
+    var defaultRegion: MKCoordinateRegion {
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -40.9006, longitude: 174.886), span: MKCoordinateSpan(latitudeDelta: 5.0, longitudeDelta: 5.0))
+    }
+
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapViewRepresentable
+        var initialRegionSet = false
 
         init(_ parent: MapViewRepresentable) {
             self.parent = parent
