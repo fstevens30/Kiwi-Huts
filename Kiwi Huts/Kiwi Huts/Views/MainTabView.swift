@@ -53,7 +53,7 @@ struct MainTabView: View {
         .onAppear {
             selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // Restore last selected tab
         }
-        .onChange(of: selectedTab) {
+        .onChange(of: selectedTab) { _ in
             saveTab()
         }
         .alert("Limited Functionality", isPresented: .constant(!networkMonitor.isConnected)) {
