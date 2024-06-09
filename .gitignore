@@ -97,6 +97,3 @@ iOSInjectionProject/
 
 # Keys directory
 Backend/Keys/
-
-# Error logs for backend
-error.txt

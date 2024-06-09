@@ -2,7 +2,7 @@ name: Update Hut Data
 
 on:
   schedule:
-    - cron: "45 22 * * *" # Runs at 21:30 UTC every day
+    - cron: "55 22 * * *" # Runs at 22:55 UTC every day
 
 jobs:
   build:
@@ -31,6 +31,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -f error.txt
+          git add -f Backend/error.txt
           git commit -m "Add error.txt" -a
           git push

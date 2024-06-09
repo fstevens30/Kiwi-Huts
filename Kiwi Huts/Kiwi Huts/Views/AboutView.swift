@@ -77,7 +77,7 @@ struct AboutView: View {
                 
                 VideoPlayer(player: player)
                     .aspectRatio(CGSize(width: 9, height: 19.6), contentMode: .fill)
-                    .ignoresSafeArea()
+                    .padding()
             }
             .padding()
             
