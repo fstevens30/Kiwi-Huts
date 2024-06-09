@@ -1,18 +1,16 @@
 import firebase_admin
 from firebase_admin import firestore, credentials
 from get_huts import get_huts
-import json
+import os
 
 
 def main():
     try:
         print('Connecting to Firestore DB.')
-        with open('Keys/DOC.json', 'r') as f:
-            f_data = json.load(f)
-            api_key = f_data.get('API_KEY', '')
+        api_key = os.getenv('DOC_API_KEY')
 
         if not firebase_admin._apps:
-            cred_path = 'Keys/Firebase.json'
+            cred_path = os.getenv('FIREBASE_JSON')
             cred = credentials.Certificate(cred_path)
             firebase_admin.initialize_app(cred)
         db = firestore.client()
