@@ -10,7 +10,7 @@ def main():
         api_key = os.getenv('DOC_API_KEY')
 
         if not firebase_admin._apps:
-            cred_path = os.getenv('FIREBASE_JSON')
+            cred_path = os.getenv('FIREBASE_JSON', 'firebase_key.json')
             cred = credentials.Certificate(cred_path)
             firebase_admin.initialize_app(cred)
         db = firestore.client()

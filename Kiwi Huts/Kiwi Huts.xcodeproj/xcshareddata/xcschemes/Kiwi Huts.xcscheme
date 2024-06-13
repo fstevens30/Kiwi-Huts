@@ -34,9 +34,20 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A50F1062BEC3B35008BC4F6"
+               BlueprintIdentifier = "3A9EBA912C16E74100D3C318"
                BuildableName = "Kiwi HutsTests.xctest"
                BlueprintName = "Kiwi HutsTests"
+               ReferencedContainer = "container:Kiwi Huts.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3AC91B622C170BCF00D6CBE3"
+               BuildableName = "Kiwi Huts Tests.xctest"
+               BlueprintName = "Kiwi Huts Tests"
                ReferencedContainer = "container:Kiwi Huts.xcodeproj">
             </BuildableReference>
          </TestableReference>

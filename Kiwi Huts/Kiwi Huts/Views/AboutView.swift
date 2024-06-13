@@ -64,7 +64,7 @@ struct AboutView: View {
                 Text("This app was made by Flynn Stevens as a side project to understand more about SwiftUI and API usage. All data on this app is pulled from the Department of Conservation API.")
                     .padding(.bottom)
                 
-                Text("Remember, please refer to the DOC website and local weather before heading out on adventures. For more information on this app please see below.")
+                Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated once daily. For more information on this app please see below.")
                     .padding(.bottom)
             }
             .padding()
@@ -76,8 +76,10 @@ struct AboutView: View {
                     .font(.headline)
                 
                 VideoPlayer(player: player)
-                    .aspectRatio(CGSize(width: 9, height: 19.6), contentMode: .fill)
+                    .aspectRatio(CGSize(width: 9, height: 18.125), contentMode: .fill)
                     .padding()
+                    .shadow(radius: 5)
+                
             }
             .padding()
             

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Firebase
 @testable import Kiwi_Huts
 
 class HutTests: XCTestCase {

@@ -10,7 +10,6 @@ import MapKit
 
 struct FullScreenMapView: View {
     @EnvironmentObject var viewModel: HutsViewModel
-    @StateObject private var locationManager = LocationManager()
     @State private var selectedHut: Hut?
     @State private var selectedHutForNavigation: Hut?
     @State private var isNavigationActive = false

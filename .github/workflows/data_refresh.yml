@@ -2,7 +2,7 @@ name: Update Hut Data
 
 on:
   schedule:
-    - cron: "45 9,21 * * *" # 09:05, 21:45 UTC
+    - cron: "45 10,22 * * *" # 10:05, 22:45 UTC
 
 jobs:
   build:
@@ -21,8 +21,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create Firebase key file
+        run: echo "$FIREBASE_JSON" > firebase_key.json
+        env:
+          FIREBASE_JSON: ${{ secrets.FIREBASE_JSON }}
+
       - name: Run script
         run: python Backend/main.py
         env:
-          FIREBASE_JSON: ${{ secrets.FIREBASE_JSON }}
+          FIREBASE_JSON: firebase_key.json
           DOC_API_KEY: ${{ secrets.DOC_API_KEY }}

@@ -9,3 +9,8 @@ target 'Kiwi Huts' do
 pod 'Firebase/Firestore'
 
 end
+
+target 'Kiwi HutsTests' do
+  inherit! :search_paths
+  
+end

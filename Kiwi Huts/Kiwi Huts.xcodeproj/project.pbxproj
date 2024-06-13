@@ -23,7 +23,6 @@
 		3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
 		3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648782C0E95E400FA0F23 /* Toast.swift */; };
-		3A6648812C112AF100FA0F23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648802C112AF100FA0F23 /* LocationManager.swift */; };
 		3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A6648882C11475300FA0F23 /* GoogleService-Info.plist */; };
 		3A8DD4542C12900B00F20253 /* tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A8DD4532C12900B00F20253 /* tutorial.mp4 */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
@@ -31,12 +30,25 @@
 		3AAEB8452BDEF74A00745191 /* HutMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8442BDEF74A00745191 /* HutMapCard.swift */; };
 		3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */; };
 		3AC8AB0B2BB5461500D6FE3D /* HutInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */; };
-		7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */; };
+		3AC91B482C17072000D6CBE3 /* Pods_Kiwi_Huts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */; };
+		3AC91B662C170BCF00D6CBE3 /* HutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC91B652C170BCF00D6CBE3 /* HutTests.swift */; };
+		3AE9CEA72C166AC800FDDA31 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9CEA62C166AC800FDDA31 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3AC91B672C170BCF00D6CBE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A1C99EC2B97D00700C49BFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A1C99F32B97D00700C49BFF;
+			remoteInfo = "Kiwi Huts";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2774967D4278CDE87AE1A5B3 /* Pods-Kiwi HutsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi HutsTests.release.xcconfig"; path = "Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A078A082BA7F716009B317D /* ListedHutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedHutView.swift; sourceTree = "<group>"; };
-		3A1C99F42B97D00700C49BFF /* Kiwi Huts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiwi Huts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A1C99F42B97D00700C49BFF /* Kiwi Huts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Kiwi Huts.app"; path = "/Users/flynnstevens/Developer/Kiwi-Huts/Kiwi Huts/build/Debug-iphoneos/Kiwi Huts.app"; sourceTree = "<absolute>"; };
 		3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kiwi_HutsApp.swift; sourceTree = "<group>"; };
 		3A1C99FB2B97D00800C49BFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1C99FE2B97D00800C49BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -52,8 +64,9 @@
 		3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarButtons.swift; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A5ADB832C16ED5200715A27 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A5ADB852C16ED5200715A27 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6648782C0E95E400FA0F23 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		3A6648802C112AF100FA0F23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3A6648852C11358600FA0F23 /* Kiwi-Huts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kiwi-Huts-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3A6648882C11475300FA0F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,12 +77,59 @@
 		3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8DD4532C12900B00F20253 /* tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tutorial.mp4; sourceTree = "<group>"; };
+		3A9EBA9B2C16E8CD00D3C318 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBA9C2C16E8CD00D3C318 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBA9D2C16E8CD00D3C318 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBA9E2C16E8CD00D3C318 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBA9F2C16E8CD00D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAA02C16E8CD00D3C318 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAA12C16E8CD00D3C318 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB32C16EBF900D3C318 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB42C16EBF900D3C318 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB52C16EBF900D3C318 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB62C16EBF900D3C318 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB72C16EBF900D3C318 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB82C16EBF900D3C318 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAB92C16EBF900D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABA2C16EBF900D3C318 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABB2C16EBF900D3C318 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABC2C16EBF900D3C318 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABD2C16EBF900D3C318 /* grpcpp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpcpp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABE2C16EBF900D3C318 /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBABF2C16EBF900D3C318 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAC02C16EBF900D3C318 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAC12C16EBF900D3C318 /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAC22C16EBF900D3C318 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9EBAE42C16EC1600D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8442BDEF74A00745191 /* HutMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutMapCard.swift; sourceTree = "<group>"; };
 		3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenMapView.swift; sourceTree = "<group>"; };
 		3AB0EF702BC75A2C0026CB0B /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Backend; path = ../Backend; sourceTree = "<group>"; };
+		3ABD81842C1705A5004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD81862C1705F5004D68BD /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD81872C1705F5004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD81882C1705F5004D68BD /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD81892C1705F5004D68BD /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD818A2C1705F5004D68BD /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD818B2C1705F5004D68BD /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD818C2C1705F5004D68BD /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD819C2C17068C004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABD819E2C1706A2004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCard.swift; sourceTree = "<group>"; };
+		3AC91B4B2C17077C00D6CBE3 /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B4F2C17080E00D6CBE3 /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B532C17096D00D6CBE3 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B552C17096D00D6CBE3 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B572C17096D00D6CBE3 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B592C17096D00D6CBE3 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B5B2C17096D00D6CBE3 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B5D2C17096D00D6CBE3 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC91B652C170BCF00D6CBE3 /* HutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutTests.swift; sourceTree = "<group>"; };
+		3AC91B6C2C170C8F00D6CBE3 /* Kiwi Huts Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Kiwi Huts Tests.xctest"; path = "/Users/flynnstevens/Developer/Kiwi-Huts/Kiwi Huts/build/Debug-iphoneos/Kiwi Huts Tests.xctest"; sourceTree = "<absolute>"; };
+		3AE9CEA62C166AC800FDDA31 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3F58992B24D15CED637156AD /* libPods-Kiwi HutsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kiwi HutsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B49A370C1A93AFD1CA6BE5 /* Pods-Kiwi HutsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi HutsTests.debug.xcconfig"; path = "Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		59218357E578332B2A4BFFAB /* Pods-Kiwi Huts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.debug.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.debug.xcconfig"; sourceTree = "<group>"; };
 		7AFBDDC6124864CD7353AF74 /* Pods-Kiwi Huts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.release.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.release.xcconfig"; sourceTree = "<group>"; };
 		F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +140,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5A148E11A3C3580181A005 /* Pods_Kiwi_Huts.framework in Frameworks */,
+				3AC91B482C17072000D6CBE3 /* Pods_Kiwi_Huts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AC91B602C170BCF00D6CBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,18 +169,10 @@
 				3A6648882C11475300FA0F23 /* GoogleService-Info.plist */,
 				3AB0EF702BC75A2C0026CB0B /* Backend */,
 				3A1C99F62B97D00700C49BFF /* Kiwi Huts */,
-				3A1C99F52B97D00700C49BFF /* Products */,
 				845A151F959A56CABA4EFCC1 /* Pods */,
+				3AC91B642C170BCF00D6CBE3 /* Kiwi Huts Tests */,
 				EC17C5E29262BCF0D3DFA69A /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		3A1C99F52B97D00700C49BFF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3A1C99F42B97D00700C49BFF /* Kiwi Huts.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		3A1C99F62B97D00700C49BFF /* Kiwi Huts */ = {
@@ -147,6 +206,7 @@
 				3A078A072BA7F6F1009B317D /* Global Components */,
 				3A385C082B991C0A005036A5 /* MainTabView.swift */,
 				3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */,
+				3AE9CEA62C166AC800FDDA31 /* MapView.swift */,
 				3A385C062B991B2E005036A5 /* HutListView.swift */,
 				3A385C0C2B991CBA005036A5 /* AboutView.swift */,
 				3A385C132B991D1C005036A5 /* SavedView.swift */,
@@ -159,7 +219,6 @@
 			children = (
 				3A1C9A0D2B97D61700C49BFF /* Hut.swift */,
 				3A4C4B872BA7C2300064375A /* User.swift */,
-				3A6648802C112AF100FA0F23 /* LocationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,11 +262,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		3AC91B642C170BCF00D6CBE3 /* Kiwi Huts Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3AC91B652C170BCF00D6CBE3 /* HutTests.swift */,
+			);
+			path = "Kiwi Huts Tests";
+			sourceTree = "<group>";
+		};
 		845A151F959A56CABA4EFCC1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				59218357E578332B2A4BFFAB /* Pods-Kiwi Huts.debug.xcconfig */,
 				7AFBDDC6124864CD7353AF74 /* Pods-Kiwi Huts.release.xcconfig */,
+				43B49A370C1A93AFD1CA6BE5 /* Pods-Kiwi HutsTests.debug.xcconfig */,
+				2774967D4278CDE87AE1A5B3 /* Pods-Kiwi HutsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -215,6 +284,50 @@
 		EC17C5E29262BCF0D3DFA69A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AC91B532C17096D00D6CBE3 /* FirebaseCore.framework */,
+				3AC91B552C17096D00D6CBE3 /* FirebaseCoreExtension.framework */,
+				3AC91B572C17096D00D6CBE3 /* FirebaseCoreInternal.framework */,
+				3AC91B592C17096D00D6CBE3 /* FirebaseFirestore.framework */,
+				3AC91B5B2C17096D00D6CBE3 /* FirebaseFirestoreInternal.framework */,
+				3AC91B5D2C17096D00D6CBE3 /* FirebaseSharedSwift.framework */,
+				3AC91B4F2C17080E00D6CBE3 /* Pods_Kiwi_Huts.framework */,
+				3AC91B4B2C17077C00D6CBE3 /* Pods_Kiwi_Huts.framework */,
+				3ABD819E2C1706A2004D68BD /* FirebaseCore.framework */,
+				3ABD819C2C17068C004D68BD /* FirebaseCore.framework */,
+				3ABD81862C1705F5004D68BD /* FirebaseAppCheckInterop.framework */,
+				3ABD81872C1705F5004D68BD /* FirebaseCore.framework */,
+				3ABD81882C1705F5004D68BD /* FirebaseCoreExtension.framework */,
+				3ABD81892C1705F5004D68BD /* FirebaseCoreInternal.framework */,
+				3ABD818A2C1705F5004D68BD /* FirebaseFirestore.framework */,
+				3ABD818B2C1705F5004D68BD /* FirebaseFirestoreInternal.framework */,
+				3ABD818C2C1705F5004D68BD /* FirebaseSharedSwift.framework */,
+				3ABD81842C1705A5004D68BD /* FirebaseCore.framework */,
+				3A5ADB832C16ED5200715A27 /* FirebaseCore.framework */,
+				3A5ADB852C16ED5200715A27 /* FirebaseFirestore.framework */,
+				3A9EBAE42C16EC1600D3C318 /* FirebaseFirestore.framework */,
+				3A9EBAB32C16EBF900D3C318 /* absl.framework */,
+				3A9EBAB42C16EBF900D3C318 /* openssl_grpc.framework */,
+				3A9EBAB52C16EBF900D3C318 /* FirebaseAppCheckInterop.framework */,
+				3A9EBAB62C16EBF900D3C318 /* FirebaseCore.framework */,
+				3A9EBAB72C16EBF900D3C318 /* FirebaseCoreExtension.framework */,
+				3A9EBAB82C16EBF900D3C318 /* FirebaseCoreInternal.framework */,
+				3A9EBAB92C16EBF900D3C318 /* FirebaseFirestore.framework */,
+				3A9EBABA2C16EBF900D3C318 /* FirebaseFirestoreInternal.framework */,
+				3A9EBABB2C16EBF900D3C318 /* FirebaseSharedSwift.framework */,
+				3A9EBABC2C16EBF900D3C318 /* GoogleUtilities.framework */,
+				3A9EBABD2C16EBF900D3C318 /* grpcpp.framework */,
+				3A9EBABE2C16EBF900D3C318 /* grpc.framework */,
+				3A9EBABF2C16EBF900D3C318 /* leveldb.framework */,
+				3A9EBAC02C16EBF900D3C318 /* nanopb.framework */,
+				3A9EBAC12C16EBF900D3C318 /* Pods_Kiwi_Huts.framework */,
+				3A9EBAC22C16EBF900D3C318 /* FBLPromises.framework */,
+				3A9EBA9B2C16E8CD00D3C318 /* FirebaseAppCheckInterop.framework */,
+				3A9EBA9C2C16E8CD00D3C318 /* FirebaseCore.framework */,
+				3A9EBA9D2C16E8CD00D3C318 /* FirebaseCoreExtension.framework */,
+				3A9EBA9E2C16E8CD00D3C318 /* FirebaseCoreInternal.framework */,
+				3A9EBA9F2C16E8CD00D3C318 /* FirebaseFirestore.framework */,
+				3A9EBAA02C16E8CD00D3C318 /* FirebaseFirestoreInternal.framework */,
+				3A9EBAA12C16E8CD00D3C318 /* FirebaseSharedSwift.framework */,
 				3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */,
 				3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */,
 				3A66488E2C1148A100FA0F23 /* FirebaseCoreExtension.framework */,
@@ -223,6 +336,7 @@
 				3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */,
 				3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */,
 				F617407ED22B6B06D98B26BC /* Pods_Kiwi_Huts.framework */,
+				3F58992B24D15CED637156AD /* libPods-Kiwi HutsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +363,24 @@
 			productReference = 3A1C99F42B97D00700C49BFF /* Kiwi Huts.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3AC91B622C170BCF00D6CBE3 /* Kiwi Huts Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AC91B692C170BCF00D6CBE3 /* Build configuration list for PBXNativeTarget "Kiwi Huts Tests" */;
+			buildPhases = (
+				3AC91B5F2C170BCF00D6CBE3 /* Sources */,
+				3AC91B602C170BCF00D6CBE3 /* Frameworks */,
+				3AC91B612C170BCF00D6CBE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AC91B682C170BCF00D6CBE3 /* PBXTargetDependency */,
+			);
+			name = "Kiwi Huts Tests";
+			productName = "Kiwi Huts Tests";
+			productReference = 3AC91B6C2C170C8F00D6CBE3 /* Kiwi Huts Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -262,6 +394,10 @@
 					3A1C99F32B97D00700C49BFF = {
 						CreatedOnToolsVersion = 15.2;
 					};
+					3AC91B622C170BCF00D6CBE3 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 3A1C99F32B97D00700C49BFF;
+					};
 				};
 			};
 			buildConfigurationList = 3A1C99EF2B97D00700C49BFF /* Build configuration list for PBXProject "Kiwi Huts" */;
@@ -273,11 +409,15 @@
 				Base,
 			);
 			mainGroup = 3A1C99EB2B97D00700C49BFF;
-			productRefGroup = 3A1C99F52B97D00700C49BFF /* Products */;
+			packageReferences = (
+				3ABD81832C16FC03004D68BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 3A1C99EB2B97D00700C49BFF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3A1C99F32B97D00700C49BFF /* Kiwi Huts */,
+				3AC91B622C170BCF00D6CBE3 /* Kiwi Huts Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +431,13 @@
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
 				3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */,
 				3A8DD4542C12900B00F20253 /* tutorial.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AC91B612C170BCF00D6CBE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,13 +497,13 @@
 				3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */,
 				3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */,
 				3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */,
+				3AE9CEA72C166AC800FDDA31 /* MapView.swift in Sources */,
 				3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */,
 				3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */,
 				3A3C30002BC7758C00E51CC1 /* RegionListView.swift in Sources */,
 				3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */,
 				3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */,
 				3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */,
-				3A6648812C112AF100FA0F23 /* LocationManager.swift in Sources */,
 				3A4B4BEE2BDB43B80071B03C /* HutInfoCardContainer.swift in Sources */,
 				3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */,
 				3A385C142B991D1C005036A5 /* SavedView.swift in Sources */,
@@ -366,7 +513,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AC91B5F2C170BCF00D6CBE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC91B662C170BCF00D6CBE3 /* HutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AC91B682C170BCF00D6CBE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A1C99F32B97D00700C49BFF /* Kiwi Huts */;
+			targetProxy = 3AC91B672C170BCF00D6CBE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3A1C9A002B97D00800C49BFF /* Debug */ = {
@@ -407,6 +570,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -470,6 +634,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -503,7 +668,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Kiwi-Huts-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby huts.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show nearby huts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -512,12 +677,12 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -546,7 +711,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Kiwi-Huts-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby huts.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show nearby huts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -555,12 +720,12 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -571,6 +736,44 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3AC91B6A2C170BCF00D6CBE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D26SL36M48;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.Kiwi-Huts-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kiwi Huts.app/Kiwi Huts";
+			};
+			name = Debug;
+		};
+		3AC91B6B2C170BCF00D6CBE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D26SL36M48;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.Kiwi-Huts-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kiwi Huts.app/Kiwi Huts";
 			};
 			name = Release;
 		};
@@ -595,7 +798,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3AC91B692C170BCF00D6CBE3 /* Build configuration list for PBXNativeTarget "Kiwi Huts Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AC91B6A2C170BCF00D6CBE3 /* Debug */,
+				3AC91B6B2C170BCF00D6CBE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3ABD81832C16FC03004D68BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 3A1C99EC2B97D00700C49BFF /* Project object */;
 }
