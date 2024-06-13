@@ -2,7 +2,7 @@ name: Update Hut Data
 
 on:
   schedule:
-    - cron: "55 22 * * *" # Runs at 22:55 UTC every day
+    - cron: "05 09 * * *" # 09:05 UTC
 
 jobs:
   build:
@@ -26,11 +26,3 @@ jobs:
         env:
           FIREBASE_JSON: ${{ secrets.FIREBASE_JSON }}
           DOC_API_KEY: ${{ secrets.DOC_API_KEY }}
-
-      - name: Commit and push error.txt
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -f Backend/error.txt
-          git commit -m "Add error.txt" -a
-          git push
