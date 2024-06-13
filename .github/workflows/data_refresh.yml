@@ -2,7 +2,7 @@ name: Update Hut Data
 
 on:
   schedule:
-    - cron: "05 09 * * *" # 09:05 UTC
+    - cron: "45 9,21 * * *" # 09:05, 21:45 UTC
 
 jobs:
   build:
