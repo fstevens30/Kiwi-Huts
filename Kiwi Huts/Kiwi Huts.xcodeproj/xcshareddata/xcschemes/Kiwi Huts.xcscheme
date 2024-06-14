@@ -34,7 +34,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A9EBA912C16E74100D3C318"
+               BlueprintIdentifier = "3A0B571B2C1BB50F00487BB1"
                BuildableName = "Kiwi HutsTests.xctest"
                BlueprintName = "Kiwi HutsTests"
                ReferencedContainer = "container:Kiwi Huts.xcodeproj">

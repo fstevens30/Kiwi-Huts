@@ -4,13 +4,12 @@
 target 'Kiwi Huts' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for Kiwi Huts
-pod 'Firebase/Firestore'
+  pod 'Firebase/Firestore'
 
-end
-
-target 'Kiwi HutsTests' do
-  inherit! :search_paths
+  target 'Kiwi HutsTests' do
+    inherit! :search_paths
+    pod 'Firebase/Firestore'
   
+  end
 end
