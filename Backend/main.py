@@ -38,13 +38,16 @@ def huts_db_builder(db, api_key):
 
         for hut in huts_data:
             hut_id = str(hut['id'])
+            # Assuming huts have a 'name' field
+            hut_name = hut.get('name', 'Unknown')
             if hut_id in current_huts:
                 if hut != current_huts[hut_id]:
                     db.collection('huts').document(hut_id).update(hut)
-                    print(f'Updated hut {hut_id}')
+                    print(f'Updated hut {hut_name} ({hut_id})')
+                    print(f'Changes: {get_changes(current_huts[hut_id], hut)}')
             else:
                 db.collection('huts').document(hut_id).set(hut)
-                print(f'Added new hut {hut_id}')
+                print(f'Added new hut {hut_name} ({hut_id})')
 
         # Check for deletions
         for hut_id in current_huts:
@@ -54,6 +57,14 @@ def huts_db_builder(db, api_key):
 
     except Exception as e:
         print(f"Error in huts_db_builder: {e}")
+
+
+def get_changes(old_hut, new_hut):
+    changes = {}
+    for key in new_hut:
+        if old_hut.get(key) != new_hut.get(key):
+            changes[key] = {'old': old_hut.get(key), 'new': new_hut.get(key)}
+    return changes
 
 
 def initialize_firestore_collection(db, collection_name):
