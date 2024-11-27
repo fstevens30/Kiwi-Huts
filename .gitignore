@@ -93,7 +93,7 @@ iOSInjectionProject/
 *.DS_Store
 
 # Plist (Not needed when private)
-# *.plist
+*.plist
 
 # Keys directory
 Backend/Keys/

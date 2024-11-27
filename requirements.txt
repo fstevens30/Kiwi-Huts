@@ -1,3 +1,0 @@
-firebase-admin
-google-cloud-firestore
-requests

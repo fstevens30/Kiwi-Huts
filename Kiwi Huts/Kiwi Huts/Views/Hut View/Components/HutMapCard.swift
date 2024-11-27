@@ -21,7 +21,7 @@ struct HutMapCard: View {
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 .padding(10)
 
-            NavigationLink(destination: FullScreenMapView(selectedHut: hut)) {
+            NavigationLink(destination: FullScreenMapView()) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color(UIColor.systemBackground))

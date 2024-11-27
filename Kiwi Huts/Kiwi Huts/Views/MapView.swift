@@ -29,17 +29,40 @@ let initialRegion = MKCoordinateRegion(
 struct MapView: View {
     @EnvironmentObject var viewModel: HutsViewModel
     @State private var region = initialRegion
+    @State private var selectedHut: Hut? // Track selected hut
+    @State private var isNavigationActive = false // Navigation state
 
     var body: some View {
         NavigationView {
-            Map(coordinateRegion: $region, interactionModes: [.all], showsUserLocation: true, annotationItems: viewModel.hutsList) { hut in
-                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)) {
-                    HutAnnotation(hut: hut)
+            ZStack {
+                Map(coordinateRegion: $region, interactionModes: [.all], showsUserLocation: true, annotationItems: viewModel.hutsList) { hut in
+                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)) {
+                        HutAnnotation(hut: hut)
+                            .onTapGesture {
+                                selectedHut = hut // Set the selected hut
+                                isNavigationActive = true
+                            }
+                    }
                 }
-            }
-            .mapStyle(.hybrid(elevation: .realistic))
-            .onAppear {
-                region = initialRegion
+                .mapStyle(.hybrid(elevation: .realistic))
+                .onAppear {
+                    let locationManager = CLLocationManager()
+                    locationManager.requestWhenInUseAuthorization()
+                    if let userLocation = locationManager.location?.coordinate {
+                        region = MKCoordinateRegion(
+                            center: userLocation,
+                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                        )
+                    } else {
+                        region = initialRegion
+                    }
+                }
+                NavigationLink(
+                    destination: selectedHut.map { HutView(hut: $0) },
+                    isActive: $isNavigationActive
+                ) {
+                    EmptyView()
+                }
             }
             .navigationTitle("Map")
         }
@@ -55,7 +78,9 @@ struct HutAnnotation: View {
                 RoundedRectangle(cornerRadius: 15.0)
                     .foregroundStyle(Color.accentColor)
                 Image(systemName: "house.fill")
+                    .foregroundColor(.white)
             }
+            .frame(width: 30, height: 30) // Adjust size as needed
         }
     }
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 import Network
 import Combine
+import CoreLocation
 
 class HutsViewModel: ObservableObject {
     @Published var hutsList = [Hut]()
@@ -155,9 +156,12 @@ struct Kiwi_HutsApp: App {
     @StateObject var user = User(completedHuts: [], savedHuts: [])
     @StateObject var viewModel = HutsViewModel()
     @StateObject var networkMonitor = NetworkMonitor()
+    private let locationManager = CLLocationManager()
+    @State private var cancellables = Set<AnyCancellable>()
     
     init() {
         UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+        requestLocationPermissions()
     }
     
     var body: some Scene {
@@ -189,5 +193,7 @@ struct Kiwi_HutsApp: App {
         }.store(in: &cancellables)
     }
     
-    @State private var cancellables = Set<AnyCancellable>()
+    private func requestLocationPermissions() {
+            locationManager.requestWhenInUseAuthorization()
+        }
 }
