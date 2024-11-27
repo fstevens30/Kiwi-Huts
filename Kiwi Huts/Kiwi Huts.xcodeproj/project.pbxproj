@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C9A0F2B97DCE000C49BFF /* HutView.swift */; };
 		3A385C072B991B2E005036A5 /* HutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C062B991B2E005036A5 /* HutListView.swift */; };
 		3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C082B991C0A005036A5 /* MainTabView.swift */; };
-		3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C0C2B991CBA005036A5 /* AboutView.swift */; };
 		3A385C0F2B991CDF005036A5 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C0E2B991CDF005036A5 /* CompletionView.swift */; };
 		3A385C142B991D1C005036A5 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A385C132B991D1C005036A5 /* SavedView.swift */; };
 		3A3C30002BC7758C00E51CC1 /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C2FFF2BC7758C00E51CC1 /* RegionListView.swift */; };
@@ -55,7 +54,6 @@
 		3A1C9A0F2B97DCE000C49BFF /* HutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutView.swift; sourceTree = "<group>"; };
 		3A385C062B991B2E005036A5 /* HutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutListView.swift; sourceTree = "<group>"; };
 		3A385C082B991C0A005036A5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		3A385C0C2B991CBA005036A5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3A385C0E2B991CDF005036A5 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		3A385C132B991D1C005036A5 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		3A3C2FFF2BC7758C00E51CC1 /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
@@ -73,6 +71,10 @@
 		3AE9CEA62C166AC800FDDA31 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3AEC85E02CF6BC3D00568519 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3A512C752CF7A4B80085FF38 /* About View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "About View"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3A0B57192C1BB50F00487BB1 /* Frameworks */ = {
@@ -145,6 +147,7 @@
 		3A385C0A2B991C91005036A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A512C752CF7A4B80085FF38 /* About View */,
 				3AAEB83E2BDEEC0C00745191 /* Completion View */,
 				3AAEB83C2BDEEB7900745191 /* Hut View */,
 				3A078A072BA7F6F1009B317D /* Global Components */,
@@ -152,7 +155,6 @@
 				3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */,
 				3AE9CEA62C166AC800FDDA31 /* MapView.swift */,
 				3A385C062B991B2E005036A5 /* HutListView.swift */,
-				3A385C0C2B991CBA005036A5 /* AboutView.swift */,
 				3A385C132B991D1C005036A5 /* SavedView.swift */,
 			);
 			path = Views;
@@ -238,6 +240,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3A512C752CF7A4B80085FF38 /* About View */,
 			);
 			name = "Kiwi Huts";
 			productName = "Kiwi Huts";
@@ -325,7 +330,6 @@
 				3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */,
 				3AEC85E12CF6BC3D00568519 /* SupabaseClient.swift in Sources */,
 				3AE9CEA72C166AC800FDDA31 /* MapView.swift in Sources */,
-				3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */,
 				3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */,
 				3A3C30002BC7758C00E51CC1 /* RegionListView.swift in Sources */,
 				3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */,
@@ -547,7 +551,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -590,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flynn-stevens.KiwiHuts";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

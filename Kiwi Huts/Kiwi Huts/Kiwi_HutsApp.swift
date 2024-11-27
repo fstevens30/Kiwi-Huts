@@ -21,7 +21,7 @@ class HutsViewModel: ObservableObject {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue("Bearer \(SupabaseClient.apiKey)", forHTTPHeaderField: "Authorization")
+        request.addValue(SupabaseClient.apiKey, forHTTPHeaderField: "apikey")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -37,11 +37,15 @@ class HutsViewModel: ObservableObject {
 
             do {
                 let huts = try JSONDecoder().decode([Hut].self, from: data)
+                print("Decoded huts: \(huts)")
                 DispatchQueue.main.async {
                     self.hutsList = huts
                 }
             } catch {
                 print("Error decoding huts: \(error)")
+                if let jsonString = String(data: data, encoding: .utf8) {
+                    print("Raw JSON: \(jsonString)")
+                }
             }
         }.resume()
     }

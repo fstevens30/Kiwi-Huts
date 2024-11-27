@@ -37,9 +37,9 @@ struct HutView: View {
                 
                 
                     VStack {
-                        Text(hut.introduction ?? "No introduction available, please visit DOC website for more information.")
+                        Text(hut.introduction)
                         
-                        if hut.bookable! {
+                        if hut.bookable {
                             Link("Book Now", destination: URL(string: hut.staticLink)!)
                                 .buttonStyle(.bordered)
                                 .padding()

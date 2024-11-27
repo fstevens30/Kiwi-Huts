@@ -28,11 +28,10 @@ struct AboutView: View {
         ScrollView {
             Spacer()
             VStack {
-                Image(uiImage: UIImage(named: "AppIcon") ?? UIImage())
-                    .resizable()
-                    .frame(width: 150, height: 150)
-                    .cornerRadius(20)
-                    .shadow(radius: 5)
+                AppVersionInformationView(
+                    versionString: AppVersionProvider.appVersion(),
+                    appIcon: AppIconProvider.appIcon()
+                )
             }
             .padding()
             
@@ -41,9 +40,6 @@ struct AboutView: View {
             VStack {
                 Text("Kiwi Huts")
                     .font(.headline)
-                Text("Version \(getAppVersion())")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
                 if let lastUpdated = viewModel.lastUpdated {
                     Text("Last updated: \(formatDate(lastUpdated))")
                         .font(.subheadline)

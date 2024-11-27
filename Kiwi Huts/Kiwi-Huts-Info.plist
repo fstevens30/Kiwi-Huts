@@ -6,5 +6,18 @@
 <string>We need your location to show nearby huts.</string>
 <key>NSLocationAlwaysUsageDescription</key>
 <string>We need your location to show nearby huts.</string>
+<key>CFBundleIcons</key>
+<dict>
+    <key>CFBundlePrimaryIcon</key>
+    <dict>
+        <key>CFBundleIconFiles</key>
+        <array>
+            <string>AppIcon</string>
+        </array>
+        <key>UIPrerenderedIcon</key>
+        <false/>
+    </dict>
+</dict>
 </dict>
 </plist>
+

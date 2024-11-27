@@ -56,7 +56,7 @@ struct ListedHutView: View {
                 Text(hut.name)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(hut.region ?? "Region Unavailable")
+                Text(hut.region)
                     .font(.subheadline)
                     .foregroundColor(.accentColor)
                     .frame(maxWidth: .infinity, alignment: .leading)

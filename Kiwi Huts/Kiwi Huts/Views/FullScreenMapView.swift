@@ -23,15 +23,16 @@ struct FullScreenMapView: View {
         VStack {
             MapViewRepresentable(
                 huts: $viewModel.hutsList,
-                selectedHut: $selectedHut, // Pass binding
+                selectedHut: $selectedHut,
                 selectedHutForNavigation: $selectedHutForNavigation,
                 isNavigationActive: $isNavigationActive,
                 initialRegionSet: $initialRegionSet
             )
             .navigationBarTitle("", displayMode: .inline)
             
+            // NavigationLink will be triggered when selectedHutForNavigation is set
             if let hut = selectedHutForNavigation {
-                NavigationLink(destination: HutView(hut: hut), isActive: $isNavigationActive) {
+                NavigationLink(destination: HutView(hut: hut)) {
                     EmptyView()
                 }
             }
@@ -50,13 +51,6 @@ struct MapViewRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        if let selectedHut = selectedHut {
-            let selectedHutCoord = CLLocationCoordinate2D(latitude: selectedHut.lat, longitude: selectedHut.lon)
-            mapView.setRegion(MKCoordinateRegion(center: selectedHutCoord, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)), animated: true)
-            context.coordinator.initialRegionSet = true
-        } else {
-            mapView.setRegion(defaultRegion, animated: true)
-        }
         mapView.mapType = .hybrid
         mapView.isPitchEnabled = true
         mapView.showsCompass = true
@@ -68,36 +62,35 @@ struct MapViewRepresentable: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        // Only update the region if it hasn't been set already
         if !context.coordinator.initialRegionSet {
-            if let selectedHut = selectedHut {
-                let selectedHutCoord = CLLocationCoordinate2D(latitude: selectedHut.lat, longitude: selectedHut.lon)
-                uiView.setRegion(MKCoordinateRegion(center: selectedHutCoord, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)), animated: true)
-            } else {
-                uiView.setRegion(defaultRegion, animated: true)
-            }
+            let regionToSet = selectedHut != nil ? MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: selectedHut!.lat, longitude: selectedHut!.lon),
+                span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)) : defaultRegion
+            uiView.setRegion(regionToSet, animated: true)
             context.coordinator.initialRegionSet = true
         }
 
-        let existingAnnotations = Set(uiView.annotations.compactMap { $0 as? MKPointAnnotation })
-        let newAnnotations = Set(huts.map { hut -> MKPointAnnotation in
+        // Only update annotations if the huts list has changed
+        let newAnnotations = huts.map { hut -> MKPointAnnotation in
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: hut.lat, longitude: hut.lon)
             annotation.title = hut.name
-            annotation.subtitle = hut.hutCategory  // Store the category in the subtitle for easy access
+            annotation.subtitle = hut.hutCategory
             return annotation
-        })
+        }
+
+        let existingAnnotations = Set(uiView.annotations.compactMap { $0 as? MKPointAnnotation })
+        let newAnnotationsSet = Set(newAnnotations)
         
-        let annotationsToRemove = existingAnnotations.subtracting(newAnnotations)
-        let annotationsToAdd = newAnnotations.subtracting(existingAnnotations)
+        // Efficiently remove and add annotations
+        let annotationsToRemove = existingAnnotations.subtracting(newAnnotationsSet)
+        let annotationsToAdd = newAnnotationsSet.subtracting(existingAnnotations)
         
         uiView.removeAnnotations(Array(annotationsToRemove))
         uiView.addAnnotations(Array(annotationsToAdd))
 
-        if let selectedHut = selectedHut, !context.coordinator.initialRegionSet {
-            if let annotation = uiView.annotations.first(where: { ($0 as? MKPointAnnotation)?.title == selectedHut.name }) {
-                uiView.selectAnnotation(annotation, animated: true)
-            }
-        }
+        // No longer selecting annotation when tapped
     }
 
     func makeCoordinator() -> Coordinator {
@@ -136,7 +129,7 @@ struct MapViewRepresentable: UIViewRepresentable {
                   let selectedHut = hutMatching(title: title) else {
                 return
             }
-            parent.selectedHut = selectedHut // Update selectedHut
+            // Update the selected hut for navigation
             parent.selectedHutForNavigation = selectedHut
             parent.isNavigationActive = true
         }

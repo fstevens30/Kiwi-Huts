@@ -86,7 +86,7 @@ struct HutListView: View {
             .filter {
                 (trimmedSearchText.isEmpty ||
                  $0.name.localizedCaseInsensitiveContains(trimmedSearchText) ||
-                 $0.region?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false ||
+                 $0.region.localizedCaseInsensitiveContains(trimmedSearchText) ||
                  $0.locationString?.localizedCaseInsensitiveContains(trimmedSearchText) ?? false)
             }
             .filter { selectedRegion == "All" || $0.region == selectedRegion }

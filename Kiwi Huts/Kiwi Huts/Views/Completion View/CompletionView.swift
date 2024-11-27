@@ -13,7 +13,7 @@ struct CompletionView: View {
     
     // Group huts by region
     var hutsByRegion: [String: [Hut]] {
-        Dictionary(grouping: viewModel.hutsList, by: { $0.region ?? "Other" })
+        Dictionary(grouping: viewModel.hutsList, by: { $0.region })
     }
     
     // Calculate progress for each region
