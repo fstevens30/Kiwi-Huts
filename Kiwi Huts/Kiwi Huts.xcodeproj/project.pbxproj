@@ -24,16 +24,13 @@
 		3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */; };
 		3A4C4B882BA7C2300064375A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C4B872BA7C2300064375A /* User.swift */; };
 		3A6648792C0E95E400FA0F23 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6648782C0E95E400FA0F23 /* Toast.swift */; };
-		3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A6648882C11475300FA0F23 /* GoogleService-Info.plist */; };
-		3A8DD4542C12900B00F20253 /* tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A8DD4532C12900B00F20253 /* tutorial.mp4 */; };
 		3AAEB8412BDEEC5800745191 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */; };
 		3AAEB8432BDEED4B00745191 /* RegionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */; };
 		3AAEB8452BDEF74A00745191 /* HutMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8442BDEF74A00745191 /* HutMapCard.swift */; };
 		3AAEB8472BDEF75900745191 /* FullScreenMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */; };
 		3AC8AB0B2BB5461500D6FE3D /* HutInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */; };
 		3AE9CEA72C166AC800FDDA31 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9CEA62C166AC800FDDA31 /* MapView.swift */; };
-		9BAF2DCEE8F63ED057793602 /* Pods_Kiwi_HutsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7455AAF1DD49A2F50389819 /* Pods_Kiwi_HutsTests.framework */; };
-		F4DC22AF02F43EE61220DD9A /* Pods_Kiwi_Huts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACA2125D80FE2ECAB0215E3 /* Pods_Kiwi_Huts.framework */; };
+		3AEC85E12CF6BC3D00568519 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC85E02CF6BC3D00568519 /* SupabaseClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,71 +63,15 @@
 		3A4B4BEF2BDC37AA0071B03C /* ToolbarButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarButtons.swift; sourceTree = "<group>"; };
 		3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Kiwi Huts.entitlements"; sourceTree = "<group>"; };
 		3A4C4B872BA7C2300064375A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		3A5ADB832C16ED5200715A27 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A5ADB852C16ED5200715A27 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6648782C0E95E400FA0F23 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		3A6648852C11358600FA0F23 /* Kiwi-Huts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kiwi-Huts-Info.plist"; sourceTree = SOURCE_ROOT; };
-		3A6648882C11475300FA0F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A66488E2C1148A100FA0F23 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A6648902C1148A100FA0F23 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A8DD4532C12900B00F20253 /* tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tutorial.mp4; sourceTree = "<group>"; };
-		3A9EBA9B2C16E8CD00D3C318 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBA9C2C16E8CD00D3C318 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBA9D2C16E8CD00D3C318 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBA9E2C16E8CD00D3C318 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBA9F2C16E8CD00D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAA02C16E8CD00D3C318 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAA12C16E8CD00D3C318 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB32C16EBF900D3C318 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB42C16EBF900D3C318 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB52C16EBF900D3C318 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB62C16EBF900D3C318 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB72C16EBF900D3C318 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB82C16EBF900D3C318 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAB92C16EBF900D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABA2C16EBF900D3C318 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABB2C16EBF900D3C318 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABC2C16EBF900D3C318 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABD2C16EBF900D3C318 /* grpcpp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpcpp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABE2C16EBF900D3C318 /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBABF2C16EBF900D3C318 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAC02C16EBF900D3C318 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAC22C16EBF900D3C318 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A9EBAE42C16EC1600D3C318 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAEB8402BDEEC5800745191 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8422BDEED4B00745191 /* RegionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProgressView.swift; sourceTree = "<group>"; };
 		3AAEB8442BDEF74A00745191 /* HutMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutMapCard.swift; sourceTree = "<group>"; };
 		3AAEB8462BDEF75900745191 /* FullScreenMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenMapView.swift; sourceTree = "<group>"; };
-		3AB0EF702BC75A2C0026CB0B /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Backend; path = ../Backend; sourceTree = "<group>"; };
-		3ABD81842C1705A5004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD81862C1705F5004D68BD /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD81872C1705F5004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD81882C1705F5004D68BD /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD81892C1705F5004D68BD /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD818A2C1705F5004D68BD /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD818B2C1705F5004D68BD /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD818C2C1705F5004D68BD /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD819C2C17068C004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABD819E2C1706A2004D68BD /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC8AB0A2BB5461500D6FE3D /* HutInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutInfoCard.swift; sourceTree = "<group>"; };
-		3AC91B532C17096D00D6CBE3 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC91B552C17096D00D6CBE3 /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC91B572C17096D00D6CBE3 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC91B592C17096D00D6CBE3 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC91B5B2C17096D00D6CBE3 /* FirebaseFirestoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC91B5D2C17096D00D6CBE3 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE9CEA62C166AC800FDDA31 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		64D188DF2F6B36B68B7EED93 /* Pods-Kiwi HutsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi HutsTests.debug.xcconfig"; path = "Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9ACA2125D80FE2ECAB0215E3 /* Pods_Kiwi_Huts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiwi_Huts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7455AAF1DD49A2F50389819 /* Pods_Kiwi_HutsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiwi_HutsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7E93ACC88D11CF5D879F34E /* Pods-Kiwi Huts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.debug.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.debug.xcconfig"; sourceTree = "<group>"; };
-		DCEEE9B4BF8E038466DD234F /* Pods-Kiwi HutsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi HutsTests.release.xcconfig"; path = "Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests.release.xcconfig"; sourceTree = "<group>"; };
-		ECDB857AB29542389B7BD06D /* Pods-Kiwi Huts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiwi Huts.release.xcconfig"; path = "Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts.release.xcconfig"; sourceTree = "<group>"; };
+		3AEC85E02CF6BC3D00568519 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BAF2DCEE8F63ED057793602 /* Pods_Kiwi_HutsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4DC22AF02F43EE61220DD9A /* Pods_Kiwi_Huts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,12 +112,8 @@
 		3A1C99EB2B97D00700C49BFF = {
 			isa = PBXGroup;
 			children = (
-				3A6648882C11475300FA0F23 /* GoogleService-Info.plist */,
-				3AB0EF702BC75A2C0026CB0B /* Backend */,
 				3A1C99F62B97D00700C49BFF /* Kiwi Huts */,
-				845A151F959A56CABA4EFCC1 /* Pods */,
 				3A0B571D2C1BB50F00487BB1 /* Kiwi HutsTests */,
-				EC17C5E29262BCF0D3DFA69A /* Frameworks */,
 				3A0B57142C1BB0B600487BB1 /* Kiwi Huts.app */,
 				3A0B571C2C1BB50F00487BB1 /* Kiwi HutsTests.xctest */,
 			);
@@ -187,7 +122,6 @@
 		3A1C99F62B97D00700C49BFF /* Kiwi Huts */ = {
 			isa = PBXGroup;
 			children = (
-				3A8DD4532C12900B00F20253 /* tutorial.mp4 */,
 				3A6648852C11358600FA0F23 /* Kiwi-Huts-Info.plist */,
 				3A4C4B862BA7AF600064375A /* Kiwi Huts.entitlements */,
 				3A1C99F72B97D00700C49BFF /* Kiwi_HutsApp.swift */,
@@ -195,6 +129,7 @@
 				3A385C0A2B991C91005036A5 /* Views */,
 				3A1C99FB2B97D00800C49BFF /* Assets.xcassets */,
 				3A1C99FD2B97D00800C49BFF /* Preview Content */,
+				3AEC85E02CF6BC3D00568519 /* SupabaseClient.swift */,
 			);
 			path = "Kiwi Huts";
 			sourceTree = "<group>";
@@ -271,74 +206,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		845A151F959A56CABA4EFCC1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D7E93ACC88D11CF5D879F34E /* Pods-Kiwi Huts.debug.xcconfig */,
-				ECDB857AB29542389B7BD06D /* Pods-Kiwi Huts.release.xcconfig */,
-				64D188DF2F6B36B68B7EED93 /* Pods-Kiwi HutsTests.debug.xcconfig */,
-				DCEEE9B4BF8E038466DD234F /* Pods-Kiwi HutsTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		EC17C5E29262BCF0D3DFA69A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3AC91B532C17096D00D6CBE3 /* FirebaseCore.framework */,
-				3AC91B552C17096D00D6CBE3 /* FirebaseCoreExtension.framework */,
-				3AC91B572C17096D00D6CBE3 /* FirebaseCoreInternal.framework */,
-				3AC91B592C17096D00D6CBE3 /* FirebaseFirestore.framework */,
-				3AC91B5B2C17096D00D6CBE3 /* FirebaseFirestoreInternal.framework */,
-				3AC91B5D2C17096D00D6CBE3 /* FirebaseSharedSwift.framework */,
-				3ABD819E2C1706A2004D68BD /* FirebaseCore.framework */,
-				3ABD819C2C17068C004D68BD /* FirebaseCore.framework */,
-				3ABD81862C1705F5004D68BD /* FirebaseAppCheckInterop.framework */,
-				3ABD81872C1705F5004D68BD /* FirebaseCore.framework */,
-				3ABD81882C1705F5004D68BD /* FirebaseCoreExtension.framework */,
-				3ABD81892C1705F5004D68BD /* FirebaseCoreInternal.framework */,
-				3ABD818A2C1705F5004D68BD /* FirebaseFirestore.framework */,
-				3ABD818B2C1705F5004D68BD /* FirebaseFirestoreInternal.framework */,
-				3ABD818C2C1705F5004D68BD /* FirebaseSharedSwift.framework */,
-				3ABD81842C1705A5004D68BD /* FirebaseCore.framework */,
-				3A5ADB832C16ED5200715A27 /* FirebaseCore.framework */,
-				3A5ADB852C16ED5200715A27 /* FirebaseFirestore.framework */,
-				3A9EBAE42C16EC1600D3C318 /* FirebaseFirestore.framework */,
-				3A9EBAB32C16EBF900D3C318 /* absl.framework */,
-				3A9EBAB42C16EBF900D3C318 /* openssl_grpc.framework */,
-				3A9EBAB52C16EBF900D3C318 /* FirebaseAppCheckInterop.framework */,
-				3A9EBAB62C16EBF900D3C318 /* FirebaseCore.framework */,
-				3A9EBAB72C16EBF900D3C318 /* FirebaseCoreExtension.framework */,
-				3A9EBAB82C16EBF900D3C318 /* FirebaseCoreInternal.framework */,
-				3A9EBAB92C16EBF900D3C318 /* FirebaseFirestore.framework */,
-				3A9EBABA2C16EBF900D3C318 /* FirebaseFirestoreInternal.framework */,
-				3A9EBABB2C16EBF900D3C318 /* FirebaseSharedSwift.framework */,
-				3A9EBABC2C16EBF900D3C318 /* GoogleUtilities.framework */,
-				3A9EBABD2C16EBF900D3C318 /* grpcpp.framework */,
-				3A9EBABE2C16EBF900D3C318 /* grpc.framework */,
-				3A9EBABF2C16EBF900D3C318 /* leveldb.framework */,
-				3A9EBAC02C16EBF900D3C318 /* nanopb.framework */,
-				3A9EBAC22C16EBF900D3C318 /* FBLPromises.framework */,
-				3A9EBA9B2C16E8CD00D3C318 /* FirebaseAppCheckInterop.framework */,
-				3A9EBA9C2C16E8CD00D3C318 /* FirebaseCore.framework */,
-				3A9EBA9D2C16E8CD00D3C318 /* FirebaseCoreExtension.framework */,
-				3A9EBA9E2C16E8CD00D3C318 /* FirebaseCoreInternal.framework */,
-				3A9EBA9F2C16E8CD00D3C318 /* FirebaseFirestore.framework */,
-				3A9EBAA02C16E8CD00D3C318 /* FirebaseFirestoreInternal.framework */,
-				3A9EBAA12C16E8CD00D3C318 /* FirebaseSharedSwift.framework */,
-				3A66488A2C1148A100FA0F23 /* FirebaseAppCheckInterop.framework */,
-				3A66488C2C1148A100FA0F23 /* FirebaseCore.framework */,
-				3A66488E2C1148A100FA0F23 /* FirebaseCoreExtension.framework */,
-				3A6648902C1148A100FA0F23 /* FirebaseCoreInternal.framework */,
-				3A6648922C1148A100FA0F23 /* FirebaseFirestore.framework */,
-				3A6648942C1148A100FA0F23 /* FirebaseFirestoreInternal.framework */,
-				3A6648962C1148A100FA0F23 /* FirebaseSharedSwift.framework */,
-				9ACA2125D80FE2ECAB0215E3 /* Pods_Kiwi_Huts.framework */,
-				B7455AAF1DD49A2F50389819 /* Pods_Kiwi_HutsTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,11 +213,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A0B57222C1BB50F00487BB1 /* Build configuration list for PBXNativeTarget "Kiwi HutsTests" */;
 			buildPhases = (
-				A53959019E54A1D7304391E1 /* [CP] Check Pods Manifest.lock */,
 				3A0B57182C1BB50F00487BB1 /* Sources */,
 				3A0B57192C1BB50F00487BB1 /* Frameworks */,
 				3A0B571A2C1BB50F00487BB1 /* Resources */,
-				B81D92B1D250BDCAF39BBB0C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,11 +231,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A1C9A022B97D00800C49BFF /* Build configuration list for PBXNativeTarget "Kiwi Huts" */;
 			buildPhases = (
-				3B668DC90A1D32552D47E00B /* [CP] Check Pods Manifest.lock */,
 				3A1C99F02B97D00700C49BFF /* Sources */,
 				3A1C99F12B97D00700C49BFF /* Frameworks */,
 				3A1C99F22B97D00700C49BFF /* Resources */,
-				4C7B9CD6BE74E2A1781F93AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -410,7 +273,6 @@
 			);
 			mainGroup = 3A1C99EB2B97D00700C49BFF;
 			packageReferences = (
-				3ABD81832C16FC03004D68BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3A1C99EB2B97D00700C49BFF;
 			projectDirPath = "";
@@ -436,93 +298,10 @@
 			files = (
 				3A1C99FF2B97D00800C49BFF /* Preview Assets.xcassets in Resources */,
 				3A1C99FC2B97D00800C49BFF /* Assets.xcassets in Resources */,
-				3A6648892C11475300FA0F23 /* GoogleService-Info.plist in Resources */,
-				3A8DD4542C12900B00F20253 /* tutorial.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3B668DC90A1D32552D47E00B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kiwi Huts-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C7B9CD6BE74E2A1781F93AD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kiwi Huts/Pods-Kiwi Huts-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A53959019E54A1D7304391E1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kiwi HutsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B81D92B1D250BDCAF39BBB0C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kiwi HutsTests/Pods-Kiwi HutsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A0B57182C1BB50F00487BB1 /* Sources */ = {
@@ -544,6 +323,7 @@
 				3A1C9A102B97DCE000C49BFF /* HutView.swift in Sources */,
 				3A385C092B991C0A005036A5 /* MainTabView.swift in Sources */,
 				3A1C99F82B97D00700C49BFF /* Kiwi_HutsApp.swift in Sources */,
+				3AEC85E12CF6BC3D00568519 /* SupabaseClient.swift in Sources */,
 				3AE9CEA72C166AC800FDDA31 /* MapView.swift in Sources */,
 				3A385C0D2B991CBA005036A5 /* AboutView.swift in Sources */,
 				3A4B4BF02BDC37AA0071B03C /* ToolbarButtons.swift in Sources */,
@@ -573,7 +353,6 @@
 /* Begin XCBuildConfiguration section */
 		3A0B57232C1BB50F00487BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64D188DF2F6B36B68B7EED93 /* Pods-Kiwi HutsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -596,7 +375,6 @@
 		};
 		3A0B57242C1BB50F00487BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCEEE9B4BF8E038466DD234F /* Pods-Kiwi HutsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -622,6 +400,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -686,6 +465,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -740,10 +520,10 @@
 		};
 		3A1C9A032B97D00800C49BFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7E93ACC88D11CF5D879F34E /* Pods-Kiwi Huts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Kiwi Huts/Kiwi Huts.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -762,7 +542,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -783,10 +563,10 @@
 		};
 		3A1C9A042B97D00800C49BFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECDB857AB29542389B7BD06D /* Pods-Kiwi Huts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Kiwi Huts/Kiwi Huts.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -805,7 +585,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -855,17 +635,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3ABD81832C16FC03004D68BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.27.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 3A1C99EC2B97D00700C49BFF /* Project object */;
 }

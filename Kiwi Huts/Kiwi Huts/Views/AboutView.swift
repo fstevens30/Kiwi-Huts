@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AVKit
 
 struct AboutView: View {
     @EnvironmentObject var viewModel: HutsViewModel
@@ -24,9 +23,6 @@ struct AboutView: View {
         formatter.timeStyle = .short
         return formatter.string(from: date)
     }
-    
-    @State var player = AVPlayer(url: Bundle.main.url(forResource: "tutorial",
-                                                      withExtension: "mp4")!)
     
     var body: some View {
         ScrollView {
@@ -71,20 +67,8 @@ struct AboutView: View {
             
             Spacer()
             
-            VStack {
-                Text("Tutorial")
-                    .font(.headline)
-                
-                VideoPlayer(player: player)
-                    .aspectRatio(CGSize(width: 9, height: 18.125), contentMode: .fill)
-                    .padding()
-                    .shadow(radius: 5)
-                
-            }
-            .padding()
-            
             HStack {
-                Link("GitHub Link", destination: URL(string:"https://github.com/fstevens30")!)
+                Link("GitHub Link", destination: URL(string:"https://github.com/fstevens30/Kiwi-Huts")!)
                     .buttonStyle(.bordered)
                 Link("DOC API", destination: URL(string: "https://api.doc.govt.nz/")!)
                     .buttonStyle(.bordered)

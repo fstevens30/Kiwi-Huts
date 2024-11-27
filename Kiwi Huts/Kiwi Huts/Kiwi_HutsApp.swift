@@ -1,6 +1,4 @@
 import SwiftUI
-import Firebase
-import FirebaseFirestore
 import Network
 import Combine
 
@@ -15,30 +13,37 @@ class HutsViewModel: ObservableObject {
         self.lastUpdated = UserDefaults.standard.object(forKey: lastUpdatedKey) as? Date
     }
     
-    // Fetch huts from Firestore and update the hutsList
-    func fetchHutsFromFirestore() {
-        let db = Firestore.firestore()
-        db.collection("huts").getDocuments { [weak self] (snapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-                return
-            }
-            guard let documents = snapshot?.documents else {
-                print("No documents found in Firestore.")
-                return
-            }
-            
-            // Map the documents to Hut objects
-            let huts: [Hut] = documents.compactMap { document in
-                return try? document.data(as: Hut.self)
-            }
-            
-            // Update hutsList on the main thread
-            self?.hutsList = huts.shuffled()
-            self?.saveHutsLocally(huts: huts)
-            self?.updateLastUpdated()
-            print("Fetched huts count: \(huts.count)")
+    func fetchHutsFromSupabase() {
+        guard let url = URL(string: "\(SupabaseClient.baseURL)/rest/v1/huts") else {
+            print("Invalid URL")
+            return
         }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(SupabaseClient.apiKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error fetching huts: \(error)")
+                return
+            }
+
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+
+            do {
+                let huts = try JSONDecoder().decode([Hut].self, from: data)
+                DispatchQueue.main.async {
+                    self.hutsList = huts
+                }
+            } catch {
+                print("Error decoding huts: \(error)")
+            }
+        }.resume()
     }
     
     // Save huts to UserDefaults
@@ -103,14 +108,6 @@ struct Kiwi_HutsApp: App {
     @StateObject var networkMonitor = NetworkMonitor()
     
     init() {
-        // Configure Firebase
-        FirebaseApp.configure()
-        
-        // Configure Firestore offline persistence using cacheSettings
-        let settings = FirestoreSettings()
-        settings.cacheSettings = PersistentCacheSettings()
-        Firestore.firestore().settings = settings
-        
         UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
     }
     
@@ -128,14 +125,14 @@ struct Kiwi_HutsApp: App {
     
     private func handleInitialDataLoad() {
         if networkMonitor.isConnected {
-            viewModel.fetchHutsFromFirestore()
+            viewModel.fetchHutsFromSupabase()
         } else {
             viewModel.loadHutsLocally()
         }
         
         networkMonitor.$isConnected.sink { isConnected in
             if isConnected {
-                viewModel.fetchHutsFromFirestore()
+                viewModel.fetchHutsFromSupabase()
             } else {
                 viewModel.loadHutsLocally()
             }
