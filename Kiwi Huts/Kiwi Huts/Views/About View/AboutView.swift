@@ -33,30 +33,17 @@ struct AboutView: View {
                     appIcon: AppIconProvider.appIcon()
                 )
             }
-            .padding()
-            
-            Spacer()
             
             VStack {
                 Text("Kiwi Huts")
                     .font(.headline)
-                if let lastUpdated = viewModel.lastUpdated {
-                    Text("Last updated: \(formatDate(lastUpdated))")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                } else {
-                    Text("No updates yet")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
             }
-            .padding()
             
             VStack {
-                Text("This app was made by Flynn Stevens as a side project to understand more about SwiftUI and API usage. All data on this app is pulled from the Department of Conservation API.")
+                Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated twice a day. For more information on this app please see below.")
                     .padding(.bottom)
                 
-                Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated once daily. For more information on this app please see below.")
+                Text("All data on this app is pulled from the Department of Conservation API. Please refer to the timestamp below to see when the data was last updated.")
                     .padding(.bottom)
             }
             .padding()
@@ -72,6 +59,16 @@ struct AboutView: View {
             .padding()
             
             Spacer()
+            
+            if let lastUpdated = viewModel.lastUpdated {
+                Text("Data last updated: \(formatDate(lastUpdated))")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            } else {
+                Text("No data yet")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
         }
         .statusBarHidden(false)
     }

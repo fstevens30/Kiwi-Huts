@@ -15,7 +15,7 @@ struct AppVersionInformationView: View {
 
     var body: some View {
 
-        HStack(alignment: .center, spacing: 12) {
+        VStack(alignment: .center, spacing: 12) {
 
             // App icons can only be retrieved as named `UIImage`s
             // https://stackoverflow.com/a/62064533/17421764
@@ -24,11 +24,10 @@ struct AppVersionInformationView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .frame(width: 100, height: 100)
             }
 
-            VStack(alignment: .leading) {
-                Text("Version")
-                    .bold()
+            VStack(alignment: .center) {
                 Text("v\(versionString)")
             }
             .font(.caption)
