@@ -25,52 +25,55 @@ struct AboutView: View {
     }
     
     var body: some View {
-        ScrollView {
-            Spacer()
+        NavigationStack {
             VStack {
-                AppVersionInformationView(
-                    versionString: AppVersionProvider.appVersion(),
-                    appIcon: AppIconProvider.appIcon()
-                )
-            }
-            
-            VStack {
-                Text("Kiwi Huts")
-                    .font(.headline)
-            }
-            
-            VStack {
-                Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated twice a day. For more information on this app please see below.")
-                    .padding(.bottom)
+                VStack {
+                    AppVersionInformationView(
+                        versionString: AppVersionProvider.appVersion(),
+                        appIcon: AppIconProvider.appIcon()
+                    )
+                }
                 
-                Text("All data on this app is pulled from the Department of Conservation API. Please refer to the timestamp below to see when the data was last updated.")
-                    .padding(.bottom)
+                VStack {
+                    Text("Kiwi Huts")
+                        .font(.headline)
+                }
+                Divider()
+                    .padding()
+                
+                VStack(alignment: .leading) {
+                    
+                    Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated twice a day. For more information on this app please see below.")
+                        .padding()
+                    
+                    Text("All data on this app is pulled from the Department of Conservation API. Please refer to the timestamp below to see when the data was last updated.")
+                        .padding()
+                }
+                .padding()
+                
+                HStack {
+                    Link("GitHub Link", destination: URL(string:"https://github.com/fstevens30/Kiwi-Huts")!)
+                        .buttonStyle(.bordered)
+                    Link("DOC API", destination: URL(string: "https://api.doc.govt.nz/")!)
+                        .buttonStyle(.bordered)
+                }
+                .padding()
+                
+                if let lastUpdated = viewModel.lastUpdated {
+                    Text("Data last updated: \(formatDate(lastUpdated))")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding()
+                } else {
+                    Text("No data yet")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding()
+                }
             }
-            .padding()
-            
-            Spacer()
-            
-            HStack {
-                Link("GitHub Link", destination: URL(string:"https://github.com/fstevens30/Kiwi-Huts")!)
-                    .buttonStyle(.bordered)
-                Link("DOC API", destination: URL(string: "https://api.doc.govt.nz/")!)
-                    .buttonStyle(.bordered)
-            }
-            .padding()
-            
-            Spacer()
-            
-            if let lastUpdated = viewModel.lastUpdated {
-                Text("Data last updated: \(formatDate(lastUpdated))")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            } else {
-                Text("No data yet")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            }
+            .statusBarHidden(false)
+            .navigationTitle("About")
         }
-        .statusBarHidden(false)
     }
 }
 

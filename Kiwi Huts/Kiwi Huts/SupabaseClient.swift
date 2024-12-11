@@ -8,9 +8,20 @@
 import Foundation
 
 struct SupabaseClient {
-    static let baseURL = "https://utlkldneoqomzffvenps.supabase.co"
-    static let apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bGtsZG5lb3FvbXpmZnZlbnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI1ODc4NzMsImV4cCI6MjA0ODE2Mzg3M30.MbtD6mUCWedv9uY1OCvRTn_DScQHSQ3NOUautJ3FKOU"
+    static let baseURL: String = {
+        guard let baseURL = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
+            fatalError("BASE_URL not found in Info.plist")
+        }
+        print(baseURL)
+        return baseURL
+    }()
 
+    static let apiKey: String = {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
+            fatalError("API_KEY not found in Info.plist")
+        }
+        return apiKey
+    }()
     static func fetchHuts(completion: @escaping (Result<[Hut], SupabaseError>) -> Void) {
         guard let url = URL(string: "\(baseURL)/rest/v1/huts") else {
             completion(.failure(.invalidURL))

@@ -97,3 +97,6 @@ iOSInjectionProject/
 
 # Keys directory
 Backend/Keys/
+
+# xcode config
+*.xcconfig

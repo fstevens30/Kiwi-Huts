@@ -21,7 +21,7 @@ struct MainTabView: View {
                 .tag(0)
                 .environmentObject(viewModel)
             
-            FullScreenMapView()
+            MapView()
                 .tabItem {
                     Label("Map", systemImage: "map.circle.fill")
                 }

@@ -1,3 +1,6 @@
+import SwiftUI
+import MapKit
+
 struct Hut: Identifiable, Codable {
     let id: Int // Use "asset_id" as the unique identifier
     let name: String
@@ -29,5 +32,25 @@ struct Hut: Identifiable, Codable {
         case introductionThumbnail = "introduction_thumbnail"
         case staticLink = "static_link"
         case bookable
+    }
+    
+    // Get the sf symbol icon for hut type
+    var iconName: String {
+        switch hutCategory {
+        case "Great Walk":
+            return "house.lodge.fill"
+        case "Standard", "Serviced":
+            return "house.fill"
+        case "Basic/bivvies":
+            return "tent.fill"
+        case "Serviced Alpine":
+            return "mountain.2.fill"
+        default:
+            return "house.fill"
+        }
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
 }

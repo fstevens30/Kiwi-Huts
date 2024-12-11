@@ -75,6 +75,7 @@ struct CompletionView: View {
                 }
             }
             .navigationTitle("Completion")
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }

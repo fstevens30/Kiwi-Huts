@@ -15,6 +15,8 @@ class HutsViewModel: ObservableObject {
     }
     
     func fetchHutsFromSupabase() {
+        print("Using Base URL: \(SupabaseClient.baseURL)") // Debugging line
+
         guard let url = URL(string: "\(SupabaseClient.baseURL)/rest/v1/huts") else {
             print("Invalid URL")
             return
@@ -115,7 +117,7 @@ class HutsViewModel: ObservableObject {
         print("Attempting to load huts locally")
         if let savedHuts = UserDefaults.standard.object(forKey: localHutsKey) as? Data {
             if let loadedHuts = try? JSONDecoder().decode([Hut].self, from: savedHuts) {
-                self.hutsList = loadedHuts.shuffled()
+                self.hutsList = loadedHuts
                 print("Loaded huts locally, count: \(loadedHuts.count)")
             } else {
                 print("Failed to decode huts from UserDefaults")

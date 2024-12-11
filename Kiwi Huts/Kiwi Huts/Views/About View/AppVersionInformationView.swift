@@ -25,6 +25,7 @@ struct AppVersionInformationView: View {
                     .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .frame(width: 100, height: 100)
+                    .shadow(radius: 5)
             }
 
             VStack(alignment: .center) {
