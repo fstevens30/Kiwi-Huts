@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CircularProgressView: View {
+    @EnvironmentObject var user: User
     
     let hutCount: Double
     let totalHuts: Double
@@ -18,13 +19,13 @@ struct CircularProgressView: View {
             
             Circle()
                 .stroke(
-                    Color.accentColor.opacity(0.5),
+                    Color(user.accentColor.assetName),
                     lineWidth: 30
                 )
             Circle()
                 .trim(from: 0, to: hutCount / totalHuts)
                 .stroke(
-                    Color.accentColor,
+                    Color(user.accentColor.assetName),
                     style: StrokeStyle(
                         lineWidth: 30,
                         lineCap: .round

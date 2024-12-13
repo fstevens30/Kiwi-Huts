@@ -30,6 +30,7 @@ struct HutListView: View {
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
+                        .tint(Color(user.accentColor.assetName))
                         
                         Picker("Hut Type", selection: $selectedHutType) {
                             Text("All Hut Types").tag("All")
@@ -38,6 +39,8 @@ struct HutListView: View {
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
+                        .tint(Color(user.accentColor.assetName))
+
                     }
                     .padding()
 

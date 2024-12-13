@@ -23,7 +23,6 @@ struct HutInfoCardContainer: View {
                 HutInfoCard(
                     imageName: isOpen ? "lock.open.fill" : "lock.fill",
                     text: isOpen ? "Open" : "Closed",
-                    iconColor: isOpen ? .accentColor : .primary,
                     bgColor: isOpen ? .gray : .red
                 )
 

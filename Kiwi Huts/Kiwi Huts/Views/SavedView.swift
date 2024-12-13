@@ -24,7 +24,7 @@ struct SavedView: View {
                         Text("Use the")
                         Text(Image(systemName: "star.circle"))
                             .font(.title)
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(Color(user.accentColor.assetName))
                         Text("button to save huts here.")
                     }
                 } else {

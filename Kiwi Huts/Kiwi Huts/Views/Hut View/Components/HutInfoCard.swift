@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct HutInfoCard: View {
+    @EnvironmentObject var user: User
     var imageName: String
     var text: String
-    var iconColor: Color = .accentColor
     var bgColor: Color = .gray
     
     var body: some View {
+        
         HStack {
             Image(systemName: imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 24, height: 24)
-                .foregroundColor(iconColor)
+                .foregroundColor(Color(user.accentColor.assetName))
             Divider()
             Text(text)
                 .font(.footnote)

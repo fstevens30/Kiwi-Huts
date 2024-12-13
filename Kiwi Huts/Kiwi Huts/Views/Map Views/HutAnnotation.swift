@@ -29,6 +29,7 @@ class HutAnnotation: NSObject, MKAnnotation {
 }
 
 class HutAnnotationView: MKAnnotationView {
+    @EnvironmentObject var user: User
     static let reuseID = "HutAnnotation"
     
     override var annotation: MKAnnotation? {
@@ -38,7 +39,7 @@ class HutAnnotationView: MKAnnotationView {
             // Create a marker view
             let markerSize: CGFloat = 50
             let markerView = UIView(frame: CGRect(x: 0, y: 0, width: markerSize, height: markerSize))
-            markerView.backgroundColor = .accent
+            markerView.backgroundColor = .black
             markerView.layer.cornerRadius = 15
             markerView.clipsToBounds = true
             

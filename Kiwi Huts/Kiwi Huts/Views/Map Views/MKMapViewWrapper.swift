@@ -10,6 +10,7 @@ import SwiftUI
 import MapKit
 
 struct MKMapViewWrapper: UIViewRepresentable {
+    @EnvironmentObject var user: User
     @Binding var huts: [Hut]
     @Binding var selectedHut: Hut?
     @Binding var mapType: MKMapType

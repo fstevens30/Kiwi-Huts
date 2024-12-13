@@ -43,6 +43,7 @@ struct HutView: View {
                             Link("Book Now", destination: URL(string: hut.staticLink)!)
                                 .buttonStyle(.bordered)
                                 .padding()
+                                .tint(Color(user.accentColor.assetName))
                         }
                     }
                     .padding()

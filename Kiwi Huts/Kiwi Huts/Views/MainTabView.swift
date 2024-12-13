@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var user: User
     @EnvironmentObject var viewModel: HutsViewModel
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // For state restoration
@@ -30,25 +31,26 @@ struct MainTabView: View {
             
             HutListView()
                 .tabItem {
-                    Label("Huts", systemImage: "house.fill")
+                    Label("Huts", systemImage: "house.circle.fill")
                 }
                 .tag(2)
                 .environmentObject(viewModel)
             
-            SavedView()
+            ProfileView()
                 .tabItem {
-                    Label("Saved", systemImage: "star.circle.fill")
+                    Label("Profile", systemImage: "person.circle.fill")
                 }
                 .tag(3)
                 .environmentObject(viewModel)
             
-            CompletionView()
+            SettingsView()
                 .tabItem {
-                    Label("Completion", systemImage: "checkmark.circle.fill")
+                    Label("Settings", systemImage: "gear.circle.fill")
                 }
                 .tag(4)
                 .environmentObject(viewModel)
         }
+        .tint(Color(user.accentColor.assetName))
         .onAppear {
             selectedTab = UserDefaults.standard.integer(forKey: "lastTab") // Restore last selected tab
         }

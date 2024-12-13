@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AboutView: View {
     @EnvironmentObject var viewModel: HutsViewModel
+    @EnvironmentObject var user: User
     
     func getAppVersion() -> String {
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -16,17 +17,11 @@ struct AboutView: View {
         }
         return "Unknown"
     }
-    
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
-    }
+
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
                 VStack {
                     AppVersionInformationView(
                         versionString: AppVersionProvider.appVersion(),
@@ -59,17 +54,7 @@ struct AboutView: View {
                 }
                 .padding()
                 
-                if let lastUpdated = viewModel.lastUpdated {
-                    Text("Data last updated: \(formatDate(lastUpdated))")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding()
-                } else {
-                    Text("No data yet")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding()
-                }
+                
             }
             .statusBarHidden(false)
             .navigationTitle("About")

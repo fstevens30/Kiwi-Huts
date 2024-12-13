@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegionProgressView: View {
+    @EnvironmentObject var user: User
     let progress: CGFloat
 
     var body: some View {
@@ -16,14 +17,14 @@ struct RegionProgressView: View {
                 Rectangle()
                     .frame(width: geometry.size.width, height: 20)
                     .opacity(0.3)
-                    .foregroundStyle(Color.accentColor)
+                    .foregroundStyle(Color(user.accentColor.assetName))
                 Rectangle()
                     .frame(
                         width: min(progress * geometry.size.width,
                                    geometry.size.width),
                         height: 20
                         )
-                    .foregroundStyle(Color.accentColor)
+                    .foregroundStyle(Color(user.accentColor.assetName))
             }
         }
     }

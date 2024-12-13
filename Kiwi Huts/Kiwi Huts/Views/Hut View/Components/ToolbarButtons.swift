@@ -24,10 +24,12 @@ struct ToolbarButtons: View {
         HStack {
             Button(action: toggleSaved) {
                 Image(systemName: isHutSaved() ? "star.circle.fill" : "star.circle")
+                    .tint(Color(user.accentColor.assetName))
             }
             
             Button(action: toggleCompleted) {
                 Image(systemName: isHutComplete() ? "checkmark.circle.fill" : "checkmark.circle")
+                    .tint(Color(user.accentColor.assetName))
             }
         }
     }
