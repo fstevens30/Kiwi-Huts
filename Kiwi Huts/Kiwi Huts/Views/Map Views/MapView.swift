@@ -12,7 +12,6 @@ struct MapView: View {
     @EnvironmentObject var viewModel: HutsViewModel
     @EnvironmentObject var user: User
     @State private var selectedHut: Hut? = nil // Track the selected hut
-    @State private var selectedMapStyle: MKMapType = .standard // Track selected map type
     @State private var hutsFilter: String = "All Huts" // Track the selected filter for huts
     @State private var hutTypeFilter: String = "All Types" // Track the selected filter for hut type
 
@@ -43,7 +42,7 @@ struct MapView: View {
                 MKMapViewWrapper(
                     huts: .constant(selectedHuts), // Dynamically filtered huts
                     selectedHut: $selectedHut,
-                    mapType: $selectedMapStyle // Pass map style
+                    mapType: .constant(user.mapType.mkMapType)
                 )
                 .edgesIgnoringSafeArea(.top)
                 
@@ -120,32 +119,6 @@ struct MapView: View {
                                 .opacity(0.8)
                                 .frame(width: 40, height: 40)
                             Image(systemName: "house")
-                                .foregroundStyle(Color.gray)
-                                .padding(5)
-                        }
-                    }
-                    
-                    // Dropdown picker for map style
-                    Menu {
-                        Button(action: { selectedMapStyle = .standard }) {
-                            Text("Standard")
-                        }
-                        .disabled(selectedMapStyle == .standard)
-                        Button(action: { selectedMapStyle = .satellite }) {
-                            Text("Satellite")
-                        }
-                        .disabled(selectedMapStyle == .satellite)
-                        Button(action: { selectedMapStyle = .hybrid }) {
-                            Text("Hybrid")
-                        }
-                        .disabled(selectedMapStyle == .hybrid)
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15.0)
-                                .fill(Color(UIColor.systemBackground))
-                                .opacity(0.8)
-                                .frame(width: 40, height: 40)
-                            Image(systemName: "paintbrush")
                                 .foregroundStyle(Color.gray)
                                 .padding(5)
                         }

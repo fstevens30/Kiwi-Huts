@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 
 enum AccentColor: String, CaseIterable, Codable {
     case orange
@@ -34,6 +35,24 @@ enum MapType: String, CaseIterable, Codable {
         case .standard: return "Standard"
         case .satellite: return "Satellite"
         case .hybrid: return "Hybrid"
+        }
+    }
+
+    // Style for UIKit implementation
+    var mkMapType: MKMapType {
+        switch self {
+        case .standard: return .standard
+        case .satellite: return .satellite
+        case .hybrid: return .hybrid
+        }
+    }
+    
+    // Style for SwiftUI implementation
+    var mapStyle: MapStyle {
+        switch self {
+        case .standard: return .standard
+        case .satellite: return .imagery
+        case .hybrid: return .hybrid
         }
     }
 }

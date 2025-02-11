@@ -37,7 +37,7 @@ struct SettingsView: View {
                         
                     }
                     HStack {
-                        Text("Default Map Style")
+                        Text("Map Type")
                         Spacer()
                         Picker("", selection: $user.mapType) {
                             ForEach(MapType.allCases, id: \.self) { mapType in

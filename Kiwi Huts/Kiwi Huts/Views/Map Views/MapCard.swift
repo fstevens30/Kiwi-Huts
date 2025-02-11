@@ -10,6 +10,7 @@ import SwiftUI
 import MapKit
 
 struct MapCard: View {
+    @EnvironmentObject var user: User
     let hut: Hut
     
     var body: some View {
@@ -17,12 +18,9 @@ struct MapCard: View {
         
         ZStack {
             Map(initialPosition: position, interactionModes: []) {
-                Annotation(hut.name, coordinate: hut.coordinate) {
-                    HutMarker(hut: hut)
-                }
-                .annotationTitles(.hidden)
+                Marker(hut.name, coordinate: hut.coordinate)
             }
-            .mapStyle(.hybrid)
+            .mapStyle(user.mapType.mapStyle)
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle(hut.name)
             .frame(height: 200)

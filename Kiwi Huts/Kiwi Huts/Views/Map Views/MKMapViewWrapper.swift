@@ -42,15 +42,17 @@ struct MKMapViewWrapper: UIViewRepresentable {
         init(_ parent: MKMapViewWrapper) {
             self.parent = parent
         }
-
+        
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             if annotation is MKClusterAnnotation {
                 let clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomClusterAnnotationView.reuseID, for: annotation) as! CustomClusterAnnotationView
+                clusterView.accentColor = parent.user.accentColor.assetName.toUIColor()
                 return clusterView
             }
             
             if annotation is HutAnnotation {
-                let hutView = mapView.dequeueReusableAnnotationView(withIdentifier: HutAnnotationView.reuseID, for: annotation)
+                let hutView = mapView.dequeueReusableAnnotationView(withIdentifier: HutAnnotationView.reuseID, for: annotation) as! HutAnnotationView
+                hutView.accentColor = parent.user.accentColor.assetName.toUIColor()
                 hutView.clusteringIdentifier = "hutCluster"
                 return hutView
             }
@@ -59,9 +61,15 @@ struct MKMapViewWrapper: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-                guard let hutAnnotation = view.annotation as? HutAnnotation else { return }
-                parent.selectedHut = hutAnnotation.hut
-                
-            }
+            guard let hutAnnotation = view.annotation as? HutAnnotation else { return }
+            parent.selectedHut = hutAnnotation.hut
+            
+        }
+    }
+}
+
+extension String {
+    func toUIColor() -> UIColor {
+        return UIColor(named: self) ?? .systemBlue
     }
 }

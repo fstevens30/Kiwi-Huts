@@ -10,7 +10,8 @@ import MapKit
 
 class CustomClusterAnnotationView: MKAnnotationView {
     static let reuseID = "CustomCluster"
-
+    var accentColor: UIColor = .systemBlue // Default accent color
+    
     override var annotation: MKAnnotation? {
         willSet {
             guard let cluster = newValue as? MKClusterAnnotation else { return }
@@ -22,7 +23,7 @@ class CustomClusterAnnotationView: MKAnnotationView {
             let count = cluster.memberAnnotations.count
             let bubbleSize: CGFloat = 50
             let bubbleView = UIView(frame: CGRect(x: 0, y: 0, width: bubbleSize, height: bubbleSize))
-            bubbleView.backgroundColor = .accent
+            bubbleView.backgroundColor = accentColor // Use the accent color here
             bubbleView.layer.cornerRadius = bubbleSize / 2
             bubbleView.clipsToBounds = true
 
