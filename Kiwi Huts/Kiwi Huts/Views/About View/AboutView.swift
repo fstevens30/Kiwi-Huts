@@ -26,7 +26,7 @@ struct AboutView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
                 VStack {
                     AppVersionInformationView(
                         versionString: AppVersionProvider.appVersion(),
@@ -44,10 +44,8 @@ struct AboutView: View {
                 VStack(alignment: .leading) {
                     
                     Text("Remember, please refer to the DOC website and local weather before heading out on adventures. Data is updated twice a day. For more information on this app please see below.")
-                        .padding()
                     
                     Text("All data on this app is pulled from the Department of Conservation API. Please refer to the timestamp below to see when the data was last updated.")
-                        .padding()
                 }
                 .padding()
                 
